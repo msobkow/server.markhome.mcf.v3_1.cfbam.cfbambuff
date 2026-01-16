@@ -1,0 +1,523 @@
+// Description: Java 25 implementation of a ClearDep buffer
+
+/*
+ *	io.github.msobkow.CFBam
+ *
+ *	Copyright (c) 2016-2026 Mark Stephen Sobkow
+ *	
+ *	Mark's Code Fractal 3.1 CFBam - Business Application Model
+ *	
+ *	This file is part of Mark's Code Fractal CFBam.
+ *	
+ *	Mark's Code Fractal CFBam is available under dual commercial license from
+ *	Mark Stephen Sobkow, or under the terms of the GNU General Public License,
+ *	Version 3 or later.
+ *	
+ *	Mark's Code Fractal CFBam is free software: you can redistribute it and/or
+ *	modify it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *	
+ *	Mark's Code Fractal CFBam is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *	
+ *	You should have received a copy of the GNU General Public License
+ *	along with Mark's Code Fractal CFBam.  If not, see <https://www.gnu.org/licenses/>.
+ *	
+ *	If you wish to modify and use this code without publishing your changes,
+ *	or integrate it with proprietary code, please contact Mark Stephen Sobkow
+ *	for a commercial license at mark.sobkow@gmail.com
+ *	
+ */
+
+package io.github.msobkow.v3_1.cfbam.cfbam.buff;
+
+import java.lang.reflect.*;
+import java.io.*;
+import java.math.*;
+import java.net.*;
+import java.rmi.*;
+import java.sql.*;
+import java.text.*;
+import java.time.*;
+import java.util.*;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.text.StringEscapeUtils;
+import io.github.msobkow.v3_1.cflib.*;
+import io.github.msobkow.v3_1.cflib.dbutil.*;
+import io.github.msobkow.v3_1.cflib.xml.CFLibXmlUtil;
+import io.github.msobkow.v3_1.cfsec.cfsec.*;
+import io.github.msobkow.v3_1.cfint.cfint.*;
+import io.github.msobkow.v3_1.cfbam.cfbam.*;
+import io.github.msobkow.v3_1.cfsec.cfsec.buff.*;
+import io.github.msobkow.v3_1.cfint.cfint.buff.*;
+
+public class CFBamBuffClearDep
+	extends CFBamBuffScope
+	implements ICFBamClearDep
+{
+	protected CFLibDbKeyHash256 requiredRelationId;
+	protected CFLibDbKeyHash256 optionalDefSchemaId;
+
+	public CFBamBuffClearDep() {
+		super();
+		requiredRelationId = CFLibDbKeyHash256.fromHex( ICFBamClearDep.RELATIONID_INIT_VALUE.toString() );
+		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
+	}
+
+	@Override
+	public int getClassCode() {
+		return( ICFBamClearDep.CLASS_CODE );
+	}
+
+	@Override
+	public ICFBamRelation getRequiredLookupRelation() {
+		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
+		if (targetBackingSchema == null) {
+			throw new CFLibNullArgumentException(getClass(), "setRequiredLookupRelation", 0, "ICFBamSchema.getBackingCFBam()");
+		}
+		ICFBamRelationTable targetTable = targetBackingSchema.getTableRelation();
+		if (targetTable == null) {
+			throw new CFLibNullArgumentException(getClass(), "setRequiredLookupRelation", 0, "ICFBamSchema.getBackingCFBam().getTableRelation()");
+		}
+		ICFBamRelation targetRec = targetTable.readDerived(null, getRequiredRelationId());
+		return(targetRec);
+	}
+	@Override
+	public void setRequiredLookupRelation(ICFBamRelation argObj) {
+		if(argObj == null) {
+			throw new CFLibNullArgumentException(getClass(), "setLookupRelation", 1, "argObj");
+		}
+		else {
+			requiredRelationId = argObj.getRequiredId();
+		}
+	}
+
+	@Override
+	public void setRequiredLookupRelation(CFLibDbKeyHash256 argRelationId) {
+		requiredRelationId = argRelationId;
+	}
+
+	@Override
+	public ICFBamSchemaDef getOptionalLookupDefSchema() {
+		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
+		if (targetBackingSchema == null) {
+			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupDefSchema", 0, "ICFBamSchema.getBackingCFBam()");
+		}
+		ICFBamSchemaDefTable targetTable = targetBackingSchema.getTableSchemaDef();
+		if (targetTable == null) {
+			throw new CFLibNullArgumentException(getClass(), "setOptionalLookupDefSchema", 0, "ICFBamSchema.getBackingCFBam().getTableSchemaDef()");
+		}
+		ICFBamSchemaDef targetRec = targetTable.readDerived(null, getOptionalDefSchemaId());
+		return(targetRec);
+	}
+	@Override
+	public void setOptionalLookupDefSchema(ICFBamSchemaDef argObj) {
+		if(argObj == null) {
+			optionalDefSchemaId = null;
+		}
+		else {
+			optionalDefSchemaId = argObj.getRequiredId();
+		}
+	}
+
+	@Override
+	public void setOptionalLookupDefSchema(CFLibDbKeyHash256 argDefSchemaId) {
+		optionalDefSchemaId = argDefSchemaId;
+	}
+
+	@Override
+	public CFLibDbKeyHash256 getRequiredRelationId() {
+		return( requiredRelationId );
+	}
+
+	@Override
+	public CFLibDbKeyHash256 getOptionalDefSchemaId() {
+		return( optionalDefSchemaId );
+	}
+
+	@Override
+	public boolean equals( Object obj ) {
+		if( obj == null ) {
+			return( false );
+		}
+		else if( obj instanceof ICFBamClearDep ) {
+			ICFBamClearDep rhs = (ICFBamClearDep)obj;
+			if( getRequiredId() != null && !getRequiredId().isNull() ) {
+				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+					return( false );
+				}
+			}
+			if( getRequiredRelationId() != null && !getRequiredRelationId().isNull() ) {
+				if( rhs.getRequiredRelationId() != null && !rhs.getRequiredRelationId().isNull() ) {
+					if( ! getRequiredRelationId().equals( rhs.getRequiredRelationId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRelationId() != null && !getRequiredRelationId().isNull()) {
+					return( false );
+				}
+			}
+			if( getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull() ) {
+				if( rhs.getOptionalDefSchemaId() != null && !rhs.getOptionalDefSchemaId().isNull() ) {
+					if( ! getOptionalDefSchemaId().equals( rhs.getOptionalDefSchemaId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull()) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if( obj instanceof ICFBamClearDepH ) {
+			ICFBamClearDepH rhs = (ICFBamClearDepH)obj;
+			if( getRequiredId() != null && !getRequiredId().isNull() ) {
+				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+					return( false );
+				}
+			}
+			if( getRequiredRelationId() != null && !getRequiredRelationId().isNull() ) {
+				if( rhs.getRequiredRelationId() != null && !rhs.getRequiredRelationId().isNull() ) {
+					if( ! getRequiredRelationId().equals( rhs.getRequiredRelationId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRelationId() != null && !getRequiredRelationId().isNull()) {
+					return( false );
+				}
+			}
+			if( getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull() ) {
+				if( rhs.getOptionalDefSchemaId() != null && !rhs.getOptionalDefSchemaId().isNull() ) {
+					if( ! getOptionalDefSchemaId().equals( rhs.getOptionalDefSchemaId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull()) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if( obj instanceof ICFBamScopeHPKey ) {
+			ICFBamScopeHPKey rhs = (ICFBamScopeHPKey)obj;
+			if( getRequiredId() != null && !getRequiredId().isNull() ) {
+				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if( obj instanceof ICFBamClearDepByClearDepIdxKey ) {
+			ICFBamClearDepByClearDepIdxKey rhs = (ICFBamClearDepByClearDepIdxKey)obj;
+			if( getRequiredRelationId() != null && !getRequiredRelationId().isNull() ) {
+				if( rhs.getRequiredRelationId() != null && !rhs.getRequiredRelationId().isNull() ) {
+					if( ! getRequiredRelationId().equals( rhs.getRequiredRelationId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRelationId() != null && !getRequiredRelationId().isNull()) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if( obj instanceof ICFBamClearDepByDefSchemaIdxKey ) {
+			ICFBamClearDepByDefSchemaIdxKey rhs = (ICFBamClearDepByDefSchemaIdxKey)obj;
+			if( getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull() ) {
+				if( rhs.getOptionalDefSchemaId() != null && !rhs.getOptionalDefSchemaId().isNull() ) {
+					if( ! getOptionalDefSchemaId().equals( rhs.getOptionalDefSchemaId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull()) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else {
+			boolean retval = super.equals( obj );
+			return( retval );
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		int hashCode = super.hashCode();
+		hashCode = hashCode + getRequiredRelationId().hashCode();
+		if( getOptionalDefSchemaId() != null ) {
+			hashCode = hashCode + getOptionalDefSchemaId().hashCode();
+		}
+		return( hashCode & 0x7fffffff );
+	}
+
+	@Override
+	public int compareTo( Object obj ) {
+		int cmp;
+		if( obj == null ) {
+			return( -1 );
+		}
+		else if( obj instanceof ICFBamClearDep ) {
+			ICFBamClearDep rhs = (ICFBamClearDep)obj;
+			cmp = super.compareTo( rhs );
+			if( cmp != 0 ) {
+				return( cmp );
+			}
+			if (getRequiredRelationId() != null) {
+				if (rhs.getRequiredRelationId() != null) {
+					cmp = getRequiredRelationId().compareTo( rhs.getRequiredRelationId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRelationId() != null) {
+				return( -1 );
+			}
+			if( getOptionalDefSchemaId() != null ) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					cmp = getOptionalDefSchemaId().compareTo( rhs.getOptionalDefSchemaId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					return( -1 );
+				}
+			}
+			return( 0 );
+		}
+		else if( obj instanceof ICFBamScopeHPKey ) {
+			ICFBamScopeHPKey rhs = (ICFBamScopeHPKey)obj;
+			if( getRequiredRevision() < rhs.getRequiredRevision() ) {
+				return( -1 );
+			}
+			else if( getRequiredRevision() > rhs.getRequiredRevision() ) {
+				return( 1 );
+			}
+			if (getRequiredId() != null) {
+				if (rhs.getRequiredId() != null) {
+					cmp = getRequiredId().compareTo( rhs.getRequiredId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredId() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
+		else if( obj instanceof ICFBamClearDepH ) {
+			ICFBamClearDepH rhs = (ICFBamClearDepH)obj;
+			cmp = super.compareTo( rhs );
+			if( cmp != 0 ) {
+				return( cmp );
+			}
+			if (getRequiredRelationId() != null) {
+				if (rhs.getRequiredRelationId() != null) {
+					cmp = getRequiredRelationId().compareTo( rhs.getRequiredRelationId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRelationId() != null) {
+				return( -1 );
+			}
+			if( getOptionalDefSchemaId() != null ) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					cmp = getOptionalDefSchemaId().compareTo( rhs.getOptionalDefSchemaId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					return( -1 );
+				}
+			}
+			return( 0 );
+		}
+		else if( obj instanceof ICFBamClearDepByClearDepIdxKey ) {
+			ICFBamClearDepByClearDepIdxKey rhs = (ICFBamClearDepByClearDepIdxKey)obj;
+
+			if (getRequiredRelationId() != null) {
+				if (rhs.getRequiredRelationId() != null) {
+					cmp = getRequiredRelationId().compareTo( rhs.getRequiredRelationId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRelationId() != null) {
+				return( -1 );
+			}			return( 0 );
+		}
+		else if( obj instanceof ICFBamClearDepByDefSchemaIdxKey ) {
+			ICFBamClearDepByDefSchemaIdxKey rhs = (ICFBamClearDepByDefSchemaIdxKey)obj;
+
+			if( getOptionalDefSchemaId() != null ) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					cmp = getOptionalDefSchemaId().compareTo( rhs.getOptionalDefSchemaId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					return( -1 );
+				}
+			}			return( 0 );
+		}
+		else {
+			cmp = super.compareTo( obj );
+			return( cmp );
+		}
+	}
+
+	@Override
+	public void set( ICFBamScope src ) {
+		if( src instanceof CFBamBuffClearDep ) {
+			setClearDep( (CFBamBuffClearDep)src );
+		}
+		else {
+			throw new CFLibUnsupportedClassException( getClass(),
+				"compareTo",
+				"src",
+				src,
+				"CFBamBuffClearDep" );
+		}
+	}
+
+	@Override
+	public void setClearDep( ICFBamClearDep src ) {
+		super.setScope( src );
+		setRequiredLookupRelation(src.getRequiredLookupRelation());
+		setOptionalLookupDefSchema(src.getOptionalLookupDefSchema());
+	}
+
+	@Override
+	public void set( ICFBamScopeH src ) {
+		if( src instanceof ICFBamClearDepH ) {
+			setClearDep( (ICFBamClearDepH)src );
+		}
+		else {
+			throw new CFLibUnsupportedClassException( getClass(),
+					"set",
+					"src",
+					src,
+					"ICFBamClearDepH" );
+		}
+	}
+
+	@Override
+	public void setClearDep( ICFBamClearDepH src ) {
+		super.setScope( src );
+		setRequiredLookupRelation(src.getRequiredRelationId());
+		setOptionalLookupDefSchema(src.getOptionalDefSchemaId());
+	}
+
+	@Override
+	public String getXmlAttrFragment() {
+		String ret = super.getXmlAttrFragment() 
+			+ " RequiredId=" + "\"" + getRequiredId().toString() + "\""
+			+ " RequiredRelationId=" + "\"" + getRequiredRelationId().toString() + "\""
+			+ " OptionalDefSchemaId=" + ( ( getOptionalDefSchemaId() == null ) ? "null" : "\"" + getOptionalDefSchemaId().toString() + "\"" );
+		return( ret );
+	}
+
+	@Override
+	public String toString() {
+		String ret = "<CFBamBuffClearDep" + getXmlAttrFragment() + "/>";
+		return( ret );
+	}
+}

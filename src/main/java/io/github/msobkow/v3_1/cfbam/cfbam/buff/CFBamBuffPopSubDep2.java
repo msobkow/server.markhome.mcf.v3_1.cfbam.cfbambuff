@@ -1,0 +1,560 @@
+// Description: Java 25 implementation of a PopSubDep2 buffer
+
+/*
+ *	io.github.msobkow.CFBam
+ *
+ *	Copyright (c) 2016-2026 Mark Stephen Sobkow
+ *	
+ *	Mark's Code Fractal 3.1 CFBam - Business Application Model
+ *	
+ *	This file is part of Mark's Code Fractal CFBam.
+ *	
+ *	Mark's Code Fractal CFBam is available under dual commercial license from
+ *	Mark Stephen Sobkow, or under the terms of the GNU General Public License,
+ *	Version 3 or later.
+ *	
+ *	Mark's Code Fractal CFBam is free software: you can redistribute it and/or
+ *	modify it under the terms of the GNU General Public License as published by
+ *	the Free Software Foundation, either version 3 of the License, or
+ *	(at your option) any later version.
+ *	
+ *	Mark's Code Fractal CFBam is distributed in the hope that it will be useful,
+ *	but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *	GNU General Public License for more details.
+ *	
+ *	You should have received a copy of the GNU General Public License
+ *	along with Mark's Code Fractal CFBam.  If not, see <https://www.gnu.org/licenses/>.
+ *	
+ *	If you wish to modify and use this code without publishing your changes,
+ *	or integrate it with proprietary code, please contact Mark Stephen Sobkow
+ *	for a commercial license at mark.sobkow@gmail.com
+ *	
+ */
+
+package io.github.msobkow.v3_1.cfbam.cfbam.buff;
+
+import java.lang.reflect.*;
+import java.io.*;
+import java.math.*;
+import java.net.*;
+import java.rmi.*;
+import java.sql.*;
+import java.text.*;
+import java.time.*;
+import java.util.*;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.text.StringEscapeUtils;
+import io.github.msobkow.v3_1.cflib.*;
+import io.github.msobkow.v3_1.cflib.dbutil.*;
+import io.github.msobkow.v3_1.cflib.xml.CFLibXmlUtil;
+import io.github.msobkow.v3_1.cfsec.cfsec.*;
+import io.github.msobkow.v3_1.cfint.cfint.*;
+import io.github.msobkow.v3_1.cfbam.cfbam.*;
+import io.github.msobkow.v3_1.cfsec.cfsec.buff.*;
+import io.github.msobkow.v3_1.cfint.cfint.buff.*;
+
+public class CFBamBuffPopSubDep2
+	extends CFBamBuffPopDep
+	implements ICFBamPopSubDep2
+{
+	protected CFLibDbKeyHash256 requiredPopSubDep1Id;
+	protected String requiredName;
+
+	public CFBamBuffPopSubDep2() {
+		super();
+		requiredPopSubDep1Id = CFLibDbKeyHash256.fromHex( ICFBamPopSubDep2.POPSUBDEP1ID_INIT_VALUE.toString() );
+		requiredName = ICFBamPopSubDep2.NAME_INIT_VALUE;
+	}
+
+	@Override
+	public int getClassCode() {
+		return( ICFBamPopSubDep2.CLASS_CODE );
+	}
+
+	@Override
+	public ICFBamPopSubDep1 getRequiredContainerPopSubDep1() {
+		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
+		if (targetBackingSchema == null) {
+			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerPopSubDep1", 0, "ICFBamSchema.getBackingCFBam()");
+		}
+		ICFBamPopSubDep1Table targetTable = targetBackingSchema.getTablePopSubDep1();
+		if (targetTable == null) {
+			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerPopSubDep1", 0, "ICFBamSchema.getBackingCFBam().getTablePopSubDep1()");
+		}
+		ICFBamPopSubDep1 targetRec = targetTable.readDerived(null, getRequiredPopSubDep1Id());
+		return(targetRec);
+	}
+	@Override
+	public void setRequiredContainerPopSubDep1(ICFBamPopSubDep1 argObj) {
+		if(argObj == null) {
+			throw new CFLibNullArgumentException(getClass(), "setContainerPopSubDep1", 1, "argObj");
+		}
+		else {
+			requiredPopSubDep1Id = argObj.getRequiredId();
+		}
+	}
+
+	@Override
+	public void setRequiredContainerPopSubDep1(CFLibDbKeyHash256 argPopSubDep1Id) {
+		requiredPopSubDep1Id = argPopSubDep1Id;
+	}
+
+	@Override
+	public List<ICFBamPopSubDep3> getOptionalComponentsPopDep() {
+		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
+		if (targetBackingSchema == null) {
+			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsPopDep", 0, "ICFBamSchema.getBackingCFBam()");
+		}
+		ICFBamPopSubDep3Table targetTable = targetBackingSchema.getTablePopSubDep3();
+		if (targetTable == null) {
+			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsPopDep", 0, "ICFBamSchema.getBackingCFBam().getTablePopSubDep3()");
+		}
+		ICFBamPopSubDep3[] targetArr = targetTable.readDerivedByPopSubDep2Idx(null, getRequiredId());
+		if( targetArr != null ) {
+			List<ICFBamPopSubDep3> results = new ArrayList<>(targetArr.length);
+			for (int idx = 0; idx < targetArr.length; idx++) {
+				results.add(targetArr[idx]);
+			}
+			return( results );
+		}
+		else {
+			List<ICFBamPopSubDep3> results = new ArrayList<>();
+			return( results );
+		}
+	}
+	@Override
+	public CFLibDbKeyHash256 getRequiredPopSubDep1Id() {
+		return( requiredPopSubDep1Id );
+	}
+
+	@Override
+	public String getRequiredName() {
+		return( requiredName );
+	}
+
+	@Override
+	public void setRequiredName( String value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredName",
+				1,
+				"value" );
+		}
+		else if( value.length() > 192 ) {
+			throw new CFLibArgumentOverflowException( getClass(),
+				"setRequiredName",
+				1,
+				"value.length()",
+				value.length(),
+				192 );
+		}
+		requiredName = value;
+	}
+
+	@Override
+	public boolean equals( Object obj ) {
+		if( obj == null ) {
+			return( false );
+		}
+		else if( obj instanceof ICFBamPopSubDep2 ) {
+			ICFBamPopSubDep2 rhs = (ICFBamPopSubDep2)obj;
+			if( getRequiredId() != null && !getRequiredId().isNull() ) {
+				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+					return( false );
+				}
+			}
+			if( getRequiredPopSubDep1Id() != null && !getRequiredPopSubDep1Id().isNull() ) {
+				if( rhs.getRequiredPopSubDep1Id() != null && !rhs.getRequiredPopSubDep1Id().isNull() ) {
+					if( ! getRequiredPopSubDep1Id().equals( rhs.getRequiredPopSubDep1Id() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredPopSubDep1Id() != null && !getRequiredPopSubDep1Id().isNull()) {
+					return( false );
+				}
+			}
+			if( getRequiredName() != null ) {
+				if( rhs.getRequiredName() != null ) {
+					if( ! getRequiredName().equals( rhs.getRequiredName() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredName() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if( obj instanceof ICFBamPopSubDep2H ) {
+			ICFBamPopSubDep2H rhs = (ICFBamPopSubDep2H)obj;
+			if( getRequiredId() != null && !getRequiredId().isNull() ) {
+				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+					return( false );
+				}
+			}
+			if( getRequiredPopSubDep1Id() != null && !getRequiredPopSubDep1Id().isNull() ) {
+				if( rhs.getRequiredPopSubDep1Id() != null && !rhs.getRequiredPopSubDep1Id().isNull() ) {
+					if( ! getRequiredPopSubDep1Id().equals( rhs.getRequiredPopSubDep1Id() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredPopSubDep1Id() != null && !getRequiredPopSubDep1Id().isNull()) {
+					return( false );
+				}
+			}
+			if( getRequiredName() != null ) {
+				if( rhs.getRequiredName() != null ) {
+					if( ! getRequiredName().equals( rhs.getRequiredName() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredName() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if( obj instanceof ICFBamScopeHPKey ) {
+			ICFBamScopeHPKey rhs = (ICFBamScopeHPKey)obj;
+			if( getRequiredId() != null && !getRequiredId().isNull() ) {
+				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if( obj instanceof ICFBamPopSubDep2ByPopSubDep1IdxKey ) {
+			ICFBamPopSubDep2ByPopSubDep1IdxKey rhs = (ICFBamPopSubDep2ByPopSubDep1IdxKey)obj;
+			if( getRequiredPopSubDep1Id() != null && !getRequiredPopSubDep1Id().isNull() ) {
+				if( rhs.getRequiredPopSubDep1Id() != null && !rhs.getRequiredPopSubDep1Id().isNull() ) {
+					if( ! getRequiredPopSubDep1Id().equals( rhs.getRequiredPopSubDep1Id() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredPopSubDep1Id() != null && !getRequiredPopSubDep1Id().isNull()) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if( obj instanceof ICFBamPopSubDep2ByUNameIdxKey ) {
+			ICFBamPopSubDep2ByUNameIdxKey rhs = (ICFBamPopSubDep2ByUNameIdxKey)obj;
+			if( getRequiredPopSubDep1Id() != null && !getRequiredPopSubDep1Id().isNull() ) {
+				if( rhs.getRequiredPopSubDep1Id() != null && !rhs.getRequiredPopSubDep1Id().isNull() ) {
+					if( ! getRequiredPopSubDep1Id().equals( rhs.getRequiredPopSubDep1Id() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredPopSubDep1Id() != null && !getRequiredPopSubDep1Id().isNull()) {
+					return( false );
+				}
+			}
+			if( getRequiredName() != null ) {
+				if( rhs.getRequiredName() != null ) {
+					if( ! getRequiredName().equals( rhs.getRequiredName() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredName() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else {
+			boolean retval = super.equals( obj );
+			return( retval );
+		}
+	}
+
+	@Override
+	public int hashCode() {
+		int hashCode = super.hashCode();
+		hashCode = hashCode + getRequiredPopSubDep1Id().hashCode();
+		if( getRequiredName() != null ) {
+			hashCode = hashCode + getRequiredName().hashCode();
+		}
+		return( hashCode & 0x7fffffff );
+	}
+
+	@Override
+	public int compareTo( Object obj ) {
+		int cmp;
+		if( obj == null ) {
+			return( -1 );
+		}
+		else if( obj instanceof ICFBamPopSubDep2 ) {
+			ICFBamPopSubDep2 rhs = (ICFBamPopSubDep2)obj;
+			cmp = super.compareTo( rhs );
+			if( cmp != 0 ) {
+				return( cmp );
+			}
+			if (getRequiredPopSubDep1Id() != null) {
+				if (rhs.getRequiredPopSubDep1Id() != null) {
+					cmp = getRequiredPopSubDep1Id().compareTo( rhs.getRequiredPopSubDep1Id() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredPopSubDep1Id() != null) {
+				return( -1 );
+			}
+			if (getRequiredName() != null) {
+				if (rhs.getRequiredName() != null) {
+					cmp = getRequiredName().compareTo( rhs.getRequiredName() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredName() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
+		else if( obj instanceof ICFBamScopeHPKey ) {
+			ICFBamScopeHPKey rhs = (ICFBamScopeHPKey)obj;
+			if( getRequiredRevision() < rhs.getRequiredRevision() ) {
+				return( -1 );
+			}
+			else if( getRequiredRevision() > rhs.getRequiredRevision() ) {
+				return( 1 );
+			}
+			if (getRequiredId() != null) {
+				if (rhs.getRequiredId() != null) {
+					cmp = getRequiredId().compareTo( rhs.getRequiredId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredId() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
+		else if( obj instanceof ICFBamPopSubDep2H ) {
+			ICFBamPopSubDep2H rhs = (ICFBamPopSubDep2H)obj;
+			cmp = super.compareTo( rhs );
+			if( cmp != 0 ) {
+				return( cmp );
+			}
+			if (getRequiredPopSubDep1Id() != null) {
+				if (rhs.getRequiredPopSubDep1Id() != null) {
+					cmp = getRequiredPopSubDep1Id().compareTo( rhs.getRequiredPopSubDep1Id() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredPopSubDep1Id() != null) {
+				return( -1 );
+			}
+			if (getRequiredName() != null) {
+				if (rhs.getRequiredName() != null) {
+					cmp = getRequiredName().compareTo( rhs.getRequiredName() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredName() != null) {
+				return( -1 );
+			}
+			return( 0 );
+		}
+		else if( obj instanceof ICFBamPopSubDep2ByPopSubDep1IdxKey ) {
+			ICFBamPopSubDep2ByPopSubDep1IdxKey rhs = (ICFBamPopSubDep2ByPopSubDep1IdxKey)obj;
+
+			if (getRequiredPopSubDep1Id() != null) {
+				if (rhs.getRequiredPopSubDep1Id() != null) {
+					cmp = getRequiredPopSubDep1Id().compareTo( rhs.getRequiredPopSubDep1Id() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredPopSubDep1Id() != null) {
+				return( -1 );
+			}			return( 0 );
+		}
+		else if( obj instanceof ICFBamPopSubDep2ByUNameIdxKey ) {
+			ICFBamPopSubDep2ByUNameIdxKey rhs = (ICFBamPopSubDep2ByUNameIdxKey)obj;
+
+			if (getRequiredPopSubDep1Id() != null) {
+				if (rhs.getRequiredPopSubDep1Id() != null) {
+					cmp = getRequiredPopSubDep1Id().compareTo( rhs.getRequiredPopSubDep1Id() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredPopSubDep1Id() != null) {
+				return( -1 );
+			}
+			if (getRequiredName() != null) {
+				if (rhs.getRequiredName() != null) {
+					cmp = getRequiredName().compareTo( rhs.getRequiredName() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredName() != null) {
+				return( -1 );
+			}			return( 0 );
+		}
+		else {
+			cmp = super.compareTo( obj );
+			return( cmp );
+		}
+	}
+
+	@Override
+	public void set( ICFBamScope src ) {
+		if( src instanceof CFBamBuffPopSubDep2 ) {
+			setPopSubDep2( (CFBamBuffPopSubDep2)src );
+		}
+		else {
+			throw new CFLibUnsupportedClassException( getClass(),
+				"compareTo",
+				"src",
+				src,
+				"CFBamBuffPopSubDep2" );
+		}
+	}
+
+	@Override
+	public void setPopSubDep2( ICFBamPopSubDep2 src ) {
+		super.setPopDep( src );
+		setRequiredContainerPopSubDep1(src.getRequiredContainerPopSubDep1());
+		setRequiredName(src.getRequiredName());
+	}
+
+	@Override
+	public void set( ICFBamScopeH src ) {
+		if( src instanceof ICFBamPopSubDep2H ) {
+			setPopSubDep2( (ICFBamPopSubDep2H)src );
+		}
+		else {
+			throw new CFLibUnsupportedClassException( getClass(),
+					"set",
+					"src",
+					src,
+					"ICFBamPopSubDep2H" );
+		}
+	}
+
+	@Override
+	public void setPopSubDep2( ICFBamPopSubDep2H src ) {
+		super.setPopDep( src );
+		setRequiredContainerPopSubDep1(src.getRequiredPopSubDep1Id());
+		setRequiredName(src.getRequiredName());
+	}
+
+	@Override
+	public String getXmlAttrFragment() {
+		String ret = super.getXmlAttrFragment() 
+			+ " RequiredId=" + "\"" + getRequiredId().toString() + "\""
+			+ " RequiredPopSubDep1Id=" + "\"" + getRequiredPopSubDep1Id().toString() + "\""
+			+ " RequiredName=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredName() ) + "\"";
+		return( ret );
+	}
+
+	@Override
+	public String toString() {
+		String ret = "<CFBamBuffPopSubDep2" + getXmlAttrFragment() + "/>";
+		return( ret );
+	}
+}
