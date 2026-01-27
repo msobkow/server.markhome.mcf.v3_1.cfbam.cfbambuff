@@ -68,11 +68,44 @@ public class CFBamBuffParamDefaultFactory
 		return( hpkey );
 	}
 
+	public CFBamBuffParamHPKey ensureHPKey(ICFBamParamHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFBamBuffParamHPKey) {
+			return( (CFBamBuffParamHPKey)key );
+		}
+		else {
+			CFBamBuffParamHPKey mapped = new CFBamBuffParamHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredId( key.getRequiredId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamParamByUNameIdxKey newByUNameIdxKey() {
 		ICFBamParamByUNameIdxKey key =
 			new CFBamBuffParamByUNameIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffParamByUNameIdxKey ensureByUNameIdxKey(ICFBamParamByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffParamByUNameIdxKey) {
+			return( (CFBamBuffParamByUNameIdxKey)key );
+		}
+		else {
+			CFBamBuffParamByUNameIdxKey mapped = new CFBamBuffParamByUNameIdxKey();
+			mapped.setRequiredServerMethodId( key.getRequiredServerMethodId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,11 +115,39 @@ public class CFBamBuffParamDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffParamByServerMethodIdxKey ensureByServerMethodIdxKey(ICFBamParamByServerMethodIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffParamByServerMethodIdxKey) {
+			return( (CFBamBuffParamByServerMethodIdxKey)key );
+		}
+		else {
+			CFBamBuffParamByServerMethodIdxKey mapped = new CFBamBuffParamByServerMethodIdxKey();
+			mapped.setRequiredServerMethodId( key.getRequiredServerMethodId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamParamByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamParamByDefSchemaIdxKey key =
 			new CFBamBuffParamByDefSchemaIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffParamByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamParamByDefSchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffParamByDefSchemaIdxKey) {
+			return( (CFBamBuffParamByDefSchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffParamByDefSchemaIdxKey mapped = new CFBamBuffParamByDefSchemaIdxKey();
+			mapped.setOptionalDefSchemaId( key.getOptionalDefSchemaId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -96,11 +157,39 @@ public class CFBamBuffParamDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffParamByServerTypeIdxKey ensureByServerTypeIdxKey(ICFBamParamByServerTypeIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffParamByServerTypeIdxKey) {
+			return( (CFBamBuffParamByServerTypeIdxKey)key );
+		}
+		else {
+			CFBamBuffParamByServerTypeIdxKey mapped = new CFBamBuffParamByServerTypeIdxKey();
+			mapped.setOptionalTypeId( key.getOptionalTypeId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamParamByPrevIdxKey newByPrevIdxKey() {
 		ICFBamParamByPrevIdxKey key =
 			new CFBamBuffParamByPrevIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffParamByPrevIdxKey ensureByPrevIdxKey(ICFBamParamByPrevIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffParamByPrevIdxKey) {
+			return( (CFBamBuffParamByPrevIdxKey)key );
+		}
+		else {
+			CFBamBuffParamByPrevIdxKey mapped = new CFBamBuffParamByPrevIdxKey();
+			mapped.setOptionalPrevId( key.getOptionalPrevId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -110,11 +199,40 @@ public class CFBamBuffParamDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffParamByNextIdxKey ensureByNextIdxKey(ICFBamParamByNextIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffParamByNextIdxKey) {
+			return( (CFBamBuffParamByNextIdxKey)key );
+		}
+		else {
+			CFBamBuffParamByNextIdxKey mapped = new CFBamBuffParamByNextIdxKey();
+			mapped.setOptionalNextId( key.getOptionalNextId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamParamByContPrevIdxKey newByContPrevIdxKey() {
 		ICFBamParamByContPrevIdxKey key =
 			new CFBamBuffParamByContPrevIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffParamByContPrevIdxKey ensureByContPrevIdxKey(ICFBamParamByContPrevIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffParamByContPrevIdxKey) {
+			return( (CFBamBuffParamByContPrevIdxKey)key );
+		}
+		else {
+			CFBamBuffParamByContPrevIdxKey mapped = new CFBamBuffParamByContPrevIdxKey();
+			mapped.setRequiredServerMethodId( key.getRequiredServerMethodId() );
+			mapped.setOptionalPrevId( key.getOptionalPrevId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -124,6 +242,21 @@ public class CFBamBuffParamDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffParamByContNextIdxKey ensureByContNextIdxKey(ICFBamParamByContNextIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffParamByContNextIdxKey) {
+			return( (CFBamBuffParamByContNextIdxKey)key );
+		}
+		else {
+			CFBamBuffParamByContNextIdxKey mapped = new CFBamBuffParamByContNextIdxKey();
+			mapped.setRequiredServerMethodId( key.getRequiredServerMethodId() );
+			mapped.setOptionalNextId( key.getOptionalNextId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamParam newRec() {
 		ICFBamParam rec =
@@ -131,10 +264,38 @@ public class CFBamBuffParamDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffParam ensureRec(ICFBamParam rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffParam) {
+			return( (CFBamBuffParam)rec );
+		}
+		else {
+			CFBamBuffParam mapped = new CFBamBuffParam();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamParamH newHRec() {
 		ICFBamParamH hrec =
 			new CFBamBuffParamH();
 		return( hrec );
+	}
+
+	public CFBamBuffParamH ensureHRec(ICFBamParamH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffParamH) {
+			return( (CFBamBuffParamH)hrec );
+		}
+		else {
+			CFBamBuffParamH mapped = new CFBamBuffParamH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

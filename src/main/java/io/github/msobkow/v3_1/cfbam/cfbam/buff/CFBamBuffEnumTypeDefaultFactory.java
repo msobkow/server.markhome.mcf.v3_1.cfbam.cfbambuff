@@ -68,6 +68,20 @@ public class CFBamBuffEnumTypeDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffEnumTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamEnumTypeBySchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffEnumTypeBySchemaIdxKey) {
+			return( (CFBamBuffEnumTypeBySchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffEnumTypeBySchemaIdxKey mapped = new CFBamBuffEnumTypeBySchemaIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamEnumType newRec() {
 		ICFBamEnumType rec =
@@ -75,10 +89,38 @@ public class CFBamBuffEnumTypeDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffEnumType ensureRec(ICFBamEnumType rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffEnumType) {
+			return( (CFBamBuffEnumType)rec );
+		}
+		else {
+			CFBamBuffEnumType mapped = new CFBamBuffEnumType();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamEnumTypeH newHRec() {
 		ICFBamEnumTypeH hrec =
 			new CFBamBuffEnumTypeH();
 		return( hrec );
+	}
+
+	public CFBamBuffEnumTypeH ensureHRec(ICFBamEnumTypeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffEnumTypeH) {
+			return( (CFBamBuffEnumTypeH)hrec );
+		}
+		else {
+			CFBamBuffEnumTypeH mapped = new CFBamBuffEnumTypeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

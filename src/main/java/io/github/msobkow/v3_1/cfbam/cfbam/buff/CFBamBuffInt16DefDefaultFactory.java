@@ -68,10 +68,38 @@ public class CFBamBuffInt16DefDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffInt16Def ensureRec(ICFBamInt16Def rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffInt16Def) {
+			return( (CFBamBuffInt16Def)rec );
+		}
+		else {
+			CFBamBuffInt16Def mapped = new CFBamBuffInt16Def();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamInt16DefH newHRec() {
 		ICFBamInt16DefH hrec =
 			new CFBamBuffInt16DefH();
 		return( hrec );
+	}
+
+	public CFBamBuffInt16DefH ensureHRec(ICFBamInt16DefH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffInt16DefH) {
+			return( (CFBamBuffInt16DefH)hrec );
+		}
+		else {
+			CFBamBuffInt16DefH mapped = new CFBamBuffInt16DefH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

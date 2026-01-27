@@ -68,6 +68,20 @@ public class CFBamBuffBoolTypeDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffBoolTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamBoolTypeBySchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffBoolTypeBySchemaIdxKey) {
+			return( (CFBamBuffBoolTypeBySchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffBoolTypeBySchemaIdxKey mapped = new CFBamBuffBoolTypeBySchemaIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamBoolType newRec() {
 		ICFBamBoolType rec =
@@ -75,10 +89,38 @@ public class CFBamBuffBoolTypeDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffBoolType ensureRec(ICFBamBoolType rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffBoolType) {
+			return( (CFBamBuffBoolType)rec );
+		}
+		else {
+			CFBamBuffBoolType mapped = new CFBamBuffBoolType();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamBoolTypeH newHRec() {
 		ICFBamBoolTypeH hrec =
 			new CFBamBuffBoolTypeH();
 		return( hrec );
+	}
+
+	public CFBamBuffBoolTypeH ensureHRec(ICFBamBoolTypeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffBoolTypeH) {
+			return( (CFBamBuffBoolTypeH)hrec );
+		}
+		else {
+			CFBamBuffBoolTypeH mapped = new CFBamBuffBoolTypeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

@@ -68,11 +68,40 @@ public class CFBamBuffDelSubDep2DefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffDelSubDep2ByContDelDep1IdxKey ensureByContDelDep1IdxKey(ICFBamDelSubDep2ByContDelDep1IdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffDelSubDep2ByContDelDep1IdxKey) {
+			return( (CFBamBuffDelSubDep2ByContDelDep1IdxKey)key );
+		}
+		else {
+			CFBamBuffDelSubDep2ByContDelDep1IdxKey mapped = new CFBamBuffDelSubDep2ByContDelDep1IdxKey();
+			mapped.setRequiredDelSubDep1Id( key.getRequiredDelSubDep1Id() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDelSubDep2ByUNameIdxKey newByUNameIdxKey() {
 		ICFBamDelSubDep2ByUNameIdxKey key =
 			new CFBamBuffDelSubDep2ByUNameIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffDelSubDep2ByUNameIdxKey ensureByUNameIdxKey(ICFBamDelSubDep2ByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffDelSubDep2ByUNameIdxKey) {
+			return( (CFBamBuffDelSubDep2ByUNameIdxKey)key );
+		}
+		else {
+			CFBamBuffDelSubDep2ByUNameIdxKey mapped = new CFBamBuffDelSubDep2ByUNameIdxKey();
+			mapped.setRequiredDelSubDep1Id( key.getRequiredDelSubDep1Id() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,10 +111,38 @@ public class CFBamBuffDelSubDep2DefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffDelSubDep2 ensureRec(ICFBamDelSubDep2 rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffDelSubDep2) {
+			return( (CFBamBuffDelSubDep2)rec );
+		}
+		else {
+			CFBamBuffDelSubDep2 mapped = new CFBamBuffDelSubDep2();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDelSubDep2H newHRec() {
 		ICFBamDelSubDep2H hrec =
 			new CFBamBuffDelSubDep2H();
 		return( hrec );
+	}
+
+	public CFBamBuffDelSubDep2H ensureHRec(ICFBamDelSubDep2H hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffDelSubDep2H) {
+			return( (CFBamBuffDelSubDep2H)hrec );
+		}
+		else {
+			CFBamBuffDelSubDep2H mapped = new CFBamBuffDelSubDep2H();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

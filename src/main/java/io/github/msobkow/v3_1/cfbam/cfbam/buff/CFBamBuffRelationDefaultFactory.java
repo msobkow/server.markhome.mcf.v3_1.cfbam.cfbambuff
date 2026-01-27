@@ -68,11 +68,40 @@ public class CFBamBuffRelationDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffRelationByUNameIdxKey ensureByUNameIdxKey(ICFBamRelationByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffRelationByUNameIdxKey) {
+			return( (CFBamBuffRelationByUNameIdxKey)key );
+		}
+		else {
+			CFBamBuffRelationByUNameIdxKey mapped = new CFBamBuffRelationByUNameIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamRelationByRelTableIdxKey newByRelTableIdxKey() {
 		ICFBamRelationByRelTableIdxKey key =
 			new CFBamBuffRelationByRelTableIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffRelationByRelTableIdxKey ensureByRelTableIdxKey(ICFBamRelationByRelTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffRelationByRelTableIdxKey) {
+			return( (CFBamBuffRelationByRelTableIdxKey)key );
+		}
+		else {
+			CFBamBuffRelationByRelTableIdxKey mapped = new CFBamBuffRelationByRelTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,11 +111,39 @@ public class CFBamBuffRelationDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffRelationByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamRelationByDefSchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffRelationByDefSchemaIdxKey) {
+			return( (CFBamBuffRelationByDefSchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffRelationByDefSchemaIdxKey mapped = new CFBamBuffRelationByDefSchemaIdxKey();
+			mapped.setOptionalDefSchemaId( key.getOptionalDefSchemaId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamRelationByFromKeyIdxKey newByFromKeyIdxKey() {
 		ICFBamRelationByFromKeyIdxKey key =
 			new CFBamBuffRelationByFromKeyIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffRelationByFromKeyIdxKey ensureByFromKeyIdxKey(ICFBamRelationByFromKeyIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffRelationByFromKeyIdxKey) {
+			return( (CFBamBuffRelationByFromKeyIdxKey)key );
+		}
+		else {
+			CFBamBuffRelationByFromKeyIdxKey mapped = new CFBamBuffRelationByFromKeyIdxKey();
+			mapped.setRequiredFromIndexId( key.getRequiredFromIndexId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -96,11 +153,39 @@ public class CFBamBuffRelationDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffRelationByToTblIdxKey ensureByToTblIdxKey(ICFBamRelationByToTblIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffRelationByToTblIdxKey) {
+			return( (CFBamBuffRelationByToTblIdxKey)key );
+		}
+		else {
+			CFBamBuffRelationByToTblIdxKey mapped = new CFBamBuffRelationByToTblIdxKey();
+			mapped.setRequiredToTableId( key.getRequiredToTableId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamRelationByToKeyIdxKey newByToKeyIdxKey() {
 		ICFBamRelationByToKeyIdxKey key =
 			new CFBamBuffRelationByToKeyIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffRelationByToKeyIdxKey ensureByToKeyIdxKey(ICFBamRelationByToKeyIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffRelationByToKeyIdxKey) {
+			return( (CFBamBuffRelationByToKeyIdxKey)key );
+		}
+		else {
+			CFBamBuffRelationByToKeyIdxKey mapped = new CFBamBuffRelationByToKeyIdxKey();
+			mapped.setRequiredToIndexId( key.getRequiredToIndexId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -110,6 +195,20 @@ public class CFBamBuffRelationDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffRelationByNarrowedIdxKey ensureByNarrowedIdxKey(ICFBamRelationByNarrowedIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffRelationByNarrowedIdxKey) {
+			return( (CFBamBuffRelationByNarrowedIdxKey)key );
+		}
+		else {
+			CFBamBuffRelationByNarrowedIdxKey mapped = new CFBamBuffRelationByNarrowedIdxKey();
+			mapped.setOptionalNarrowedId( key.getOptionalNarrowedId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamRelation newRec() {
 		ICFBamRelation rec =
@@ -117,10 +216,38 @@ public class CFBamBuffRelationDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffRelation ensureRec(ICFBamRelation rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffRelation) {
+			return( (CFBamBuffRelation)rec );
+		}
+		else {
+			CFBamBuffRelation mapped = new CFBamBuffRelation();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamRelationH newHRec() {
 		ICFBamRelationH hrec =
 			new CFBamBuffRelationH();
 		return( hrec );
+	}
+
+	public CFBamBuffRelationH ensureHRec(ICFBamRelationH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffRelationH) {
+			return( (CFBamBuffRelationH)hrec );
+		}
+		else {
+			CFBamBuffRelationH mapped = new CFBamBuffRelationH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

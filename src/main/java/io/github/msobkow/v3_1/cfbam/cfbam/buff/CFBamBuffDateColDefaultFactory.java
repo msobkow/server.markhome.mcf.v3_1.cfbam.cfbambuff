@@ -68,6 +68,20 @@ public class CFBamBuffDateColDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffDateColByTableIdxKey ensureByTableIdxKey(ICFBamDateColByTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffDateColByTableIdxKey) {
+			return( (CFBamBuffDateColByTableIdxKey)key );
+		}
+		else {
+			CFBamBuffDateColByTableIdxKey mapped = new CFBamBuffDateColByTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDateCol newRec() {
 		ICFBamDateCol rec =
@@ -75,10 +89,38 @@ public class CFBamBuffDateColDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffDateCol ensureRec(ICFBamDateCol rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffDateCol) {
+			return( (CFBamBuffDateCol)rec );
+		}
+		else {
+			CFBamBuffDateCol mapped = new CFBamBuffDateCol();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDateColH newHRec() {
 		ICFBamDateColH hrec =
 			new CFBamBuffDateColH();
 		return( hrec );
+	}
+
+	public CFBamBuffDateColH ensureHRec(ICFBamDateColH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffDateColH) {
+			return( (CFBamBuffDateColH)hrec );
+		}
+		else {
+			CFBamBuffDateColH mapped = new CFBamBuffDateColH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

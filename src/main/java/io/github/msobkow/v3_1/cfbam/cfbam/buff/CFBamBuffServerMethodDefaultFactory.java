@@ -68,11 +68,40 @@ public class CFBamBuffServerMethodDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffServerMethodByUNameIdxKey ensureByUNameIdxKey(ICFBamServerMethodByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffServerMethodByUNameIdxKey) {
+			return( (CFBamBuffServerMethodByUNameIdxKey)key );
+		}
+		else {
+			CFBamBuffServerMethodByUNameIdxKey mapped = new CFBamBuffServerMethodByUNameIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamServerMethodByMethTableIdxKey newByMethTableIdxKey() {
 		ICFBamServerMethodByMethTableIdxKey key =
 			new CFBamBuffServerMethodByMethTableIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffServerMethodByMethTableIdxKey ensureByMethTableIdxKey(ICFBamServerMethodByMethTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffServerMethodByMethTableIdxKey) {
+			return( (CFBamBuffServerMethodByMethTableIdxKey)key );
+		}
+		else {
+			CFBamBuffServerMethodByMethTableIdxKey mapped = new CFBamBuffServerMethodByMethTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,6 +111,20 @@ public class CFBamBuffServerMethodDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffServerMethodByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamServerMethodByDefSchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffServerMethodByDefSchemaIdxKey) {
+			return( (CFBamBuffServerMethodByDefSchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffServerMethodByDefSchemaIdxKey mapped = new CFBamBuffServerMethodByDefSchemaIdxKey();
+			mapped.setOptionalDefSchemaId( key.getOptionalDefSchemaId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamServerMethod newRec() {
 		ICFBamServerMethod rec =
@@ -89,10 +132,38 @@ public class CFBamBuffServerMethodDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffServerMethod ensureRec(ICFBamServerMethod rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffServerMethod) {
+			return( (CFBamBuffServerMethod)rec );
+		}
+		else {
+			CFBamBuffServerMethod mapped = new CFBamBuffServerMethod();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamServerMethodH newHRec() {
 		ICFBamServerMethodH hrec =
 			new CFBamBuffServerMethodH();
 		return( hrec );
+	}
+
+	public CFBamBuffServerMethodH ensureHRec(ICFBamServerMethodH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffServerMethodH) {
+			return( (CFBamBuffServerMethodH)hrec );
+		}
+		else {
+			CFBamBuffServerMethodH mapped = new CFBamBuffServerMethodH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

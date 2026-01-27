@@ -68,10 +68,38 @@ public class CFBamBuffUInt32DefDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffUInt32Def ensureRec(ICFBamUInt32Def rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffUInt32Def) {
+			return( (CFBamBuffUInt32Def)rec );
+		}
+		else {
+			CFBamBuffUInt32Def mapped = new CFBamBuffUInt32Def();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamUInt32DefH newHRec() {
 		ICFBamUInt32DefH hrec =
 			new CFBamBuffUInt32DefH();
 		return( hrec );
+	}
+
+	public CFBamBuffUInt32DefH ensureHRec(ICFBamUInt32DefH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffUInt32DefH) {
+			return( (CFBamBuffUInt32DefH)hrec );
+		}
+		else {
+			CFBamBuffUInt32DefH mapped = new CFBamBuffUInt32DefH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

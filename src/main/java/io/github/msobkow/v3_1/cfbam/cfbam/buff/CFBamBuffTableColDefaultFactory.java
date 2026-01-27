@@ -68,11 +68,39 @@ public class CFBamBuffTableColDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffTableColByTableIdxKey ensureByTableIdxKey(ICFBamTableColByTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableColByTableIdxKey) {
+			return( (CFBamBuffTableColByTableIdxKey)key );
+		}
+		else {
+			CFBamBuffTableColByTableIdxKey mapped = new CFBamBuffTableColByTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTableColByDataIdxKey newByDataIdxKey() {
 		ICFBamTableColByDataIdxKey key =
 			new CFBamBuffTableColByDataIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffTableColByDataIdxKey ensureByDataIdxKey(ICFBamTableColByDataIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableColByDataIdxKey) {
+			return( (CFBamBuffTableColByDataIdxKey)key );
+		}
+		else {
+			CFBamBuffTableColByDataIdxKey mapped = new CFBamBuffTableColByDataIdxKey();
+			mapped.setOptionalDataId( key.getOptionalDataId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,10 +110,38 @@ public class CFBamBuffTableColDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffTableCol ensureRec(ICFBamTableCol rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffTableCol) {
+			return( (CFBamBuffTableCol)rec );
+		}
+		else {
+			CFBamBuffTableCol mapped = new CFBamBuffTableCol();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTableColH newHRec() {
 		ICFBamTableColH hrec =
 			new CFBamBuffTableColH();
 		return( hrec );
+	}
+
+	public CFBamBuffTableColH ensureHRec(ICFBamTableColH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffTableColH) {
+			return( (CFBamBuffTableColH)hrec );
+		}
+		else {
+			CFBamBuffTableColH mapped = new CFBamBuffTableColH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

@@ -68,10 +68,38 @@ public class CFBamBuffEnumDefDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffEnumDef ensureRec(ICFBamEnumDef rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffEnumDef) {
+			return( (CFBamBuffEnumDef)rec );
+		}
+		else {
+			CFBamBuffEnumDef mapped = new CFBamBuffEnumDef();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamEnumDefH newHRec() {
 		ICFBamEnumDefH hrec =
 			new CFBamBuffEnumDefH();
 		return( hrec );
+	}
+
+	public CFBamBuffEnumDefH ensureHRec(ICFBamEnumDefH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffEnumDefH) {
+			return( (CFBamBuffEnumDefH)hrec );
+		}
+		else {
+			CFBamBuffEnumDefH mapped = new CFBamBuffEnumDefH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

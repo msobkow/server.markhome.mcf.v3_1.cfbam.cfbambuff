@@ -68,6 +68,20 @@ public class CFBamBuffTZTimeColDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffTZTimeColByTableIdxKey ensureByTableIdxKey(ICFBamTZTimeColByTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTZTimeColByTableIdxKey) {
+			return( (CFBamBuffTZTimeColByTableIdxKey)key );
+		}
+		else {
+			CFBamBuffTZTimeColByTableIdxKey mapped = new CFBamBuffTZTimeColByTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTZTimeCol newRec() {
 		ICFBamTZTimeCol rec =
@@ -75,10 +89,38 @@ public class CFBamBuffTZTimeColDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffTZTimeCol ensureRec(ICFBamTZTimeCol rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffTZTimeCol) {
+			return( (CFBamBuffTZTimeCol)rec );
+		}
+		else {
+			CFBamBuffTZTimeCol mapped = new CFBamBuffTZTimeCol();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTZTimeColH newHRec() {
 		ICFBamTZTimeColH hrec =
 			new CFBamBuffTZTimeColH();
 		return( hrec );
+	}
+
+	public CFBamBuffTZTimeColH ensureHRec(ICFBamTZTimeColH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffTZTimeColH) {
+			return( (CFBamBuffTZTimeColH)hrec );
+		}
+		else {
+			CFBamBuffTZTimeColH mapped = new CFBamBuffTZTimeColH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

@@ -68,10 +68,38 @@ public class CFBamBuffServerProcDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffServerProc ensureRec(ICFBamServerProc rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffServerProc) {
+			return( (CFBamBuffServerProc)rec );
+		}
+		else {
+			CFBamBuffServerProc mapped = new CFBamBuffServerProc();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamServerProcH newHRec() {
 		ICFBamServerProcH hrec =
 			new CFBamBuffServerProcH();
 		return( hrec );
+	}
+
+	public CFBamBuffServerProcH ensureHRec(ICFBamServerProcH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffServerProcH) {
+			return( (CFBamBuffServerProcH)hrec );
+		}
+		else {
+			CFBamBuffServerProcH mapped = new CFBamBuffServerProcH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

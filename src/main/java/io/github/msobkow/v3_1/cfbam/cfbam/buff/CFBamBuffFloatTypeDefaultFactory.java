@@ -68,6 +68,20 @@ public class CFBamBuffFloatTypeDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffFloatTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamFloatTypeBySchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffFloatTypeBySchemaIdxKey) {
+			return( (CFBamBuffFloatTypeBySchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffFloatTypeBySchemaIdxKey mapped = new CFBamBuffFloatTypeBySchemaIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamFloatType newRec() {
 		ICFBamFloatType rec =
@@ -75,10 +89,38 @@ public class CFBamBuffFloatTypeDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffFloatType ensureRec(ICFBamFloatType rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffFloatType) {
+			return( (CFBamBuffFloatType)rec );
+		}
+		else {
+			CFBamBuffFloatType mapped = new CFBamBuffFloatType();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamFloatTypeH newHRec() {
 		ICFBamFloatTypeH hrec =
 			new CFBamBuffFloatTypeH();
 		return( hrec );
+	}
+
+	public CFBamBuffFloatTypeH ensureHRec(ICFBamFloatTypeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffFloatTypeH) {
+			return( (CFBamBuffFloatTypeH)hrec );
+		}
+		else {
+			CFBamBuffFloatTypeH mapped = new CFBamBuffFloatTypeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

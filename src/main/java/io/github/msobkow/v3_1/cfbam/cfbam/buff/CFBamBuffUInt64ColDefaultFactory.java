@@ -68,6 +68,20 @@ public class CFBamBuffUInt64ColDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffUInt64ColByTableIdxKey ensureByTableIdxKey(ICFBamUInt64ColByTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffUInt64ColByTableIdxKey) {
+			return( (CFBamBuffUInt64ColByTableIdxKey)key );
+		}
+		else {
+			CFBamBuffUInt64ColByTableIdxKey mapped = new CFBamBuffUInt64ColByTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamUInt64Col newRec() {
 		ICFBamUInt64Col rec =
@@ -75,10 +89,38 @@ public class CFBamBuffUInt64ColDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffUInt64Col ensureRec(ICFBamUInt64Col rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffUInt64Col) {
+			return( (CFBamBuffUInt64Col)rec );
+		}
+		else {
+			CFBamBuffUInt64Col mapped = new CFBamBuffUInt64Col();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamUInt64ColH newHRec() {
 		ICFBamUInt64ColH hrec =
 			new CFBamBuffUInt64ColH();
 		return( hrec );
+	}
+
+	public CFBamBuffUInt64ColH ensureHRec(ICFBamUInt64ColH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffUInt64ColH) {
+			return( (CFBamBuffUInt64ColH)hrec );
+		}
+		else {
+			CFBamBuffUInt64ColH mapped = new CFBamBuffUInt64ColH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

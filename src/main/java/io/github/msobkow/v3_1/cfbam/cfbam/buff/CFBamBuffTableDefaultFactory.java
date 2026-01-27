@@ -68,11 +68,39 @@ public class CFBamBuffTableDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffTableBySchemaDefIdxKey ensureBySchemaDefIdxKey(ICFBamTableBySchemaDefIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableBySchemaDefIdxKey) {
+			return( (CFBamBuffTableBySchemaDefIdxKey)key );
+		}
+		else {
+			CFBamBuffTableBySchemaDefIdxKey mapped = new CFBamBuffTableBySchemaDefIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTableByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamTableByDefSchemaIdxKey key =
 			new CFBamBuffTableByDefSchemaIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffTableByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamTableByDefSchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableByDefSchemaIdxKey) {
+			return( (CFBamBuffTableByDefSchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffTableByDefSchemaIdxKey mapped = new CFBamBuffTableByDefSchemaIdxKey();
+			mapped.setOptionalDefSchemaId( key.getOptionalDefSchemaId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,11 +110,41 @@ public class CFBamBuffTableDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffTableByUNameIdxKey ensureByUNameIdxKey(ICFBamTableByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableByUNameIdxKey) {
+			return( (CFBamBuffTableByUNameIdxKey)key );
+		}
+		else {
+			CFBamBuffTableByUNameIdxKey mapped = new CFBamBuffTableByUNameIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTableBySchemaCdIdxKey newBySchemaCdIdxKey() {
 		ICFBamTableBySchemaCdIdxKey key =
 			new CFBamBuffTableBySchemaCdIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffTableBySchemaCdIdxKey ensureBySchemaCdIdxKey(ICFBamTableBySchemaCdIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableBySchemaCdIdxKey) {
+			return( (CFBamBuffTableBySchemaCdIdxKey)key );
+		}
+		else {
+			CFBamBuffTableBySchemaCdIdxKey mapped = new CFBamBuffTableBySchemaCdIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			mapped.setRequiredTableClassCode( key.getRequiredTableClassCode() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -96,11 +154,39 @@ public class CFBamBuffTableDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffTableByPrimaryIndexIdxKey ensureByPrimaryIndexIdxKey(ICFBamTableByPrimaryIndexIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableByPrimaryIndexIdxKey) {
+			return( (CFBamBuffTableByPrimaryIndexIdxKey)key );
+		}
+		else {
+			CFBamBuffTableByPrimaryIndexIdxKey mapped = new CFBamBuffTableByPrimaryIndexIdxKey();
+			mapped.setOptionalPrimaryIndexId( key.getOptionalPrimaryIndexId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTableByLookupIndexIdxKey newByLookupIndexIdxKey() {
 		ICFBamTableByLookupIndexIdxKey key =
 			new CFBamBuffTableByLookupIndexIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffTableByLookupIndexIdxKey ensureByLookupIndexIdxKey(ICFBamTableByLookupIndexIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableByLookupIndexIdxKey) {
+			return( (CFBamBuffTableByLookupIndexIdxKey)key );
+		}
+		else {
+			CFBamBuffTableByLookupIndexIdxKey mapped = new CFBamBuffTableByLookupIndexIdxKey();
+			mapped.setOptionalLookupIndexId( key.getOptionalLookupIndexId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -110,11 +196,39 @@ public class CFBamBuffTableDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffTableByAltIndexIdxKey ensureByAltIndexIdxKey(ICFBamTableByAltIndexIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableByAltIndexIdxKey) {
+			return( (CFBamBuffTableByAltIndexIdxKey)key );
+		}
+		else {
+			CFBamBuffTableByAltIndexIdxKey mapped = new CFBamBuffTableByAltIndexIdxKey();
+			mapped.setOptionalAltIndexId( key.getOptionalAltIndexId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTableByQualTableIdxKey newByQualTableIdxKey() {
 		ICFBamTableByQualTableIdxKey key =
 			new CFBamBuffTableByQualTableIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffTableByQualTableIdxKey ensureByQualTableIdxKey(ICFBamTableByQualTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableByQualTableIdxKey) {
+			return( (CFBamBuffTableByQualTableIdxKey)key );
+		}
+		else {
+			CFBamBuffTableByQualTableIdxKey mapped = new CFBamBuffTableByQualTableIdxKey();
+			mapped.setOptionalQualifyingTableId( key.getOptionalQualifyingTableId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -124,10 +238,38 @@ public class CFBamBuffTableDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffTable ensureRec(ICFBamTable rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffTable) {
+			return( (CFBamBuffTable)rec );
+		}
+		else {
+			CFBamBuffTable mapped = new CFBamBuffTable();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTableH newHRec() {
 		ICFBamTableH hrec =
 			new CFBamBuffTableH();
 		return( hrec );
+	}
+
+	public CFBamBuffTableH ensureHRec(ICFBamTableH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffTableH) {
+			return( (CFBamBuffTableH)hrec );
+		}
+		else {
+			CFBamBuffTableH mapped = new CFBamBuffTableH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

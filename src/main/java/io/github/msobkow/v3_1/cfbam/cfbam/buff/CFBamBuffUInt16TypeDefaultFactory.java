@@ -68,6 +68,20 @@ public class CFBamBuffUInt16TypeDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffUInt16TypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamUInt16TypeBySchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffUInt16TypeBySchemaIdxKey) {
+			return( (CFBamBuffUInt16TypeBySchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffUInt16TypeBySchemaIdxKey mapped = new CFBamBuffUInt16TypeBySchemaIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamUInt16Type newRec() {
 		ICFBamUInt16Type rec =
@@ -75,10 +89,38 @@ public class CFBamBuffUInt16TypeDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffUInt16Type ensureRec(ICFBamUInt16Type rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffUInt16Type) {
+			return( (CFBamBuffUInt16Type)rec );
+		}
+		else {
+			CFBamBuffUInt16Type mapped = new CFBamBuffUInt16Type();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamUInt16TypeH newHRec() {
 		ICFBamUInt16TypeH hrec =
 			new CFBamBuffUInt16TypeH();
 		return( hrec );
+	}
+
+	public CFBamBuffUInt16TypeH ensureHRec(ICFBamUInt16TypeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffUInt16TypeH) {
+			return( (CFBamBuffUInt16TypeH)hrec );
+		}
+		else {
+			CFBamBuffUInt16TypeH mapped = new CFBamBuffUInt16TypeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

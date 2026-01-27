@@ -68,10 +68,38 @@ public class CFBamBuffDbKeyHash512DefDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffDbKeyHash512Def ensureRec(ICFBamDbKeyHash512Def rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffDbKeyHash512Def) {
+			return( (CFBamBuffDbKeyHash512Def)rec );
+		}
+		else {
+			CFBamBuffDbKeyHash512Def mapped = new CFBamBuffDbKeyHash512Def();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDbKeyHash512DefH newHRec() {
 		ICFBamDbKeyHash512DefH hrec =
 			new CFBamBuffDbKeyHash512DefH();
 		return( hrec );
+	}
+
+	public CFBamBuffDbKeyHash512DefH ensureHRec(ICFBamDbKeyHash512DefH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffDbKeyHash512DefH) {
+			return( (CFBamBuffDbKeyHash512DefH)hrec );
+		}
+		else {
+			CFBamBuffDbKeyHash512DefH mapped = new CFBamBuffDbKeyHash512DefH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

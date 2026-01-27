@@ -68,11 +68,40 @@ public class CFBamBuffClearSubDep2DefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffClearSubDep2ByClearSubDep1IdxKey ensureByClearSubDep1IdxKey(ICFBamClearSubDep2ByClearSubDep1IdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffClearSubDep2ByClearSubDep1IdxKey) {
+			return( (CFBamBuffClearSubDep2ByClearSubDep1IdxKey)key );
+		}
+		else {
+			CFBamBuffClearSubDep2ByClearSubDep1IdxKey mapped = new CFBamBuffClearSubDep2ByClearSubDep1IdxKey();
+			mapped.setRequiredClearSubDep1Id( key.getRequiredClearSubDep1Id() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamClearSubDep2ByUNameIdxKey newByUNameIdxKey() {
 		ICFBamClearSubDep2ByUNameIdxKey key =
 			new CFBamBuffClearSubDep2ByUNameIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffClearSubDep2ByUNameIdxKey ensureByUNameIdxKey(ICFBamClearSubDep2ByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffClearSubDep2ByUNameIdxKey) {
+			return( (CFBamBuffClearSubDep2ByUNameIdxKey)key );
+		}
+		else {
+			CFBamBuffClearSubDep2ByUNameIdxKey mapped = new CFBamBuffClearSubDep2ByUNameIdxKey();
+			mapped.setRequiredClearSubDep1Id( key.getRequiredClearSubDep1Id() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,10 +111,38 @@ public class CFBamBuffClearSubDep2DefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffClearSubDep2 ensureRec(ICFBamClearSubDep2 rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffClearSubDep2) {
+			return( (CFBamBuffClearSubDep2)rec );
+		}
+		else {
+			CFBamBuffClearSubDep2 mapped = new CFBamBuffClearSubDep2();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamClearSubDep2H newHRec() {
 		ICFBamClearSubDep2H hrec =
 			new CFBamBuffClearSubDep2H();
 		return( hrec );
+	}
+
+	public CFBamBuffClearSubDep2H ensureHRec(ICFBamClearSubDep2H hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffClearSubDep2H) {
+			return( (CFBamBuffClearSubDep2H)hrec );
+		}
+		else {
+			CFBamBuffClearSubDep2H mapped = new CFBamBuffClearSubDep2H();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

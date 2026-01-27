@@ -68,10 +68,38 @@ public class CFBamBuffId64GenDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffId64Gen ensureRec(ICFBamId64Gen rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffId64Gen) {
+			return( (CFBamBuffId64Gen)rec );
+		}
+		else {
+			CFBamBuffId64Gen mapped = new CFBamBuffId64Gen();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamId64GenH newHRec() {
 		ICFBamId64GenH hrec =
 			new CFBamBuffId64GenH();
 		return( hrec );
+	}
+
+	public CFBamBuffId64GenH ensureHRec(ICFBamId64GenH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffId64GenH) {
+			return( (CFBamBuffId64GenH)hrec );
+		}
+		else {
+			CFBamBuffId64GenH mapped = new CFBamBuffId64GenH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

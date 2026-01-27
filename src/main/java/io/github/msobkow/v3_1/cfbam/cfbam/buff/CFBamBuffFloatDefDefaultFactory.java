@@ -68,10 +68,38 @@ public class CFBamBuffFloatDefDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffFloatDef ensureRec(ICFBamFloatDef rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffFloatDef) {
+			return( (CFBamBuffFloatDef)rec );
+		}
+		else {
+			CFBamBuffFloatDef mapped = new CFBamBuffFloatDef();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamFloatDefH newHRec() {
 		ICFBamFloatDefH hrec =
 			new CFBamBuffFloatDefH();
 		return( hrec );
+	}
+
+	public CFBamBuffFloatDefH ensureHRec(ICFBamFloatDefH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffFloatDefH) {
+			return( (CFBamBuffFloatDefH)hrec );
+		}
+		else {
+			CFBamBuffFloatDefH mapped = new CFBamBuffFloatDefH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

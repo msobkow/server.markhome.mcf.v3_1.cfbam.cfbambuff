@@ -68,6 +68,20 @@ public class CFBamBuffTextColDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffTextColByTableIdxKey ensureByTableIdxKey(ICFBamTextColByTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTextColByTableIdxKey) {
+			return( (CFBamBuffTextColByTableIdxKey)key );
+		}
+		else {
+			CFBamBuffTextColByTableIdxKey mapped = new CFBamBuffTextColByTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTextCol newRec() {
 		ICFBamTextCol rec =
@@ -75,10 +89,38 @@ public class CFBamBuffTextColDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffTextCol ensureRec(ICFBamTextCol rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffTextCol) {
+			return( (CFBamBuffTextCol)rec );
+		}
+		else {
+			CFBamBuffTextCol mapped = new CFBamBuffTextCol();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTextColH newHRec() {
 		ICFBamTextColH hrec =
 			new CFBamBuffTextColH();
 		return( hrec );
+	}
+
+	public CFBamBuffTextColH ensureHRec(ICFBamTextColH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffTextColH) {
+			return( (CFBamBuffTextColH)hrec );
+		}
+		else {
+			CFBamBuffTextColH mapped = new CFBamBuffTextColH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

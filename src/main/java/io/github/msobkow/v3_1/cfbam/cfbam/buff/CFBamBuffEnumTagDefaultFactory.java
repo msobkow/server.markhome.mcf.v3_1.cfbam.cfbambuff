@@ -68,11 +68,43 @@ public class CFBamBuffEnumTagDefaultFactory
 		return( hpkey );
 	}
 
+	public CFBamBuffEnumTagHPKey ensureHPKey(ICFBamEnumTagHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFBamBuffEnumTagHPKey) {
+			return( (CFBamBuffEnumTagHPKey)key );
+		}
+		else {
+			CFBamBuffEnumTagHPKey mapped = new CFBamBuffEnumTagHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredId( key.getRequiredId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamEnumTagByEnumIdxKey newByEnumIdxKey() {
 		ICFBamEnumTagByEnumIdxKey key =
 			new CFBamBuffEnumTagByEnumIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffEnumTagByEnumIdxKey ensureByEnumIdxKey(ICFBamEnumTagByEnumIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffEnumTagByEnumIdxKey) {
+			return( (CFBamBuffEnumTagByEnumIdxKey)key );
+		}
+		else {
+			CFBamBuffEnumTagByEnumIdxKey mapped = new CFBamBuffEnumTagByEnumIdxKey();
+			mapped.setRequiredEnumId( key.getRequiredEnumId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,11 +114,40 @@ public class CFBamBuffEnumTagDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffEnumTagByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamEnumTagByDefSchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffEnumTagByDefSchemaIdxKey) {
+			return( (CFBamBuffEnumTagByDefSchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffEnumTagByDefSchemaIdxKey mapped = new CFBamBuffEnumTagByDefSchemaIdxKey();
+			mapped.setOptionalDefSchemaId( key.getOptionalDefSchemaId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamEnumTagByEnumNameIdxKey newByEnumNameIdxKey() {
 		ICFBamEnumTagByEnumNameIdxKey key =
 			new CFBamBuffEnumTagByEnumNameIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffEnumTagByEnumNameIdxKey ensureByEnumNameIdxKey(ICFBamEnumTagByEnumNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffEnumTagByEnumNameIdxKey) {
+			return( (CFBamBuffEnumTagByEnumNameIdxKey)key );
+		}
+		else {
+			CFBamBuffEnumTagByEnumNameIdxKey mapped = new CFBamBuffEnumTagByEnumNameIdxKey();
+			mapped.setRequiredEnumId( key.getRequiredEnumId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -96,11 +157,39 @@ public class CFBamBuffEnumTagDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffEnumTagByPrevIdxKey ensureByPrevIdxKey(ICFBamEnumTagByPrevIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffEnumTagByPrevIdxKey) {
+			return( (CFBamBuffEnumTagByPrevIdxKey)key );
+		}
+		else {
+			CFBamBuffEnumTagByPrevIdxKey mapped = new CFBamBuffEnumTagByPrevIdxKey();
+			mapped.setOptionalPrevId( key.getOptionalPrevId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamEnumTagByNextIdxKey newByNextIdxKey() {
 		ICFBamEnumTagByNextIdxKey key =
 			new CFBamBuffEnumTagByNextIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffEnumTagByNextIdxKey ensureByNextIdxKey(ICFBamEnumTagByNextIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffEnumTagByNextIdxKey) {
+			return( (CFBamBuffEnumTagByNextIdxKey)key );
+		}
+		else {
+			CFBamBuffEnumTagByNextIdxKey mapped = new CFBamBuffEnumTagByNextIdxKey();
+			mapped.setOptionalNextId( key.getOptionalNextId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -110,10 +199,38 @@ public class CFBamBuffEnumTagDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffEnumTag ensureRec(ICFBamEnumTag rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffEnumTag) {
+			return( (CFBamBuffEnumTag)rec );
+		}
+		else {
+			CFBamBuffEnumTag mapped = new CFBamBuffEnumTag();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamEnumTagH newHRec() {
 		ICFBamEnumTagH hrec =
 			new CFBamBuffEnumTagH();
 		return( hrec );
+	}
+
+	public CFBamBuffEnumTagH ensureHRec(ICFBamEnumTagH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffEnumTagH) {
+			return( (CFBamBuffEnumTagH)hrec );
+		}
+		else {
+			CFBamBuffEnumTagH mapped = new CFBamBuffEnumTagH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

@@ -68,6 +68,20 @@ public class CFBamBuffServerObjFuncDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffServerObjFuncByRetTblIdxKey ensureByRetTblIdxKey(ICFBamServerObjFuncByRetTblIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffServerObjFuncByRetTblIdxKey) {
+			return( (CFBamBuffServerObjFuncByRetTblIdxKey)key );
+		}
+		else {
+			CFBamBuffServerObjFuncByRetTblIdxKey mapped = new CFBamBuffServerObjFuncByRetTblIdxKey();
+			mapped.setOptionalRetTableId( key.getOptionalRetTableId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamServerObjFunc newRec() {
 		ICFBamServerObjFunc rec =
@@ -75,10 +89,38 @@ public class CFBamBuffServerObjFuncDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffServerObjFunc ensureRec(ICFBamServerObjFunc rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffServerObjFunc) {
+			return( (CFBamBuffServerObjFunc)rec );
+		}
+		else {
+			CFBamBuffServerObjFunc mapped = new CFBamBuffServerObjFunc();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamServerObjFuncH newHRec() {
 		ICFBamServerObjFuncH hrec =
 			new CFBamBuffServerObjFuncH();
 		return( hrec );
+	}
+
+	public CFBamBuffServerObjFuncH ensureHRec(ICFBamServerObjFuncH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffServerObjFuncH) {
+			return( (CFBamBuffServerObjFuncH)hrec );
+		}
+		else {
+			CFBamBuffServerObjFuncH mapped = new CFBamBuffServerObjFuncH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

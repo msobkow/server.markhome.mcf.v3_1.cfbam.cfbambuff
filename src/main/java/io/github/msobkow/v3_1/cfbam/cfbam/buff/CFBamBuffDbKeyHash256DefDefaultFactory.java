@@ -68,10 +68,38 @@ public class CFBamBuffDbKeyHash256DefDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffDbKeyHash256Def ensureRec(ICFBamDbKeyHash256Def rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffDbKeyHash256Def) {
+			return( (CFBamBuffDbKeyHash256Def)rec );
+		}
+		else {
+			CFBamBuffDbKeyHash256Def mapped = new CFBamBuffDbKeyHash256Def();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDbKeyHash256DefH newHRec() {
 		ICFBamDbKeyHash256DefH hrec =
 			new CFBamBuffDbKeyHash256DefH();
 		return( hrec );
+	}
+
+	public CFBamBuffDbKeyHash256DefH ensureHRec(ICFBamDbKeyHash256DefH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffDbKeyHash256DefH) {
+			return( (CFBamBuffDbKeyHash256DefH)hrec );
+		}
+		else {
+			CFBamBuffDbKeyHash256DefH mapped = new CFBamBuffDbKeyHash256DefH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

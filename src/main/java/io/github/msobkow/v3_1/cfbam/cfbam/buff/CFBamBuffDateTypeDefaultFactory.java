@@ -68,6 +68,20 @@ public class CFBamBuffDateTypeDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffDateTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamDateTypeBySchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffDateTypeBySchemaIdxKey) {
+			return( (CFBamBuffDateTypeBySchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffDateTypeBySchemaIdxKey mapped = new CFBamBuffDateTypeBySchemaIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDateType newRec() {
 		ICFBamDateType rec =
@@ -75,10 +89,38 @@ public class CFBamBuffDateTypeDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffDateType ensureRec(ICFBamDateType rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffDateType) {
+			return( (CFBamBuffDateType)rec );
+		}
+		else {
+			CFBamBuffDateType mapped = new CFBamBuffDateType();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDateTypeH newHRec() {
 		ICFBamDateTypeH hrec =
 			new CFBamBuffDateTypeH();
 		return( hrec );
+	}
+
+	public CFBamBuffDateTypeH ensureHRec(ICFBamDateTypeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffDateTypeH) {
+			return( (CFBamBuffDateTypeH)hrec );
+		}
+		else {
+			CFBamBuffDateTypeH mapped = new CFBamBuffDateTypeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

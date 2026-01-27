@@ -68,6 +68,20 @@ public class CFBamBuffTZDateTypeDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffTZDateTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamTZDateTypeBySchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTZDateTypeBySchemaIdxKey) {
+			return( (CFBamBuffTZDateTypeBySchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffTZDateTypeBySchemaIdxKey mapped = new CFBamBuffTZDateTypeBySchemaIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTZDateType newRec() {
 		ICFBamTZDateType rec =
@@ -75,10 +89,38 @@ public class CFBamBuffTZDateTypeDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffTZDateType ensureRec(ICFBamTZDateType rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffTZDateType) {
+			return( (CFBamBuffTZDateType)rec );
+		}
+		else {
+			CFBamBuffTZDateType mapped = new CFBamBuffTZDateType();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTZDateTypeH newHRec() {
 		ICFBamTZDateTypeH hrec =
 			new CFBamBuffTZDateTypeH();
 		return( hrec );
+	}
+
+	public CFBamBuffTZDateTypeH ensureHRec(ICFBamTZDateTypeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffTZDateTypeH) {
+			return( (CFBamBuffTZDateTypeH)hrec );
+		}
+		else {
+			CFBamBuffTZDateTypeH mapped = new CFBamBuffTZDateTypeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

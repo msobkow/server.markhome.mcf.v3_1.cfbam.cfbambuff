@@ -68,6 +68,20 @@ public class CFBamBuffDbKeyHash384TypeDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffDbKeyHash384TypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamDbKeyHash384TypeBySchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffDbKeyHash384TypeBySchemaIdxKey) {
+			return( (CFBamBuffDbKeyHash384TypeBySchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffDbKeyHash384TypeBySchemaIdxKey mapped = new CFBamBuffDbKeyHash384TypeBySchemaIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDbKeyHash384Type newRec() {
 		ICFBamDbKeyHash384Type rec =
@@ -75,10 +89,38 @@ public class CFBamBuffDbKeyHash384TypeDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffDbKeyHash384Type ensureRec(ICFBamDbKeyHash384Type rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffDbKeyHash384Type) {
+			return( (CFBamBuffDbKeyHash384Type)rec );
+		}
+		else {
+			CFBamBuffDbKeyHash384Type mapped = new CFBamBuffDbKeyHash384Type();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDbKeyHash384TypeH newHRec() {
 		ICFBamDbKeyHash384TypeH hrec =
 			new CFBamBuffDbKeyHash384TypeH();
 		return( hrec );
+	}
+
+	public CFBamBuffDbKeyHash384TypeH ensureHRec(ICFBamDbKeyHash384TypeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffDbKeyHash384TypeH) {
+			return( (CFBamBuffDbKeyHash384TypeH)hrec );
+		}
+		else {
+			CFBamBuffDbKeyHash384TypeH mapped = new CFBamBuffDbKeyHash384TypeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

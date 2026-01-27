@@ -68,6 +68,20 @@ public class CFBamBuffTimeTypeDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffTimeTypeBySchemaIdxKey ensureBySchemaIdxKey(ICFBamTimeTypeBySchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTimeTypeBySchemaIdxKey) {
+			return( (CFBamBuffTimeTypeBySchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffTimeTypeBySchemaIdxKey mapped = new CFBamBuffTimeTypeBySchemaIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTimeType newRec() {
 		ICFBamTimeType rec =
@@ -75,10 +89,38 @@ public class CFBamBuffTimeTypeDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffTimeType ensureRec(ICFBamTimeType rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffTimeType) {
+			return( (CFBamBuffTimeType)rec );
+		}
+		else {
+			CFBamBuffTimeType mapped = new CFBamBuffTimeType();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTimeTypeH newHRec() {
 		ICFBamTimeTypeH hrec =
 			new CFBamBuffTimeTypeH();
 		return( hrec );
+	}
+
+	public CFBamBuffTimeTypeH ensureHRec(ICFBamTimeTypeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffTimeTypeH) {
+			return( (CFBamBuffTimeTypeH)hrec );
+		}
+		else {
+			CFBamBuffTimeTypeH mapped = new CFBamBuffTimeTypeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

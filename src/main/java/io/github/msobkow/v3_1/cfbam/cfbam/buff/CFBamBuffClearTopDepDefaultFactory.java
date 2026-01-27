@@ -68,11 +68,40 @@ public class CFBamBuffClearTopDepDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffClearTopDepByClrTopDepTblIdxKey ensureByClrTopDepTblIdxKey(ICFBamClearTopDepByClrTopDepTblIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffClearTopDepByClrTopDepTblIdxKey) {
+			return( (CFBamBuffClearTopDepByClrTopDepTblIdxKey)key );
+		}
+		else {
+			CFBamBuffClearTopDepByClrTopDepTblIdxKey mapped = new CFBamBuffClearTopDepByClrTopDepTblIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamClearTopDepByUNameIdxKey newByUNameIdxKey() {
 		ICFBamClearTopDepByUNameIdxKey key =
 			new CFBamBuffClearTopDepByUNameIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffClearTopDepByUNameIdxKey ensureByUNameIdxKey(ICFBamClearTopDepByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffClearTopDepByUNameIdxKey) {
+			return( (CFBamBuffClearTopDepByUNameIdxKey)key );
+		}
+		else {
+			CFBamBuffClearTopDepByUNameIdxKey mapped = new CFBamBuffClearTopDepByUNameIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,11 +111,39 @@ public class CFBamBuffClearTopDepDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffClearTopDepByPrevIdxKey ensureByPrevIdxKey(ICFBamClearTopDepByPrevIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffClearTopDepByPrevIdxKey) {
+			return( (CFBamBuffClearTopDepByPrevIdxKey)key );
+		}
+		else {
+			CFBamBuffClearTopDepByPrevIdxKey mapped = new CFBamBuffClearTopDepByPrevIdxKey();
+			mapped.setOptionalPrevId( key.getOptionalPrevId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamClearTopDepByNextIdxKey newByNextIdxKey() {
 		ICFBamClearTopDepByNextIdxKey key =
 			new CFBamBuffClearTopDepByNextIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffClearTopDepByNextIdxKey ensureByNextIdxKey(ICFBamClearTopDepByNextIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffClearTopDepByNextIdxKey) {
+			return( (CFBamBuffClearTopDepByNextIdxKey)key );
+		}
+		else {
+			CFBamBuffClearTopDepByNextIdxKey mapped = new CFBamBuffClearTopDepByNextIdxKey();
+			mapped.setOptionalNextId( key.getOptionalNextId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -96,10 +153,38 @@ public class CFBamBuffClearTopDepDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffClearTopDep ensureRec(ICFBamClearTopDep rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffClearTopDep) {
+			return( (CFBamBuffClearTopDep)rec );
+		}
+		else {
+			CFBamBuffClearTopDep mapped = new CFBamBuffClearTopDep();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamClearTopDepH newHRec() {
 		ICFBamClearTopDepH hrec =
 			new CFBamBuffClearTopDepH();
 		return( hrec );
+	}
+
+	public CFBamBuffClearTopDepH ensureHRec(ICFBamClearTopDepH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffClearTopDepH) {
+			return( (CFBamBuffClearTopDepH)hrec );
+		}
+		else {
+			CFBamBuffClearTopDepH mapped = new CFBamBuffClearTopDepH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

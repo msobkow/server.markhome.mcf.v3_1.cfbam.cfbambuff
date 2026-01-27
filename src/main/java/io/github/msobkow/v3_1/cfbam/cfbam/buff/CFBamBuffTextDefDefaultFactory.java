@@ -68,10 +68,38 @@ public class CFBamBuffTextDefDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffTextDef ensureRec(ICFBamTextDef rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffTextDef) {
+			return( (CFBamBuffTextDef)rec );
+		}
+		else {
+			CFBamBuffTextDef mapped = new CFBamBuffTextDef();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTextDefH newHRec() {
 		ICFBamTextDefH hrec =
 			new CFBamBuffTextDefH();
 		return( hrec );
+	}
+
+	public CFBamBuffTextDefH ensureHRec(ICFBamTextDefH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffTextDefH) {
+			return( (CFBamBuffTextDefH)hrec );
+		}
+		else {
+			CFBamBuffTextDefH mapped = new CFBamBuffTextDefH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

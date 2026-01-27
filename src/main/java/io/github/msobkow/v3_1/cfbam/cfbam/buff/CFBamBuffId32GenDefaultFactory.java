@@ -68,10 +68,38 @@ public class CFBamBuffId32GenDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffId32Gen ensureRec(ICFBamId32Gen rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffId32Gen) {
+			return( (CFBamBuffId32Gen)rec );
+		}
+		else {
+			CFBamBuffId32Gen mapped = new CFBamBuffId32Gen();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamId32GenH newHRec() {
 		ICFBamId32GenH hrec =
 			new CFBamBuffId32GenH();
 		return( hrec );
+	}
+
+	public CFBamBuffId32GenH ensureHRec(ICFBamId32GenH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffId32GenH) {
+			return( (CFBamBuffId32GenH)hrec );
+		}
+		else {
+			CFBamBuffId32GenH mapped = new CFBamBuffId32GenH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

@@ -68,10 +68,38 @@ public class CFBamBuffAtomDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffAtom ensureRec(ICFBamAtom rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffAtom) {
+			return( (CFBamBuffAtom)rec );
+		}
+		else {
+			CFBamBuffAtom mapped = new CFBamBuffAtom();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamAtomH newHRec() {
 		ICFBamAtomH hrec =
 			new CFBamBuffAtomH();
 		return( hrec );
+	}
+
+	public CFBamBuffAtomH ensureHRec(ICFBamAtomH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffAtomH) {
+			return( (CFBamBuffAtomH)hrec );
+		}
+		else {
+			CFBamBuffAtomH mapped = new CFBamBuffAtomH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

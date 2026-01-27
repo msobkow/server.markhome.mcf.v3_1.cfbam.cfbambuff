@@ -68,10 +68,38 @@ public class CFBamBuffTZTimeDefDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffTZTimeDef ensureRec(ICFBamTZTimeDef rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffTZTimeDef) {
+			return( (CFBamBuffTZTimeDef)rec );
+		}
+		else {
+			CFBamBuffTZTimeDef mapped = new CFBamBuffTZTimeDef();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamTZTimeDefH newHRec() {
 		ICFBamTZTimeDefH hrec =
 			new CFBamBuffTZTimeDefH();
 		return( hrec );
+	}
+
+	public CFBamBuffTZTimeDefH ensureHRec(ICFBamTZTimeDefH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffTZTimeDefH) {
+			return( (CFBamBuffTZTimeDefH)hrec );
+		}
+		else {
+			CFBamBuffTZTimeDefH mapped = new CFBamBuffTZTimeDefH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

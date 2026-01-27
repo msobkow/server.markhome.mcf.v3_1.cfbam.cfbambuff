@@ -68,11 +68,40 @@ public class CFBamBuffIndexDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffIndexByUNameIdxKey ensureByUNameIdxKey(ICFBamIndexByUNameIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffIndexByUNameIdxKey) {
+			return( (CFBamBuffIndexByUNameIdxKey)key );
+		}
+		else {
+			CFBamBuffIndexByUNameIdxKey mapped = new CFBamBuffIndexByUNameIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			mapped.setRequiredName( key.getRequiredName() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamIndexByIdxTableIdxKey newByIdxTableIdxKey() {
 		ICFBamIndexByIdxTableIdxKey key =
 			new CFBamBuffIndexByIdxTableIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffIndexByIdxTableIdxKey ensureByIdxTableIdxKey(ICFBamIndexByIdxTableIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffIndexByIdxTableIdxKey) {
+			return( (CFBamBuffIndexByIdxTableIdxKey)key );
+		}
+		else {
+			CFBamBuffIndexByIdxTableIdxKey mapped = new CFBamBuffIndexByIdxTableIdxKey();
+			mapped.setRequiredTableId( key.getRequiredTableId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,6 +111,20 @@ public class CFBamBuffIndexDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffIndexByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamIndexByDefSchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffIndexByDefSchemaIdxKey) {
+			return( (CFBamBuffIndexByDefSchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffIndexByDefSchemaIdxKey mapped = new CFBamBuffIndexByDefSchemaIdxKey();
+			mapped.setOptionalDefSchemaId( key.getOptionalDefSchemaId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamIndex newRec() {
 		ICFBamIndex rec =
@@ -89,10 +132,38 @@ public class CFBamBuffIndexDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffIndex ensureRec(ICFBamIndex rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffIndex) {
+			return( (CFBamBuffIndex)rec );
+		}
+		else {
+			CFBamBuffIndex mapped = new CFBamBuffIndex();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamIndexH newHRec() {
 		ICFBamIndexH hrec =
 			new CFBamBuffIndexH();
 		return( hrec );
+	}
+
+	public CFBamBuffIndexH ensureHRec(ICFBamIndexH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffIndexH) {
+			return( (CFBamBuffIndexH)hrec );
+		}
+		else {
+			CFBamBuffIndexH mapped = new CFBamBuffIndexH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

@@ -68,11 +68,43 @@ public class CFBamBuffScopeDefaultFactory
 		return( hpkey );
 	}
 
+	public CFBamBuffScopeHPKey ensureHPKey(ICFBamScopeHPKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if( key instanceof CFBamBuffScopeHPKey) {
+			return( (CFBamBuffScopeHPKey)key );
+		}
+		else {
+			CFBamBuffScopeHPKey mapped = new CFBamBuffScopeHPKey();
+			mapped.setAuditClusterId(key.getAuditClusterId());
+			mapped.setAuditActionId(key.getAuditActionId());
+			mapped.setAuditSessionId(key.getAuditSessionId());
+			mapped.setAuditStamp(key.getAuditStamp());
+			mapped.setRequiredId( key.getRequiredId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamScopeByTenantIdxKey newByTenantIdxKey() {
 		ICFBamScopeByTenantIdxKey key =
 			new CFBamBuffScopeByTenantIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffScopeByTenantIdxKey ensureByTenantIdxKey(ICFBamScopeByTenantIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffScopeByTenantIdxKey) {
+			return( (CFBamBuffScopeByTenantIdxKey)key );
+		}
+		else {
+			CFBamBuffScopeByTenantIdxKey mapped = new CFBamBuffScopeByTenantIdxKey();
+			mapped.setRequiredTenantId( key.getRequiredTenantId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,10 +114,38 @@ public class CFBamBuffScopeDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffScope ensureRec(ICFBamScope rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffScope) {
+			return( (CFBamBuffScope)rec );
+		}
+		else {
+			CFBamBuffScope mapped = new CFBamBuffScope();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamScopeH newHRec() {
 		ICFBamScopeH hrec =
 			new CFBamBuffScopeH();
 		return( hrec );
+	}
+
+	public CFBamBuffScopeH ensureHRec(ICFBamScopeH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffScopeH) {
+			return( (CFBamBuffScopeH)hrec );
+		}
+		else {
+			CFBamBuffScopeH mapped = new CFBamBuffScopeH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

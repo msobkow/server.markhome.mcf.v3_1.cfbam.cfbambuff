@@ -68,11 +68,39 @@ public class CFBamBuffClearDepDefaultFactory
 		return( key );
 	}
 
+	public CFBamBuffClearDepByClearDepIdxKey ensureByClearDepIdxKey(ICFBamClearDepByClearDepIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffClearDepByClearDepIdxKey) {
+			return( (CFBamBuffClearDepByClearDepIdxKey)key );
+		}
+		else {
+			CFBamBuffClearDepByClearDepIdxKey mapped = new CFBamBuffClearDepByClearDepIdxKey();
+			mapped.setRequiredRelationId( key.getRequiredRelationId() );
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamClearDepByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamClearDepByDefSchemaIdxKey key =
 			new CFBamBuffClearDepByDefSchemaIdxKey();
 		return( key );
+	}
+
+	public CFBamBuffClearDepByDefSchemaIdxKey ensureByDefSchemaIdxKey(ICFBamClearDepByDefSchemaIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffClearDepByDefSchemaIdxKey) {
+			return( (CFBamBuffClearDepByDefSchemaIdxKey)key );
+		}
+		else {
+			CFBamBuffClearDepByDefSchemaIdxKey mapped = new CFBamBuffClearDepByDefSchemaIdxKey();
+			mapped.setOptionalDefSchemaId( key.getOptionalDefSchemaId() );
+			return( mapped );
+		}
 	}
 
 	@Override
@@ -82,10 +110,38 @@ public class CFBamBuffClearDepDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffClearDep ensureRec(ICFBamClearDep rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffClearDep) {
+			return( (CFBamBuffClearDep)rec );
+		}
+		else {
+			CFBamBuffClearDep mapped = new CFBamBuffClearDep();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamClearDepH newHRec() {
 		ICFBamClearDepH hrec =
 			new CFBamBuffClearDepH();
 		return( hrec );
+	}
+
+	public CFBamBuffClearDepH ensureHRec(ICFBamClearDepH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffClearDepH) {
+			return( (CFBamBuffClearDepH)hrec );
+		}
+		else {
+			CFBamBuffClearDepH mapped = new CFBamBuffClearDepH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }

@@ -68,10 +68,38 @@ public class CFBamBuffDbKeyHash128GenDefaultFactory
 		return( rec );
 	}
 
+	public CFBamBuffDbKeyHash128Gen ensureRec(ICFBamDbKeyHash128Gen rec) {
+		if( rec == null ) {
+			return( null );
+		}
+		else if (rec instanceof CFBamBuffDbKeyHash128Gen) {
+			return( (CFBamBuffDbKeyHash128Gen)rec );
+		}
+		else {
+			CFBamBuffDbKeyHash128Gen mapped = new CFBamBuffDbKeyHash128Gen();
+			mapped.set(rec);
+			return( mapped );
+		}
+	}
+
 	@Override
 	public ICFBamDbKeyHash128GenH newHRec() {
 		ICFBamDbKeyHash128GenH hrec =
 			new CFBamBuffDbKeyHash128GenH();
 		return( hrec );
+	}
+
+	public CFBamBuffDbKeyHash128GenH ensureHRec(ICFBamDbKeyHash128GenH hrec) {
+		if (hrec == null) {
+			return( null );
+		}
+		else if( hrec instanceof CFBamBuffDbKeyHash128GenH) {
+			return( (CFBamBuffDbKeyHash128GenH)hrec );
+		}
+		else {
+			CFBamBuffDbKeyHash128GenH mapped = new CFBamBuffDbKeyHash128GenH();
+			mapped.set(hrec);
+			return( mapped );
+		}
 	}
 }
