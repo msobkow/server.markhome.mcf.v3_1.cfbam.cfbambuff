@@ -95,8 +95,8 @@ public class CFBamBuffTZTimestampColH extends CFBamBuffTZTimestampDefH
         if (!super.equals(obj)) {
             return( false );
         }
-			if( getRequiredTableId() != null && !getRequiredTableId().isNull() ) {
-				if( rhs.getRequiredTableId() != null && !rhs.getRequiredTableId().isNull() ) {
+			if( getRequiredTableId() != null ) {
+				if( rhs.getRequiredTableId() != null ) {
 					if( ! getRequiredTableId().equals( rhs.getRequiredTableId() ) ) {
 						return( false );
 					}
@@ -106,7 +106,7 @@ public class CFBamBuffTZTimestampColH extends CFBamBuffTZTimestampDefH
 				}
 			}
 			else {
-				if( rhs.getRequiredTableId() != null && !getRequiredTableId().isNull()) {
+				if( rhs.getRequiredTableId() != null ) {
 					return( false );
 				}
 			}
@@ -120,8 +120,8 @@ public class CFBamBuffTZTimestampColH extends CFBamBuffTZTimestampDefH
         if (!super.equals(obj)) {
             return( false );
         }
-			if( getRequiredTableId() != null && !getRequiredTableId().isNull() ) {
-				if( rhs.getRequiredTableId() != null && !rhs.getRequiredTableId().isNull() ) {
+			if( getRequiredTableId() != null ) {
+				if( rhs.getRequiredTableId() != null ) {
 					if( ! getRequiredTableId().equals( rhs.getRequiredTableId() ) ) {
 						return( false );
 					}
@@ -131,7 +131,7 @@ public class CFBamBuffTZTimestampColH extends CFBamBuffTZTimestampDefH
 				}
 			}
 			else {
-				if( rhs.getRequiredTableId() != null && !getRequiredTableId().isNull()) {
+				if( rhs.getRequiredTableId() != null ) {
 					return( false );
 				}
 			}
@@ -142,8 +142,8 @@ public class CFBamBuffTZTimestampColH extends CFBamBuffTZTimestampDefH
         }
         else if (obj instanceof ICFBamTZTimestampColByTableIdxKey) {
             ICFBamTZTimestampColByTableIdxKey rhs = (ICFBamTZTimestampColByTableIdxKey)obj;
-			if( getRequiredTableId() != null && !getRequiredTableId().isNull() ) {
-				if( rhs.getRequiredTableId() != null && !rhs.getRequiredTableId().isNull() ) {
+			if( getRequiredTableId() != null ) {
+				if( rhs.getRequiredTableId() != null ) {
 					if( ! getRequiredTableId().equals( rhs.getRequiredTableId() ) ) {
 						return( false );
 					}
@@ -153,7 +153,7 @@ public class CFBamBuffTZTimestampColH extends CFBamBuffTZTimestampDefH
 				}
 			}
 			else {
-				if( rhs.getRequiredTableId() != null && !getRequiredTableId().isNull()) {
+				if( rhs.getRequiredTableId() != null ) {
 					return( false );
 				}
 			}

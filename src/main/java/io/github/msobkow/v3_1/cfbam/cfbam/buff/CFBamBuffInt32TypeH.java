@@ -95,8 +95,8 @@ public class CFBamBuffInt32TypeH extends CFBamBuffInt32DefH
         if (!super.equals(obj)) {
             return( false );
         }
-			if( getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull() ) {
-				if( rhs.getRequiredSchemaDefId() != null && !rhs.getRequiredSchemaDefId().isNull() ) {
+			if( getRequiredSchemaDefId() != null ) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
 						return( false );
 					}
@@ -106,7 +106,7 @@ public class CFBamBuffInt32TypeH extends CFBamBuffInt32DefH
 				}
 			}
 			else {
-				if( rhs.getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull()) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					return( false );
 				}
 			}
@@ -120,8 +120,8 @@ public class CFBamBuffInt32TypeH extends CFBamBuffInt32DefH
         if (!super.equals(obj)) {
             return( false );
         }
-			if( getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull() ) {
-				if( rhs.getRequiredSchemaDefId() != null && !rhs.getRequiredSchemaDefId().isNull() ) {
+			if( getRequiredSchemaDefId() != null ) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
 						return( false );
 					}
@@ -131,7 +131,7 @@ public class CFBamBuffInt32TypeH extends CFBamBuffInt32DefH
 				}
 			}
 			else {
-				if( rhs.getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull()) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					return( false );
 				}
 			}
@@ -142,8 +142,8 @@ public class CFBamBuffInt32TypeH extends CFBamBuffInt32DefH
         }
         else if (obj instanceof ICFBamInt32TypeBySchemaIdxKey) {
             ICFBamInt32TypeBySchemaIdxKey rhs = (ICFBamInt32TypeBySchemaIdxKey)obj;
-			if( getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull() ) {
-				if( rhs.getRequiredSchemaDefId() != null && !rhs.getRequiredSchemaDefId().isNull() ) {
+			if( getRequiredSchemaDefId() != null ) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
 						return( false );
 					}
@@ -153,7 +153,7 @@ public class CFBamBuffInt32TypeH extends CFBamBuffInt32DefH
 				}
 			}
 			else {
-				if( rhs.getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull()) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					return( false );
 				}
 			}

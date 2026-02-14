@@ -110,8 +110,8 @@ public class CFBamBuffInt16Type
 		}
 		else if( obj instanceof ICFBamInt16Type ) {
 			ICFBamInt16Type rhs = (ICFBamInt16Type)obj;
-			if( getRequiredId() != null && !getRequiredId().isNull() ) {
-				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+			if( getRequiredId() != null ) {
+				if( rhs.getRequiredId() != null ) {
 					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
 						return( false );
 					}
@@ -121,12 +121,12 @@ public class CFBamBuffInt16Type
 				}
 			}
 			else {
-				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+				if( rhs.getRequiredId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull() ) {
-				if( rhs.getRequiredSchemaDefId() != null && !rhs.getRequiredSchemaDefId().isNull() ) {
+			if( getRequiredSchemaDefId() != null ) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
 						return( false );
 					}
@@ -136,7 +136,7 @@ public class CFBamBuffInt16Type
 				}
 			}
 			else {
-				if( rhs.getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull()) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					return( false );
 				}
 			}
@@ -144,8 +144,8 @@ public class CFBamBuffInt16Type
 		}
 		else if( obj instanceof ICFBamInt16TypeH ) {
 			ICFBamInt16TypeH rhs = (ICFBamInt16TypeH)obj;
-			if( getRequiredId() != null && !getRequiredId().isNull() ) {
-				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+			if( getRequiredId() != null ) {
+				if( rhs.getRequiredId() != null ) {
 					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
 						return( false );
 					}
@@ -155,12 +155,12 @@ public class CFBamBuffInt16Type
 				}
 			}
 			else {
-				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+				if( rhs.getRequiredId() != null ) {
 					return( false );
 				}
 			}
-			if( getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull() ) {
-				if( rhs.getRequiredSchemaDefId() != null && !rhs.getRequiredSchemaDefId().isNull() ) {
+			if( getRequiredSchemaDefId() != null ) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
 						return( false );
 					}
@@ -170,7 +170,7 @@ public class CFBamBuffInt16Type
 				}
 			}
 			else {
-				if( rhs.getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull()) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					return( false );
 				}
 			}
@@ -178,8 +178,8 @@ public class CFBamBuffInt16Type
 		}
 		else if( obj instanceof ICFBamValueHPKey ) {
 			ICFBamValueHPKey rhs = (ICFBamValueHPKey)obj;
-			if( getRequiredId() != null && !getRequiredId().isNull() ) {
-				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+			if( getRequiredId() != null ) {
+				if( rhs.getRequiredId() != null ) {
 					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
 						return( false );
 					}
@@ -189,7 +189,7 @@ public class CFBamBuffInt16Type
 				}
 			}
 			else {
-				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+				if( rhs.getRequiredId() != null ) {
 					return( false );
 				}
 			}
@@ -197,8 +197,8 @@ public class CFBamBuffInt16Type
 		}
 		else if( obj instanceof ICFBamInt16TypeBySchemaIdxKey ) {
 			ICFBamInt16TypeBySchemaIdxKey rhs = (ICFBamInt16TypeBySchemaIdxKey)obj;
-			if( getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull() ) {
-				if( rhs.getRequiredSchemaDefId() != null && !rhs.getRequiredSchemaDefId().isNull() ) {
+			if( getRequiredSchemaDefId() != null ) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
 						return( false );
 					}
@@ -208,7 +208,7 @@ public class CFBamBuffInt16Type
 				}
 			}
 			else {
-				if( rhs.getRequiredSchemaDefId() != null && !getRequiredSchemaDefId().isNull()) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
 					return( false );
 				}
 			}

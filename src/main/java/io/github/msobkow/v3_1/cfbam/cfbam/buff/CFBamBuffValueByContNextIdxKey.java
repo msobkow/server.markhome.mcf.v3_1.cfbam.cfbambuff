@@ -97,8 +97,8 @@ public class CFBamBuffValueByContNextIdxKey
 		}
 		else if( obj instanceof ICFBamValueByContNextIdxKey ) {
 			ICFBamValueByContNextIdxKey rhs = (ICFBamValueByContNextIdxKey)obj;
-			if( getRequiredScopeId() != null && !getRequiredScopeId().isNull() ) {
-				if( rhs.getRequiredScopeId() != null && !rhs.getRequiredScopeId().isNull() ) {
+			if( getRequiredScopeId() != null ) {
+				if( rhs.getRequiredScopeId() != null ) {
 					if( ! getRequiredScopeId().equals( rhs.getRequiredScopeId() ) ) {
 						return( false );
 					}
@@ -108,12 +108,12 @@ public class CFBamBuffValueByContNextIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredScopeId() != null && !getRequiredScopeId().isNull()) {
+				if( rhs.getRequiredScopeId() != null ) {
 					return( false );
 				}
 			}
-			if( getOptionalNextId() != null && !getOptionalNextId().isNull() ) {
-				if( rhs.getOptionalNextId() != null && !rhs.getOptionalNextId().isNull() ) {
+			if( getOptionalNextId() != null ) {
+				if( rhs.getOptionalNextId() != null ) {
 					if( ! getOptionalNextId().equals( rhs.getOptionalNextId() ) ) {
 						return( false );
 					}
@@ -123,7 +123,7 @@ public class CFBamBuffValueByContNextIdxKey
 				}
 			}
 			else {
-				if( rhs.getOptionalNextId() != null && !getOptionalNextId().isNull()) {
+				if( rhs.getOptionalNextId() != null ) {
 					return( false );
 				}
 			}
@@ -131,8 +131,8 @@ public class CFBamBuffValueByContNextIdxKey
 		}
 		else if( obj instanceof ICFBamValue) {
 			ICFBamValue rhs = (ICFBamValue)obj;
-			if( getRequiredScopeId() != null && !getRequiredScopeId().isNull() ) {
-				if( rhs.getRequiredScopeId() != null && !rhs.getRequiredScopeId().isNull() ) {
+			if( getRequiredScopeId() != null ) {
+				if( rhs.getRequiredScopeId() != null ) {
 					if( ! getRequiredScopeId().equals( rhs.getRequiredScopeId() ) ) {
 						return( false );
 					}
@@ -142,12 +142,12 @@ public class CFBamBuffValueByContNextIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredScopeId() != null && !getRequiredScopeId().isNull()) {
+				if( rhs.getRequiredScopeId() != null ) {
 					return( false );
 				}
 			}
-			if( getOptionalNextId() != null && !getOptionalNextId().isNull() ) {
-				if( rhs.getOptionalNextId() != null && !rhs.getOptionalNextId().isNull() ) {
+			if( getOptionalNextId() != null ) {
+				if( rhs.getOptionalNextId() != null ) {
 					if( ! getOptionalNextId().equals( rhs.getOptionalNextId() ) ) {
 						return( false );
 					}
@@ -157,7 +157,7 @@ public class CFBamBuffValueByContNextIdxKey
 				}
 			}
 			else {
-				if( rhs.getOptionalNextId() != null && !getOptionalNextId().isNull()) {
+				if( rhs.getOptionalNextId() != null ) {
 					return( false );
 				}
 			}

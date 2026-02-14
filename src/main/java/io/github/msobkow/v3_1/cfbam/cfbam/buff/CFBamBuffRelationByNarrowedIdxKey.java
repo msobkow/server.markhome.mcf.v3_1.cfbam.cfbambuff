@@ -79,8 +79,8 @@ public class CFBamBuffRelationByNarrowedIdxKey
 		}
 		else if( obj instanceof ICFBamRelationByNarrowedIdxKey ) {
 			ICFBamRelationByNarrowedIdxKey rhs = (ICFBamRelationByNarrowedIdxKey)obj;
-			if( getOptionalNarrowedId() != null && !getOptionalNarrowedId().isNull() ) {
-				if( rhs.getOptionalNarrowedId() != null && !rhs.getOptionalNarrowedId().isNull() ) {
+			if( getOptionalNarrowedId() != null ) {
+				if( rhs.getOptionalNarrowedId() != null ) {
 					if( ! getOptionalNarrowedId().equals( rhs.getOptionalNarrowedId() ) ) {
 						return( false );
 					}
@@ -90,7 +90,7 @@ public class CFBamBuffRelationByNarrowedIdxKey
 				}
 			}
 			else {
-				if( rhs.getOptionalNarrowedId() != null && !getOptionalNarrowedId().isNull()) {
+				if( rhs.getOptionalNarrowedId() != null ) {
 					return( false );
 				}
 			}
@@ -98,8 +98,8 @@ public class CFBamBuffRelationByNarrowedIdxKey
 		}
 		else if( obj instanceof ICFBamRelation) {
 			ICFBamRelation rhs = (ICFBamRelation)obj;
-			if( getOptionalNarrowedId() != null && !getOptionalNarrowedId().isNull() ) {
-				if( rhs.getOptionalNarrowedId() != null && !rhs.getOptionalNarrowedId().isNull() ) {
+			if( getOptionalNarrowedId() != null ) {
+				if( rhs.getOptionalNarrowedId() != null ) {
 					if( ! getOptionalNarrowedId().equals( rhs.getOptionalNarrowedId() ) ) {
 						return( false );
 					}
@@ -109,7 +109,7 @@ public class CFBamBuffRelationByNarrowedIdxKey
 				}
 			}
 			else {
-				if( rhs.getOptionalNarrowedId() != null && !getOptionalNarrowedId().isNull()) {
+				if( rhs.getOptionalNarrowedId() != null ) {
 					return( false );
 				}
 			}

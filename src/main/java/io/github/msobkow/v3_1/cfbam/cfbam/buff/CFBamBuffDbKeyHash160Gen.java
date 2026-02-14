@@ -131,8 +131,8 @@ public class CFBamBuffDbKeyHash160Gen
 		}
 		else if( obj instanceof ICFBamDbKeyHash160Gen ) {
 			ICFBamDbKeyHash160Gen rhs = (ICFBamDbKeyHash160Gen)obj;
-			if( getRequiredId() != null && !getRequiredId().isNull() ) {
-				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+			if( getRequiredId() != null ) {
+				if( rhs.getRequiredId() != null ) {
 					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
 						return( false );
 					}
@@ -142,7 +142,7 @@ public class CFBamBuffDbKeyHash160Gen
 				}
 			}
 			else {
-				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+				if( rhs.getRequiredId() != null ) {
 					return( false );
 				}
 			}
@@ -156,8 +156,8 @@ public class CFBamBuffDbKeyHash160Gen
 		}
 		else if( obj instanceof ICFBamDbKeyHash160GenH ) {
 			ICFBamDbKeyHash160GenH rhs = (ICFBamDbKeyHash160GenH)obj;
-			if( getRequiredId() != null && !getRequiredId().isNull() ) {
-				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+			if( getRequiredId() != null ) {
+				if( rhs.getRequiredId() != null ) {
 					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
 						return( false );
 					}
@@ -167,7 +167,7 @@ public class CFBamBuffDbKeyHash160Gen
 				}
 			}
 			else {
-				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+				if( rhs.getRequiredId() != null ) {
 					return( false );
 				}
 			}
@@ -181,8 +181,8 @@ public class CFBamBuffDbKeyHash160Gen
 		}
 		else if( obj instanceof ICFBamValueHPKey ) {
 			ICFBamValueHPKey rhs = (ICFBamValueHPKey)obj;
-			if( getRequiredId() != null && !getRequiredId().isNull() ) {
-				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+			if( getRequiredId() != null ) {
+				if( rhs.getRequiredId() != null ) {
 					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
 						return( false );
 					}
@@ -192,7 +192,7 @@ public class CFBamBuffDbKeyHash160Gen
 				}
 			}
 			else {
-				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+				if( rhs.getRequiredId() != null ) {
 					return( false );
 				}
 			}

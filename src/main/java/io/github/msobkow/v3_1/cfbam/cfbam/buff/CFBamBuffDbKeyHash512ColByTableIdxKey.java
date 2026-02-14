@@ -85,8 +85,8 @@ public class CFBamBuffDbKeyHash512ColByTableIdxKey
 		}
 		else if( obj instanceof ICFBamDbKeyHash512ColByTableIdxKey ) {
 			ICFBamDbKeyHash512ColByTableIdxKey rhs = (ICFBamDbKeyHash512ColByTableIdxKey)obj;
-			if( getRequiredTableId() != null && !getRequiredTableId().isNull() ) {
-				if( rhs.getRequiredTableId() != null && !rhs.getRequiredTableId().isNull() ) {
+			if( getRequiredTableId() != null ) {
+				if( rhs.getRequiredTableId() != null ) {
 					if( ! getRequiredTableId().equals( rhs.getRequiredTableId() ) ) {
 						return( false );
 					}
@@ -96,7 +96,7 @@ public class CFBamBuffDbKeyHash512ColByTableIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredTableId() != null && !getRequiredTableId().isNull()) {
+				if( rhs.getRequiredTableId() != null ) {
 					return( false );
 				}
 			}
@@ -104,8 +104,8 @@ public class CFBamBuffDbKeyHash512ColByTableIdxKey
 		}
 		else if( obj instanceof ICFBamDbKeyHash512Col) {
 			ICFBamDbKeyHash512Col rhs = (ICFBamDbKeyHash512Col)obj;
-			if( getRequiredTableId() != null && !getRequiredTableId().isNull() ) {
-				if( rhs.getRequiredTableId() != null && !rhs.getRequiredTableId().isNull() ) {
+			if( getRequiredTableId() != null ) {
+				if( rhs.getRequiredTableId() != null ) {
 					if( ! getRequiredTableId().equals( rhs.getRequiredTableId() ) ) {
 						return( false );
 					}
@@ -115,7 +115,7 @@ public class CFBamBuffDbKeyHash512ColByTableIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredTableId() != null && !getRequiredTableId().isNull()) {
+				if( rhs.getRequiredTableId() != null ) {
 					return( false );
 				}
 			}

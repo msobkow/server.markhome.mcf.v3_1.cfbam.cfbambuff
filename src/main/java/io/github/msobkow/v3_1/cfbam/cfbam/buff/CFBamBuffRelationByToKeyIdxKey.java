@@ -85,8 +85,8 @@ public class CFBamBuffRelationByToKeyIdxKey
 		}
 		else if( obj instanceof ICFBamRelationByToKeyIdxKey ) {
 			ICFBamRelationByToKeyIdxKey rhs = (ICFBamRelationByToKeyIdxKey)obj;
-			if( getRequiredToIndexId() != null && !getRequiredToIndexId().isNull() ) {
-				if( rhs.getRequiredToIndexId() != null && !rhs.getRequiredToIndexId().isNull() ) {
+			if( getRequiredToIndexId() != null ) {
+				if( rhs.getRequiredToIndexId() != null ) {
 					if( ! getRequiredToIndexId().equals( rhs.getRequiredToIndexId() ) ) {
 						return( false );
 					}
@@ -96,7 +96,7 @@ public class CFBamBuffRelationByToKeyIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredToIndexId() != null && !getRequiredToIndexId().isNull()) {
+				if( rhs.getRequiredToIndexId() != null ) {
 					return( false );
 				}
 			}
@@ -104,8 +104,8 @@ public class CFBamBuffRelationByToKeyIdxKey
 		}
 		else if( obj instanceof ICFBamRelation) {
 			ICFBamRelation rhs = (ICFBamRelation)obj;
-			if( getRequiredToIndexId() != null && !getRequiredToIndexId().isNull() ) {
-				if( rhs.getRequiredToIndexId() != null && !rhs.getRequiredToIndexId().isNull() ) {
+			if( getRequiredToIndexId() != null ) {
+				if( rhs.getRequiredToIndexId() != null ) {
 					if( ! getRequiredToIndexId().equals( rhs.getRequiredToIndexId() ) ) {
 						return( false );
 					}
@@ -115,7 +115,7 @@ public class CFBamBuffRelationByToKeyIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredToIndexId() != null && !getRequiredToIndexId().isNull()) {
+				if( rhs.getRequiredToIndexId() != null ) {
 					return( false );
 				}
 			}

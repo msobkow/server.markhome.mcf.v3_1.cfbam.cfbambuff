@@ -111,8 +111,8 @@ public class CFBamBuffRelationColByUNameIdxKey
 		}
 		else if( obj instanceof ICFBamRelationColByUNameIdxKey ) {
 			ICFBamRelationColByUNameIdxKey rhs = (ICFBamRelationColByUNameIdxKey)obj;
-			if( getRequiredRelationId() != null && !getRequiredRelationId().isNull() ) {
-				if( rhs.getRequiredRelationId() != null && !rhs.getRequiredRelationId().isNull() ) {
+			if( getRequiredRelationId() != null ) {
+				if( rhs.getRequiredRelationId() != null ) {
 					if( ! getRequiredRelationId().equals( rhs.getRequiredRelationId() ) ) {
 						return( false );
 					}
@@ -122,7 +122,7 @@ public class CFBamBuffRelationColByUNameIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredRelationId() != null && !getRequiredRelationId().isNull()) {
+				if( rhs.getRequiredRelationId() != null ) {
 					return( false );
 				}
 			}
@@ -145,8 +145,8 @@ public class CFBamBuffRelationColByUNameIdxKey
 		}
 		else if( obj instanceof ICFBamRelationCol) {
 			ICFBamRelationCol rhs = (ICFBamRelationCol)obj;
-			if( getRequiredRelationId() != null && !getRequiredRelationId().isNull() ) {
-				if( rhs.getRequiredRelationId() != null && !rhs.getRequiredRelationId().isNull() ) {
+			if( getRequiredRelationId() != null ) {
+				if( rhs.getRequiredRelationId() != null ) {
 					if( ! getRequiredRelationId().equals( rhs.getRequiredRelationId() ) ) {
 						return( false );
 					}
@@ -156,7 +156,7 @@ public class CFBamBuffRelationColByUNameIdxKey
 				}
 			}
 			else {
-				if( rhs.getRequiredRelationId() != null && !getRequiredRelationId().isNull()) {
+				if( rhs.getRequiredRelationId() != null ) {
 					return( false );
 				}
 			}

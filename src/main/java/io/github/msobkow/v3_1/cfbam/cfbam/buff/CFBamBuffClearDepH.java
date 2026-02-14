@@ -107,8 +107,8 @@ public class CFBamBuffClearDepH extends CFBamBuffScopeH
         if (!super.equals(obj)) {
             return( false );
         }
-			if( getRequiredRelationId() != null && !getRequiredRelationId().isNull() ) {
-				if( rhs.getRequiredRelationId() != null && !rhs.getRequiredRelationId().isNull() ) {
+			if( getRequiredRelationId() != null ) {
+				if( rhs.getRequiredRelationId() != null ) {
 					if( ! getRequiredRelationId().equals( rhs.getRequiredRelationId() ) ) {
 						return( false );
 					}
@@ -118,12 +118,12 @@ public class CFBamBuffClearDepH extends CFBamBuffScopeH
 				}
 			}
 			else {
-				if( rhs.getRequiredRelationId() != null && !getRequiredRelationId().isNull()) {
+				if( rhs.getRequiredRelationId() != null ) {
 					return( false );
 				}
 			}
-			if( getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull() ) {
-				if( rhs.getOptionalDefSchemaId() != null && !rhs.getOptionalDefSchemaId().isNull() ) {
+			if( getOptionalDefSchemaId() != null ) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
 					if( ! getOptionalDefSchemaId().equals( rhs.getOptionalDefSchemaId() ) ) {
 						return( false );
 					}
@@ -133,7 +133,7 @@ public class CFBamBuffClearDepH extends CFBamBuffScopeH
 				}
 			}
 			else {
-				if( rhs.getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull()) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
 					return( false );
 				}
 			}
@@ -147,8 +147,8 @@ public class CFBamBuffClearDepH extends CFBamBuffScopeH
         if (!super.equals(obj)) {
             return( false );
         }
-			if( getRequiredRelationId() != null && !getRequiredRelationId().isNull() ) {
-				if( rhs.getRequiredRelationId() != null && !rhs.getRequiredRelationId().isNull() ) {
+			if( getRequiredRelationId() != null ) {
+				if( rhs.getRequiredRelationId() != null ) {
 					if( ! getRequiredRelationId().equals( rhs.getRequiredRelationId() ) ) {
 						return( false );
 					}
@@ -158,12 +158,12 @@ public class CFBamBuffClearDepH extends CFBamBuffScopeH
 				}
 			}
 			else {
-				if( rhs.getRequiredRelationId() != null && !getRequiredRelationId().isNull()) {
+				if( rhs.getRequiredRelationId() != null ) {
 					return( false );
 				}
 			}
-			if( getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull() ) {
-				if( rhs.getOptionalDefSchemaId() != null && !rhs.getOptionalDefSchemaId().isNull() ) {
+			if( getOptionalDefSchemaId() != null ) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
 					if( ! getOptionalDefSchemaId().equals( rhs.getOptionalDefSchemaId() ) ) {
 						return( false );
 					}
@@ -173,7 +173,7 @@ public class CFBamBuffClearDepH extends CFBamBuffScopeH
 				}
 			}
 			else {
-				if( rhs.getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull()) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
 					return( false );
 				}
 			}
@@ -184,8 +184,8 @@ public class CFBamBuffClearDepH extends CFBamBuffScopeH
         }
         else if (obj instanceof ICFBamClearDepByClearDepIdxKey) {
             ICFBamClearDepByClearDepIdxKey rhs = (ICFBamClearDepByClearDepIdxKey)obj;
-			if( getRequiredRelationId() != null && !getRequiredRelationId().isNull() ) {
-				if( rhs.getRequiredRelationId() != null && !rhs.getRequiredRelationId().isNull() ) {
+			if( getRequiredRelationId() != null ) {
+				if( rhs.getRequiredRelationId() != null ) {
 					if( ! getRequiredRelationId().equals( rhs.getRequiredRelationId() ) ) {
 						return( false );
 					}
@@ -195,7 +195,7 @@ public class CFBamBuffClearDepH extends CFBamBuffScopeH
 				}
 			}
 			else {
-				if( rhs.getRequiredRelationId() != null && !getRequiredRelationId().isNull()) {
+				if( rhs.getRequiredRelationId() != null ) {
 					return( false );
 				}
 			}
@@ -203,8 +203,8 @@ public class CFBamBuffClearDepH extends CFBamBuffScopeH
         }
         else if (obj instanceof ICFBamClearDepByDefSchemaIdxKey) {
             ICFBamClearDepByDefSchemaIdxKey rhs = (ICFBamClearDepByDefSchemaIdxKey)obj;
-			if( getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull() ) {
-				if( rhs.getOptionalDefSchemaId() != null && !rhs.getOptionalDefSchemaId().isNull() ) {
+			if( getOptionalDefSchemaId() != null ) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
 					if( ! getOptionalDefSchemaId().equals( rhs.getOptionalDefSchemaId() ) ) {
 						return( false );
 					}
@@ -214,7 +214,7 @@ public class CFBamBuffClearDepH extends CFBamBuffScopeH
 				}
 			}
 			else {
-				if( rhs.getOptionalDefSchemaId() != null && !getOptionalDefSchemaId().isNull()) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
 					return( false );
 				}
 			}

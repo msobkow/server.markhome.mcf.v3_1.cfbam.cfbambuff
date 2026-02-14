@@ -110,8 +110,8 @@ public class CFBamBuffServerObjFunc
 		}
 		else if( obj instanceof ICFBamServerObjFunc ) {
 			ICFBamServerObjFunc rhs = (ICFBamServerObjFunc)obj;
-			if( getRequiredId() != null && !getRequiredId().isNull() ) {
-				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+			if( getRequiredId() != null ) {
+				if( rhs.getRequiredId() != null ) {
 					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
 						return( false );
 					}
@@ -121,12 +121,12 @@ public class CFBamBuffServerObjFunc
 				}
 			}
 			else {
-				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+				if( rhs.getRequiredId() != null ) {
 					return( false );
 				}
 			}
-			if( getOptionalRetTableId() != null && !getOptionalRetTableId().isNull() ) {
-				if( rhs.getOptionalRetTableId() != null && !rhs.getOptionalRetTableId().isNull() ) {
+			if( getOptionalRetTableId() != null ) {
+				if( rhs.getOptionalRetTableId() != null ) {
 					if( ! getOptionalRetTableId().equals( rhs.getOptionalRetTableId() ) ) {
 						return( false );
 					}
@@ -136,7 +136,7 @@ public class CFBamBuffServerObjFunc
 				}
 			}
 			else {
-				if( rhs.getOptionalRetTableId() != null && !getOptionalRetTableId().isNull()) {
+				if( rhs.getOptionalRetTableId() != null ) {
 					return( false );
 				}
 			}
@@ -144,8 +144,8 @@ public class CFBamBuffServerObjFunc
 		}
 		else if( obj instanceof ICFBamServerObjFuncH ) {
 			ICFBamServerObjFuncH rhs = (ICFBamServerObjFuncH)obj;
-			if( getRequiredId() != null && !getRequiredId().isNull() ) {
-				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+			if( getRequiredId() != null ) {
+				if( rhs.getRequiredId() != null ) {
 					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
 						return( false );
 					}
@@ -155,12 +155,12 @@ public class CFBamBuffServerObjFunc
 				}
 			}
 			else {
-				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+				if( rhs.getRequiredId() != null ) {
 					return( false );
 				}
 			}
-			if( getOptionalRetTableId() != null && !getOptionalRetTableId().isNull() ) {
-				if( rhs.getOptionalRetTableId() != null && !rhs.getOptionalRetTableId().isNull() ) {
+			if( getOptionalRetTableId() != null ) {
+				if( rhs.getOptionalRetTableId() != null ) {
 					if( ! getOptionalRetTableId().equals( rhs.getOptionalRetTableId() ) ) {
 						return( false );
 					}
@@ -170,7 +170,7 @@ public class CFBamBuffServerObjFunc
 				}
 			}
 			else {
-				if( rhs.getOptionalRetTableId() != null && !getOptionalRetTableId().isNull()) {
+				if( rhs.getOptionalRetTableId() != null ) {
 					return( false );
 				}
 			}
@@ -178,8 +178,8 @@ public class CFBamBuffServerObjFunc
 		}
 		else if( obj instanceof ICFBamScopeHPKey ) {
 			ICFBamScopeHPKey rhs = (ICFBamScopeHPKey)obj;
-			if( getRequiredId() != null && !getRequiredId().isNull() ) {
-				if( rhs.getRequiredId() != null && !rhs.getRequiredId().isNull() ) {
+			if( getRequiredId() != null ) {
+				if( rhs.getRequiredId() != null ) {
 					if( ! getRequiredId().equals( rhs.getRequiredId() ) ) {
 						return( false );
 					}
@@ -189,7 +189,7 @@ public class CFBamBuffServerObjFunc
 				}
 			}
 			else {
-				if( rhs.getRequiredId() != null && !getRequiredId().isNull()) {
+				if( rhs.getRequiredId() != null ) {
 					return( false );
 				}
 			}
@@ -197,8 +197,8 @@ public class CFBamBuffServerObjFunc
 		}
 		else if( obj instanceof ICFBamServerObjFuncByRetTblIdxKey ) {
 			ICFBamServerObjFuncByRetTblIdxKey rhs = (ICFBamServerObjFuncByRetTblIdxKey)obj;
-			if( getOptionalRetTableId() != null && !getOptionalRetTableId().isNull() ) {
-				if( rhs.getOptionalRetTableId() != null && !rhs.getOptionalRetTableId().isNull() ) {
+			if( getOptionalRetTableId() != null ) {
+				if( rhs.getOptionalRetTableId() != null ) {
 					if( ! getOptionalRetTableId().equals( rhs.getOptionalRetTableId() ) ) {
 						return( false );
 					}
@@ -208,7 +208,7 @@ public class CFBamBuffServerObjFunc
 				}
 			}
 			else {
-				if( rhs.getOptionalRetTableId() != null && !getOptionalRetTableId().isNull()) {
+				if( rhs.getOptionalRetTableId() != null ) {
 					return( false );
 				}
 			}

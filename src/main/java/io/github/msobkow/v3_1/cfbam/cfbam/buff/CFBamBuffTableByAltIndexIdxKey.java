@@ -79,8 +79,8 @@ public class CFBamBuffTableByAltIndexIdxKey
 		}
 		else if( obj instanceof ICFBamTableByAltIndexIdxKey ) {
 			ICFBamTableByAltIndexIdxKey rhs = (ICFBamTableByAltIndexIdxKey)obj;
-			if( getOptionalAltIndexId() != null && !getOptionalAltIndexId().isNull() ) {
-				if( rhs.getOptionalAltIndexId() != null && !rhs.getOptionalAltIndexId().isNull() ) {
+			if( getOptionalAltIndexId() != null ) {
+				if( rhs.getOptionalAltIndexId() != null ) {
 					if( ! getOptionalAltIndexId().equals( rhs.getOptionalAltIndexId() ) ) {
 						return( false );
 					}
@@ -90,7 +90,7 @@ public class CFBamBuffTableByAltIndexIdxKey
 				}
 			}
 			else {
-				if( rhs.getOptionalAltIndexId() != null && !getOptionalAltIndexId().isNull()) {
+				if( rhs.getOptionalAltIndexId() != null ) {
 					return( false );
 				}
 			}
@@ -98,8 +98,8 @@ public class CFBamBuffTableByAltIndexIdxKey
 		}
 		else if( obj instanceof ICFBamTable) {
 			ICFBamTable rhs = (ICFBamTable)obj;
-			if( getOptionalAltIndexId() != null && !getOptionalAltIndexId().isNull() ) {
-				if( rhs.getOptionalAltIndexId() != null && !rhs.getOptionalAltIndexId().isNull() ) {
+			if( getOptionalAltIndexId() != null ) {
+				if( rhs.getOptionalAltIndexId() != null ) {
 					if( ! getOptionalAltIndexId().equals( rhs.getOptionalAltIndexId() ) ) {
 						return( false );
 					}
@@ -109,7 +109,7 @@ public class CFBamBuffTableByAltIndexIdxKey
 				}
 			}
 			else {
-				if( rhs.getOptionalAltIndexId() != null && !getOptionalAltIndexId().isNull()) {
+				if( rhs.getOptionalAltIndexId() != null ) {
 					return( false );
 				}
 			}
