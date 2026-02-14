@@ -39,6 +39,7 @@ import java.net.*;
 import java.rmi.*;
 import java.sql.*;
 import java.text.*;
+import java.time.*;
 import java.util.*;
 import io.github.msobkow.v3_1.cflib.*;
 import io.github.msobkow.v3_1.cflib.dbutil.*;
@@ -5760,5 +5761,8 @@ public class CFBamBuffSchema
 			}
 		}
 		return( buff.toString() );
+	}
+
+	public void bootstrapSchema() {
 	}
 }
