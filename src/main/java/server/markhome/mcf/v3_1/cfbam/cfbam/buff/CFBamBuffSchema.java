@@ -165,6 +165,7 @@ public class CFBamBuffSchema
 	protected ICFBamRelationColTable tableRelationCol;
 	protected ICFBamSchemaDefTable tableSchemaDef;
 	protected ICFBamSchemaRefTable tableSchemaRef;
+	protected ICFBamSchemaTweakTable tableSchemaTweak;
 	protected ICFBamScopeTable tableScope;
 	protected ICFSecSecClusGrpTable tableSecClusGrp;
 	protected ICFSecSecClusGrpIncTable tableSecClusGrpInc;
@@ -199,6 +200,7 @@ public class CFBamBuffSchema
 	protected ICFBamTZTimestampTypeTable tableTZTimestampType;
 	protected ICFBamTableTable tableTable;
 	protected ICFBamTableColTable tableTableCol;
+	protected ICFBamTableTweakTable tableTableTweak;
 	protected ICFSecTenantTable tableTenant;
 	protected ICFBamTextColTable tableTextCol;
 	protected ICFBamTextDefTable tableTextDef;
@@ -215,6 +217,7 @@ public class CFBamBuffSchema
 	protected ICFBamTokenTypeTable tableTokenType;
 	protected ICFIntTopDomainTable tableTopDomain;
 	protected ICFIntTopProjectTable tableTopProject;
+	protected ICFBamTweakTable tableTweak;
 	protected ICFBamUInt16ColTable tableUInt16Col;
 	protected ICFBamUInt16DefTable tableUInt16Def;
 	protected ICFBamUInt16TypeTable tableUInt16Type;
@@ -333,6 +336,7 @@ public class CFBamBuffSchema
 	protected ICFBamRelationColFactory factoryRelationCol;
 	protected ICFBamSchemaDefFactory factorySchemaDef;
 	protected ICFBamSchemaRefFactory factorySchemaRef;
+	protected ICFBamSchemaTweakFactory factorySchemaTweak;
 	protected ICFBamScopeFactory factoryScope;
 	protected ICFSecSecClusGrpFactory factorySecClusGrp;
 	protected ICFSecSecClusGrpIncFactory factorySecClusGrpInc;
@@ -367,6 +371,7 @@ public class CFBamBuffSchema
 	protected ICFBamTZTimestampTypeFactory factoryTZTimestampType;
 	protected ICFBamTableFactory factoryTable;
 	protected ICFBamTableColFactory factoryTableCol;
+	protected ICFBamTableTweakFactory factoryTableTweak;
 	protected ICFSecTenantFactory factoryTenant;
 	protected ICFBamTextColFactory factoryTextCol;
 	protected ICFBamTextDefFactory factoryTextDef;
@@ -383,6 +388,7 @@ public class CFBamBuffSchema
 	protected ICFBamTokenTypeFactory factoryTokenType;
 	protected ICFIntTopDomainFactory factoryTopDomain;
 	protected ICFIntTopProjectFactory factoryTopProject;
+	protected ICFBamTweakFactory factoryTweak;
 	protected ICFBamUInt16ColFactory factoryUInt16Col;
 	protected ICFBamUInt16DefFactory factoryUInt16Def;
 	protected ICFBamUInt16TypeFactory factoryUInt16Type;
@@ -507,6 +513,48 @@ public class CFBamBuffSchema
 		}
 		else {
 			throw new CFLibNullArgumentException(CFBamBuffSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamTable.CLASS_CODE)[" + ICFBamTable.CLASS_CODE + "]");
+		}
+	
+		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamTweak.CLASS_CODE);
+		if (entry != null) {
+			entry.setBackingRecConstructor( new BackingRecConstructor() {
+				@Override
+				public Object instantiate() {
+					ICFBamTweak ret = new CFBamBuffTweak();
+					return(ret);
+				}
+			});
+		}
+		else {
+			throw new CFLibNullArgumentException(CFBamBuffSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamTweak.CLASS_CODE)[" + ICFBamTweak.CLASS_CODE + "]");
+		}
+	
+		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamTableTweak.CLASS_CODE);
+		if (entry != null) {
+			entry.setBackingRecConstructor( new BackingRecConstructor() {
+				@Override
+				public Object instantiate() {
+					ICFBamTableTweak ret = new CFBamBuffTableTweak();
+					return(ret);
+				}
+			});
+		}
+		else {
+			throw new CFLibNullArgumentException(CFBamBuffSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamTableTweak.CLASS_CODE)[" + ICFBamTableTweak.CLASS_CODE + "]");
+		}
+	
+		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamSchemaTweak.CLASS_CODE);
+		if (entry != null) {
+			entry.setBackingRecConstructor( new BackingRecConstructor() {
+				@Override
+				public Object instantiate() {
+					ICFBamSchemaTweak ret = new CFBamBuffSchemaTweak();
+					return(ret);
+				}
+			});
+		}
+		else {
+			throw new CFLibNullArgumentException(CFBamBuffSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamSchemaTweak.CLASS_CODE)[" + ICFBamSchemaTweak.CLASS_CODE + "]");
 		}
 	
 		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamValue.CLASS_CODE);
@@ -2455,6 +2503,7 @@ public class CFBamBuffSchema
 	tableRelationCol = null; // new CFBamBuffRelationColTable();
 	tableSchemaDef = null; // new CFBamBuffSchemaDefTable();
 	tableSchemaRef = null; // new CFBamBuffSchemaRefTable();
+	tableSchemaTweak = null; // new CFBamBuffSchemaTweakTable();
 	tableScope = null; // new CFBamBuffScopeTable();
 	tableSecClusGrp = null; // new CFSecBuffSecClusGrpTable();
 	tableSecClusGrpInc = null; // new CFSecBuffSecClusGrpIncTable();
@@ -2489,6 +2538,7 @@ public class CFBamBuffSchema
 	tableTZTimestampType = null; // new CFBamBuffTZTimestampTypeTable();
 	tableTable = null; // new CFBamBuffTableTable();
 	tableTableCol = null; // new CFBamBuffTableColTable();
+	tableTableTweak = null; // new CFBamBuffTableTweakTable();
 	tableTenant = null; // new CFSecBuffTenantTable();
 	tableTextCol = null; // new CFBamBuffTextColTable();
 	tableTextDef = null; // new CFBamBuffTextDefTable();
@@ -2505,6 +2555,7 @@ public class CFBamBuffSchema
 	tableTokenType = null; // new CFBamBuffTokenTypeTable();
 	tableTopDomain = null; // new CFIntBuffTopDomainTable();
 	tableTopProject = null; // new CFIntBuffTopProjectTable();
+	tableTweak = null; // new CFBamBuffTweakTable();
 	tableUInt16Col = null; // new CFBamBuffUInt16ColTable();
 	tableUInt16Def = null; // new CFBamBuffUInt16DefTable();
 	tableUInt16Type = null; // new CFBamBuffUInt16TypeTable();
@@ -2623,6 +2674,7 @@ public class CFBamBuffSchema
 	factoryRelationCol = new CFBamBuffRelationColDefaultFactory();
 	factorySchemaDef = new CFBamBuffSchemaDefDefaultFactory();
 	factorySchemaRef = new CFBamBuffSchemaRefDefaultFactory();
+	factorySchemaTweak = new CFBamBuffSchemaTweakDefaultFactory();
 	factoryScope = new CFBamBuffScopeDefaultFactory();
 	factorySecClusGrp = new CFSecBuffSecClusGrpDefaultFactory();
 	factorySecClusGrpInc = new CFSecBuffSecClusGrpIncDefaultFactory();
@@ -2657,6 +2709,7 @@ public class CFBamBuffSchema
 	factoryTZTimestampType = new CFBamBuffTZTimestampTypeDefaultFactory();
 	factoryTable = new CFBamBuffTableDefaultFactory();
 	factoryTableCol = new CFBamBuffTableColDefaultFactory();
+	factoryTableTweak = new CFBamBuffTableTweakDefaultFactory();
 	factoryTenant = new CFSecBuffTenantDefaultFactory();
 	factoryTextCol = new CFBamBuffTextColDefaultFactory();
 	factoryTextDef = new CFBamBuffTextDefDefaultFactory();
@@ -2673,6 +2726,7 @@ public class CFBamBuffSchema
 	factoryTokenType = new CFBamBuffTokenTypeDefaultFactory();
 	factoryTopDomain = new CFIntBuffTopDomainDefaultFactory();
 	factoryTopProject = new CFIntBuffTopProjectDefaultFactory();
+	factoryTweak = new CFBamBuffTweakDefaultFactory();
 	factoryUInt16Col = new CFBamBuffUInt16ColDefaultFactory();
 	factoryUInt16Def = new CFBamBuffUInt16DefDefaultFactory();
 	factoryUInt16Type = new CFBamBuffUInt16TypeDefaultFactory();
@@ -2969,6 +3023,17 @@ public class CFBamBuffSchema
 	 *	@throws CFLibNotSupportedException thrown by client-side implementations.
 	 */
 	public CFLibDbKeyHash256 nextRelationColIdGen() {
+		return( new CFLibDbKeyHash256(0) );
+	}
+
+	/**
+	 *	Get the next TweakIdGen identifier.
+	 *
+	 *	@return	The next TweakIdGen identifier.
+	 *
+	 *	@throws CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	public CFLibDbKeyHash256 nextTweakIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}
 
@@ -4562,6 +4627,22 @@ public class CFBamBuffSchema
 		factorySchemaRef = value;
 	}
 
+	public ICFBamSchemaTweakTable getTableSchemaTweak() {
+		return( tableSchemaTweak );
+	}
+
+	public void setTableSchemaTweak( ICFBamSchemaTweakTable value ) {
+		tableSchemaTweak = value;
+	}
+
+	public ICFBamSchemaTweakFactory getFactorySchemaTweak() {
+		return( factorySchemaTweak );
+	}
+
+	public void setFactorySchemaTweak( ICFBamSchemaTweakFactory value ) {
+		factorySchemaTweak = value;
+	}
+
 	public ICFBamScopeTable getTableScope() {
 		return( tableScope );
 	}
@@ -5106,6 +5187,22 @@ public class CFBamBuffSchema
 		factoryTableCol = value;
 	}
 
+	public ICFBamTableTweakTable getTableTableTweak() {
+		return( tableTableTweak );
+	}
+
+	public void setTableTableTweak( ICFBamTableTweakTable value ) {
+		tableTableTweak = value;
+	}
+
+	public ICFBamTableTweakFactory getFactoryTableTweak() {
+		return( factoryTableTweak );
+	}
+
+	public void setFactoryTableTweak( ICFBamTableTweakFactory value ) {
+		factoryTableTweak = value;
+	}
+
 	public ICFSecTenantTable getTableTenant() {
 		return( tableTenant );
 	}
@@ -5360,6 +5457,22 @@ public class CFBamBuffSchema
 
 	public void setFactoryTopProject( ICFIntTopProjectFactory value ) {
 		factoryTopProject = value;
+	}
+
+	public ICFBamTweakTable getTableTweak() {
+		return( tableTweak );
+	}
+
+	public void setTableTweak( ICFBamTweakTable value ) {
+		tableTweak = value;
+	}
+
+	public ICFBamTweakFactory getFactoryTweak() {
+		return( factoryTweak );
+	}
+
+	public void setFactoryTweak( ICFBamTweakFactory value ) {
+		factoryTweak = value;
 	}
 
 	public ICFBamUInt16ColTable getTableUInt16Col() {

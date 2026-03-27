@@ -231,6 +231,29 @@ public class CFBamBuffSchemaDef
 		}
 	}
 	@Override
+	public List<ICFBamTweak> getOptionalComponentsTweaks() {
+		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
+		if (targetBackingSchema == null) {
+			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsTweaks", 0, "ICFBamSchema.getBackingCFBam()");
+		}
+		ICFBamTweakTable targetTable = targetBackingSchema.getTableTweak();
+		if (targetTable == null) {
+			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsTweaks", 0, "ICFBamSchema.getBackingCFBam().getTableTweak()");
+		}
+		ICFBamTweak[] targetArr = targetTable.readDerivedByScopeIdx(null, getRequiredId());
+		if( targetArr != null ) {
+			List<ICFBamTweak> results = new ArrayList<>(targetArr.length);
+			for (int idx = 0; idx < targetArr.length; idx++) {
+				results.add(targetArr[idx]);
+			}
+			return( results );
+		}
+		else {
+			List<ICFBamTweak> results = new ArrayList<>();
+			return( results );
+		}
+	}
+	@Override
 	public CFLibDbKeyHash256 getRequiredCTenantId() {
 		return( requiredCTenantId );
 	}
