@@ -178,7 +178,9 @@ public class CFBamBuffSchema
 	protected ICFSecSecTentGrpIncTable tableSecTentGrpInc;
 	protected ICFSecSecTentGrpMembTable tableSecTentGrpMemb;
 	protected ICFSecSecUserTable tableSecUser;
+	protected ICFSecSecUserEMConfTable tableSecUserEMConf;
 	protected ICFSecSecUserPWHistoryTable tableSecUserPWHistory;
+	protected ICFSecSecUserPWResetTable tableSecUserPWReset;
 	protected ICFSecSecUserPasswordTable tableSecUserPassword;
 	protected ICFBamServerListFuncTable tableServerListFunc;
 	protected ICFBamServerMethodTable tableServerMethod;
@@ -349,7 +351,9 @@ public class CFBamBuffSchema
 	protected ICFSecSecTentGrpIncFactory factorySecTentGrpInc;
 	protected ICFSecSecTentGrpMembFactory factorySecTentGrpMemb;
 	protected ICFSecSecUserFactory factorySecUser;
+	protected ICFSecSecUserEMConfFactory factorySecUserEMConf;
 	protected ICFSecSecUserPWHistoryFactory factorySecUserPWHistory;
+	protected ICFSecSecUserPWResetFactory factorySecUserPWReset;
 	protected ICFSecSecUserPasswordFactory factorySecUserPassword;
 	protected ICFBamServerListFuncFactory factoryServerListFunc;
 	protected ICFBamServerMethodFactory factoryServerMethod;
@@ -2516,7 +2520,9 @@ public class CFBamBuffSchema
 	tableSecTentGrpInc = null; // new CFSecBuffSecTentGrpIncTable();
 	tableSecTentGrpMemb = null; // new CFSecBuffSecTentGrpMembTable();
 	tableSecUser = null; // new CFSecBuffSecUserTable();
+	tableSecUserEMConf = null; // new CFSecBuffSecUserEMConfTable();
 	tableSecUserPWHistory = null; // new CFSecBuffSecUserPWHistoryTable();
+	tableSecUserPWReset = null; // new CFSecBuffSecUserPWResetTable();
 	tableSecUserPassword = null; // new CFSecBuffSecUserPasswordTable();
 	tableServerListFunc = null; // new CFBamBuffServerListFuncTable();
 	tableServerMethod = null; // new CFBamBuffServerMethodTable();
@@ -2687,7 +2693,9 @@ public class CFBamBuffSchema
 	factorySecTentGrpInc = new CFSecBuffSecTentGrpIncDefaultFactory();
 	factorySecTentGrpMemb = new CFSecBuffSecTentGrpMembDefaultFactory();
 	factorySecUser = new CFSecBuffSecUserDefaultFactory();
+	factorySecUserEMConf = new CFSecBuffSecUserEMConfDefaultFactory();
 	factorySecUserPWHistory = new CFSecBuffSecUserPWHistoryDefaultFactory();
+	factorySecUserPWReset = new CFSecBuffSecUserPWResetDefaultFactory();
 	factorySecUserPassword = new CFSecBuffSecUserPasswordDefaultFactory();
 	factoryServerListFunc = new CFBamBuffServerListFuncDefaultFactory();
 	factoryServerMethod = new CFBamBuffServerMethodDefaultFactory();
@@ -4835,6 +4843,22 @@ public class CFBamBuffSchema
 		factorySecUser = value;
 	}
 
+	public ICFSecSecUserEMConfTable getTableSecUserEMConf() {
+		return( tableSecUserEMConf );
+	}
+
+	public void setTableSecUserEMConf( ICFSecSecUserEMConfTable value ) {
+		tableSecUserEMConf = value;
+	}
+
+	public ICFSecSecUserEMConfFactory getFactorySecUserEMConf() {
+		return( factorySecUserEMConf );
+	}
+
+	public void setFactorySecUserEMConf( ICFSecSecUserEMConfFactory value ) {
+		factorySecUserEMConf = value;
+	}
+
 	public ICFSecSecUserPWHistoryTable getTableSecUserPWHistory() {
 		return( tableSecUserPWHistory );
 	}
@@ -4849,6 +4873,22 @@ public class CFBamBuffSchema
 
 	public void setFactorySecUserPWHistory( ICFSecSecUserPWHistoryFactory value ) {
 		factorySecUserPWHistory = value;
+	}
+
+	public ICFSecSecUserPWResetTable getTableSecUserPWReset() {
+		return( tableSecUserPWReset );
+	}
+
+	public void setTableSecUserPWReset( ICFSecSecUserPWResetTable value ) {
+		tableSecUserPWReset = value;
+	}
+
+	public ICFSecSecUserPWResetFactory getFactorySecUserPWReset() {
+		return( factorySecUserPWReset );
+	}
+
+	public void setFactorySecUserPWReset( ICFSecSecUserPWResetFactory value ) {
+		factorySecUserPWReset = value;
 	}
 
 	public ICFSecSecUserPasswordTable getTableSecUserPassword() {
