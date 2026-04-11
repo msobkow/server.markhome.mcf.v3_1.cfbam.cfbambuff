@@ -79,6 +79,7 @@ public class CFBamBuffTweak
 	protected CFLibDbKeyHash256 optionalDefSchemaTenantId;
 	protected CFLibDbKeyHash256 optionalDefSchemaId;
 	protected String requiredName;
+	protected boolean requiredReplacesInherited;
 	protected String requiredTweakGelText;
 
 	public CFBamBuffTweak() {
@@ -88,6 +89,7 @@ public class CFBamBuffTweak
 		optionalDefSchemaTenantId = CFLibDbKeyHash256.nullGet();
 		optionalDefSchemaId = CFLibDbKeyHash256.nullGet();
 		requiredName = ICFBamTweak.NAME_INIT_VALUE;
+		requiredReplacesInherited = ICFBamTweak.REPLACESINHERITED_INIT_VALUE;
 		requiredTweakGelText = ICFBamTweak.TWEAKGELTEXT_INIT_VALUE;
 	}
 
@@ -288,6 +290,16 @@ public class CFBamBuffTweak
 	}
 
 	@Override
+	public boolean getRequiredReplacesInherited() {
+		return( requiredReplacesInherited );
+	}
+
+	@Override
+	public void setRequiredReplacesInherited( boolean value ) {
+		requiredReplacesInherited = value;
+	}
+
+	@Override
 	public String getRequiredTweakGelText() {
 		return( requiredTweakGelText );
 	}
@@ -420,6 +432,9 @@ public class CFBamBuffTweak
 					return( false );
 				}
 			}
+			if( getRequiredReplacesInherited() != rhs.getRequiredReplacesInherited() ) {
+				return( false );
+			}
 			if( getRequiredTweakGelText() != null ) {
 				if( rhs.getRequiredTweakGelText() != null ) {
 					if( ! getRequiredTweakGelText().equals( rhs.getRequiredTweakGelText() ) ) {
@@ -528,6 +543,9 @@ public class CFBamBuffTweak
 				if( rhs.getRequiredName() != null ) {
 					return( false );
 				}
+			}
+			if( getRequiredReplacesInherited() != rhs.getRequiredReplacesInherited() ) {
+				return( false );
 			}
 			if( getRequiredTweakGelText() != null ) {
 				if( rhs.getRequiredTweakGelText() != null ) {
@@ -656,6 +674,85 @@ public class CFBamBuffTweak
 			}
 			return( true );
 		}
+		else if( obj instanceof ICFBamTweakByUDefIdxKey ) {
+			ICFBamTweakByUDefIdxKey rhs = (ICFBamTweakByUDefIdxKey)obj;
+			if( getRequiredTenantId() != null ) {
+				if( rhs.getRequiredTenantId() != null ) {
+					if( ! getRequiredTenantId().equals( rhs.getRequiredTenantId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredTenantId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredScopeId() != null ) {
+				if( rhs.getRequiredScopeId() != null ) {
+					if( ! getRequiredScopeId().equals( rhs.getRequiredScopeId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredScopeId() != null ) {
+					return( false );
+				}
+			}
+			if( getOptionalDefSchemaTenantId() != null ) {
+				if( rhs.getOptionalDefSchemaTenantId() != null ) {
+					if( ! getOptionalDefSchemaTenantId().equals( rhs.getOptionalDefSchemaTenantId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaTenantId() != null ) {
+					return( false );
+				}
+			}
+			if( getOptionalDefSchemaId() != null ) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					if( ! getOptionalDefSchemaId().equals( rhs.getOptionalDefSchemaId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredName() != null ) {
+				if( rhs.getRequiredName() != null ) {
+					if( ! getRequiredName().equals( rhs.getRequiredName() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredName() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
 		else {
 			return( false );
 		}
@@ -679,6 +776,12 @@ public class CFBamBuffTweak
 		}
 		if( getRequiredName() != null ) {
 			hashCode = hashCode + getRequiredName().hashCode();
+		}
+		if( getRequiredReplacesInherited() ) {
+			hashCode = ( hashCode * 2 ) + 1;
+		}
+		else {
+			hashCode = hashCode * 2;
 		}
 		if( getRequiredTweakGelText() != null ) {
 			hashCode = hashCode + getRequiredTweakGelText().hashCode();
@@ -803,6 +906,16 @@ public class CFBamBuffTweak
 			}
 			else if (rhs.getRequiredName() != null) {
 				return( -1 );
+			}
+			if( getRequiredReplacesInherited() ) {
+				if( ! rhs.getRequiredReplacesInherited() ) {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getRequiredReplacesInherited() ) {
+					return( -1 );
+				}
 			}
 			if (getRequiredTweakGelText() != null) {
 				if (rhs.getRequiredTweakGelText() != null) {
@@ -935,6 +1048,16 @@ public class CFBamBuffTweak
 			else if (rhs.getRequiredName() != null) {
 				return( -1 );
 			}
+			if( getRequiredReplacesInherited() ) {
+				if( ! rhs.getRequiredReplacesInherited() ) {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getRequiredReplacesInherited() ) {
+					return( -1 );
+				}
+			}
 			if (getRequiredTweakGelText() != null) {
 				if (rhs.getRequiredTweakGelText() != null) {
 					cmp = getRequiredTweakGelText().compareTo( rhs.getRequiredTweakGelText() );
@@ -1039,6 +1162,84 @@ public class CFBamBuffTweak
 				}
 			}			return( 0 );
 		}
+		else if( obj instanceof ICFBamTweakByUDefIdxKey ) {
+			ICFBamTweakByUDefIdxKey rhs = (ICFBamTweakByUDefIdxKey)obj;
+
+			if (getRequiredTenantId() != null) {
+				if (rhs.getRequiredTenantId() != null) {
+					cmp = getRequiredTenantId().compareTo( rhs.getRequiredTenantId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredTenantId() != null) {
+				return( -1 );
+			}
+			if (getRequiredScopeId() != null) {
+				if (rhs.getRequiredScopeId() != null) {
+					cmp = getRequiredScopeId().compareTo( rhs.getRequiredScopeId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredScopeId() != null) {
+				return( -1 );
+			}
+			if( getOptionalDefSchemaTenantId() != null ) {
+				if( rhs.getOptionalDefSchemaTenantId() != null ) {
+					cmp = getOptionalDefSchemaTenantId().compareTo( rhs.getOptionalDefSchemaTenantId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaTenantId() != null ) {
+					return( -1 );
+				}
+			}
+			if( getOptionalDefSchemaId() != null ) {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					cmp = getOptionalDefSchemaId().compareTo( rhs.getOptionalDefSchemaId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else {
+				if( rhs.getOptionalDefSchemaId() != null ) {
+					return( -1 );
+				}
+			}
+			if (getRequiredName() != null) {
+				if (rhs.getRequiredName() != null) {
+					cmp = getRequiredName().compareTo( rhs.getRequiredName() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredName() != null) {
+				return( -1 );
+			}			return( 0 );
+		}
 		else {
 			throw new CFLibUnsupportedClassException( getClass(),
 				"compareTo",
@@ -1066,6 +1267,7 @@ public class CFBamBuffTweak
 		setRequiredTenantId(src.getRequiredTenantId());
 		setOptionalDefSchemaTenantId(src.getOptionalDefSchemaTenantId());
 		setRequiredName(src.getRequiredName());
+		setRequiredReplacesInherited(src.getRequiredReplacesInherited());
 		setRequiredTweakGelText(src.getRequiredTweakGelText());
 	}
 
@@ -1082,6 +1284,7 @@ public class CFBamBuffTweak
 		setRequiredTenantId(src.getRequiredTenantId());
 		setOptionalDefSchemaTenantId(src.getOptionalDefSchemaTenantId());
 		setRequiredName(src.getRequiredName());
+		setRequiredReplacesInherited(src.getRequiredReplacesInherited());
 		setRequiredTweakGelText(src.getRequiredTweakGelText());
 	}
 
@@ -1097,6 +1300,7 @@ public class CFBamBuffTweak
 			+ " OptionalDefSchemaTenantId=" + ( ( getOptionalDefSchemaTenantId() == null ) ? "null" : "\"" + getOptionalDefSchemaTenantId().toString() + "\"" )
 			+ " OptionalDefSchemaId=" + ( ( getOptionalDefSchemaId() == null ) ? "null" : "\"" + getOptionalDefSchemaId().toString() + "\"" )
 			+ " RequiredName=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredName() ) + "\""
+			+ " RequiredReplacesInherited=" + (( getRequiredReplacesInherited() ) ? "\"true\"" : "\"false\"" )
 			+ " RequiredTweakGelText=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredTweakGelText() ) + "\"";
 		return( ret );
 	}
