@@ -5881,6 +5881,11 @@ public class CFBamBuffSchema
 		return( buff.toString() );
 	}
 
-	public void bootstrapSchema() {
+	public void bootstrapSchema(CFSecTableInfo tableInfo[]) {
+		ICFSecSchema.getBackingCFSec().bootstrapSchema(tableInfo);
+	}
+	
+	public void bootstrapAllTablesSecurity(CFLibDbKeyHash256 clusterId, CFLibDbKeyHash256 tenantId, CFSecTableInfo tableInfo[]) {
+		ICFSecSchema.getBackingCFSec().bootstrapAllTablesSecurity(clusterId, tenantId, tableInfo);
 	}
 }
