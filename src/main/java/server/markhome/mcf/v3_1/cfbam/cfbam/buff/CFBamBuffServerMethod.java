@@ -162,29 +162,6 @@ public class CFBamBuffServerMethod
 	}
 
 	@Override
-	public List<ICFBamParam> getOptionalComponentsParams() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsParams", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamParamTable targetTable = targetBackingSchema.getTableParam();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsParams", 0, "ICFBamSchema.getBackingCFBam().getTableParam()");
-		}
-		ICFBamParam[] targetArr = targetTable.readDerivedByServerMethodIdx(null, getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamParam> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamParam> results = new ArrayList<>();
-			return( results );
-		}
-	}
-	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
 		return( requiredTableId );
 	}

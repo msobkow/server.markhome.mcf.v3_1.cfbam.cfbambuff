@@ -112,29 +112,6 @@ public class CFBamBuffClearSubDep1
 	}
 
 	@Override
-	public List<ICFBamClearSubDep2> getOptionalComponentsClearDep() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsClearDep", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamClearSubDep2Table targetTable = targetBackingSchema.getTableClearSubDep2();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsClearDep", 0, "ICFBamSchema.getBackingCFBam().getTableClearSubDep2()");
-		}
-		ICFBamClearSubDep2[] targetArr = targetTable.readDerivedByClearSubDep1Idx(null, getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamClearSubDep2> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamClearSubDep2> results = new ArrayList<>();
-			return( results );
-		}
-	}
-	@Override
 	public CFLibDbKeyHash256 getRequiredClearTopDepId() {
 		return( requiredClearTopDepId );
 	}

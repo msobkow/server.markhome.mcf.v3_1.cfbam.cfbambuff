@@ -172,29 +172,6 @@ public class CFBamBuffDelTopDep
 	}
 
 	@Override
-	public List<ICFBamDelSubDep1> getOptionalComponentsDelDep() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsDelDep", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamDelSubDep1Table targetTable = targetBackingSchema.getTableDelSubDep1();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsDelDep", 0, "ICFBamSchema.getBackingCFBam().getTableDelSubDep1()");
-		}
-		ICFBamDelSubDep1[] targetArr = targetTable.readDerivedByDelTopDepIdx(null, getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamDelSubDep1> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamDelSubDep1> results = new ArrayList<>();
-			return( results );
-		}
-	}
-	@Override
 	public String getRequiredName() {
 		return( requiredName );
 	}

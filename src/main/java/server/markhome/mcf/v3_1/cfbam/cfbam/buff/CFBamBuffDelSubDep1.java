@@ -112,29 +112,6 @@ public class CFBamBuffDelSubDep1
 	}
 
 	@Override
-	public List<ICFBamDelSubDep2> getOptionalComponentsDelDep() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsDelDep", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamDelSubDep2Table targetTable = targetBackingSchema.getTableDelSubDep2();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsDelDep", 0, "ICFBamSchema.getBackingCFBam().getTableDelSubDep2()");
-		}
-		ICFBamDelSubDep2[] targetArr = targetTable.readDerivedByContDelDep1Idx(null, getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamDelSubDep2> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamDelSubDep2> results = new ArrayList<>();
-			return( results );
-		}
-	}
-	@Override
 	public CFLibDbKeyHash256 getRequiredDelTopDepId() {
 		return( requiredDelTopDepId );
 	}

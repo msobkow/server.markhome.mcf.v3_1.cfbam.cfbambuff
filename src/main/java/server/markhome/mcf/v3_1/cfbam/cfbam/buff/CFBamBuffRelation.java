@@ -284,52 +284,6 @@ public class CFBamBuffRelation
 	}
 
 	@Override
-	public List<ICFBamRelationCol> getOptionalComponentsColumns() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsColumns", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamRelationColTable targetTable = targetBackingSchema.getTableRelationCol();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsColumns", 0, "ICFBamSchema.getBackingCFBam().getTableRelationCol()");
-		}
-		ICFBamRelationCol[] targetArr = targetTable.readDerivedByRelationIdx(null, getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamRelationCol> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamRelationCol> results = new ArrayList<>();
-			return( results );
-		}
-	}
-	@Override
-	public List<ICFBamPopTopDep> getOptionalComponentsPopDep() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsPopDep", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamPopTopDepTable targetTable = targetBackingSchema.getTablePopTopDep();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsPopDep", 0, "ICFBamSchema.getBackingCFBam().getTablePopTopDep()");
-		}
-		ICFBamPopTopDep[] targetArr = targetTable.readDerivedByContRelIdx(null, getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamPopTopDep> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamPopTopDep> results = new ArrayList<>();
-			return( results );
-		}
-	}
-	@Override
 	public CFLibDbKeyHash256 getRequiredTableId() {
 		return( requiredTableId );
 	}

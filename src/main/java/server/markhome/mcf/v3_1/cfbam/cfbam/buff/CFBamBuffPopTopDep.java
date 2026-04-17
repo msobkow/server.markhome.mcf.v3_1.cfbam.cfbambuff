@@ -112,29 +112,6 @@ public class CFBamBuffPopTopDep
 	}
 
 	@Override
-	public List<ICFBamPopSubDep1> getOptionalComponentsPopDep() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsPopDep", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamPopSubDep1Table targetTable = targetBackingSchema.getTablePopSubDep1();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalComponentsPopDep", 0, "ICFBamSchema.getBackingCFBam().getTablePopSubDep1()");
-		}
-		ICFBamPopSubDep1[] targetArr = targetTable.readDerivedByPopTopDepIdx(null, getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamPopSubDep1> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamPopSubDep1> results = new ArrayList<>();
-			return( results );
-		}
-	}
-	@Override
 	public CFLibDbKeyHash256 getRequiredContRelationId() {
 		return( requiredContRelationId );
 	}
