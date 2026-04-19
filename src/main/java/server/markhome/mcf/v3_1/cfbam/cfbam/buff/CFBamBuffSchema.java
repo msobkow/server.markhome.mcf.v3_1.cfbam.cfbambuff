@@ -133,6 +133,7 @@ public class CFBamBuffSchema
 	protected ICFBamId64GenTable tableId64Gen;
 	protected ICFBamIndexTable tableIndex;
 	protected ICFBamIndexColTable tableIndexCol;
+	protected ICFBamIndexTweakTable tableIndexTweak;
 	protected ICFBamInt16ColTable tableInt16Col;
 	protected ICFBamInt16DefTable tableInt16Def;
 	protected ICFBamInt16TypeTable tableInt16Type;
@@ -306,6 +307,7 @@ public class CFBamBuffSchema
 	protected ICFBamId64GenFactory factoryId64Gen;
 	protected ICFBamIndexFactory factoryIndex;
 	protected ICFBamIndexColFactory factoryIndexCol;
+	protected ICFBamIndexTweakFactory factoryIndexTweak;
 	protected ICFBamInt16ColFactory factoryInt16Col;
 	protected ICFBamInt16DefFactory factoryInt16Def;
 	protected ICFBamInt16TypeFactory factoryInt16Type;
@@ -559,6 +561,20 @@ public class CFBamBuffSchema
 		}
 		else {
 			throw new CFLibNullArgumentException(CFBamBuffSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamSchemaTweak.CLASS_CODE)[" + ICFBamSchemaTweak.CLASS_CODE + "]");
+		}
+	
+		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamIndexTweak.CLASS_CODE);
+		if (entry != null) {
+			entry.setBackingRecConstructor( new BackingRecConstructor() {
+				@Override
+				public Object instantiate() {
+					ICFBamIndexTweak ret = new CFBamBuffIndexTweak();
+					return(ret);
+				}
+			});
+		}
+		else {
+			throw new CFLibNullArgumentException(CFBamBuffSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamIndexTweak.CLASS_CODE)[" + ICFBamIndexTweak.CLASS_CODE + "]");
 		}
 	
 		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamValue.CLASS_CODE);
@@ -2475,6 +2491,7 @@ public class CFBamBuffSchema
 	tableId64Gen = null; // new CFBamBuffId64GenTable();
 	tableIndex = null; // new CFBamBuffIndexTable();
 	tableIndexCol = null; // new CFBamBuffIndexColTable();
+	tableIndexTweak = null; // new CFBamBuffIndexTweakTable();
 	tableInt16Col = null; // new CFBamBuffInt16ColTable();
 	tableInt16Def = null; // new CFBamBuffInt16DefTable();
 	tableInt16Type = null; // new CFBamBuffInt16TypeTable();
@@ -2648,6 +2665,7 @@ public class CFBamBuffSchema
 	factoryId64Gen = new CFBamBuffId64GenDefaultFactory();
 	factoryIndex = new CFBamBuffIndexDefaultFactory();
 	factoryIndexCol = new CFBamBuffIndexColDefaultFactory();
+	factoryIndexTweak = new CFBamBuffIndexTweakDefaultFactory();
 	factoryInt16Col = new CFBamBuffInt16ColDefaultFactory();
 	factoryInt16Def = new CFBamBuffInt16DefDefaultFactory();
 	factoryInt16Type = new CFBamBuffInt16TypeDefaultFactory();
@@ -4121,6 +4139,22 @@ public class CFBamBuffSchema
 
 	public void setFactoryIndexCol( ICFBamIndexColFactory value ) {
 		factoryIndexCol = value;
+	}
+
+	public ICFBamIndexTweakTable getTableIndexTweak() {
+		return( tableIndexTweak );
+	}
+
+	public void setTableIndexTweak( ICFBamIndexTweakTable value ) {
+		tableIndexTweak = value;
+	}
+
+	public ICFBamIndexTweakFactory getFactoryIndexTweak() {
+		return( factoryIndexTweak );
+	}
+
+	public void setFactoryIndexTweak( ICFBamIndexTweakFactory value ) {
+		factoryIndexTweak = value;
 	}
 
 	public ICFBamInt16ColTable getTableInt16Col() {
