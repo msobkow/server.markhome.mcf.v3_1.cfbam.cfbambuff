@@ -164,8 +164,10 @@ public class CFBamBuffSchema
 	protected ICFBamPopTopDepTable tablePopTopDep;
 	protected ICFBamRelationTable tableRelation;
 	protected ICFBamRelationColTable tableRelationCol;
+	protected ICFBamRoleDefTable tableRoleDef;
 	protected ICFBamSchemaDefTable tableSchemaDef;
 	protected ICFBamSchemaRefTable tableSchemaRef;
+	protected ICFBamSchemaRoleTable tableSchemaRole;
 	protected ICFBamSchemaTweakTable tableSchemaTweak;
 	protected ICFBamScopeTable tableScope;
 	protected ICFSecSecClusGrpTable tableSecClusGrp;
@@ -345,8 +347,10 @@ public class CFBamBuffSchema
 	protected ICFBamPopTopDepFactory factoryPopTopDep;
 	protected ICFBamRelationFactory factoryRelation;
 	protected ICFBamRelationColFactory factoryRelationCol;
+	protected ICFBamRoleDefFactory factoryRoleDef;
 	protected ICFBamSchemaDefFactory factorySchemaDef;
 	protected ICFBamSchemaRefFactory factorySchemaRef;
+	protected ICFBamSchemaRoleFactory factorySchemaRole;
 	protected ICFBamSchemaTweakFactory factorySchemaTweak;
 	protected ICFBamScopeFactory factoryScope;
 	protected ICFSecSecClusGrpFactory factorySecClusGrp;
@@ -2397,6 +2401,34 @@ public class CFBamBuffSchema
 			throw new CFLibNullArgumentException(CFBamBuffSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamUuid6Gen.CLASS_CODE)[" + ICFBamUuid6Gen.CLASS_CODE + "]");
 		}
 	
+		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamRoleDef.CLASS_CODE);
+		if (entry != null) {
+			entry.setBackingRecConstructor( new BackingRecConstructor() {
+				@Override
+				public Object instantiate() {
+					ICFBamRoleDef ret = new CFBamBuffRoleDef();
+					return(ret);
+				}
+			});
+		}
+		else {
+			throw new CFLibNullArgumentException(CFBamBuffSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamRoleDef.CLASS_CODE)[" + ICFBamRoleDef.CLASS_CODE + "]");
+		}
+	
+		entry = ICFBamSchema.getClassMapByBackingClassCode(ICFBamSchemaRole.CLASS_CODE);
+		if (entry != null) {
+			entry.setBackingRecConstructor( new BackingRecConstructor() {
+				@Override
+				public Object instantiate() {
+					ICFBamSchemaRole ret = new CFBamBuffSchemaRole();
+					return(ret);
+				}
+			});
+		}
+		else {
+			throw new CFLibNullArgumentException(CFBamBuffSchema.class, "wireRecConstructors", 0, "ICFBamSchema.getClassMapByBackingClassCode(ICFBamSchemaRole.CLASS_CODE)[" + ICFBamSchemaRole.CLASS_CODE + "]");
+		}
+	
 	}
 
 	@Override
@@ -2536,8 +2568,10 @@ public class CFBamBuffSchema
 	tablePopTopDep = null; // new CFBamBuffPopTopDepTable();
 	tableRelation = null; // new CFBamBuffRelationTable();
 	tableRelationCol = null; // new CFBamBuffRelationColTable();
+	tableRoleDef = null; // new CFBamBuffRoleDefTable();
 	tableSchemaDef = null; // new CFBamBuffSchemaDefTable();
 	tableSchemaRef = null; // new CFBamBuffSchemaRefTable();
+	tableSchemaRole = null; // new CFBamBuffSchemaRoleTable();
 	tableSchemaTweak = null; // new CFBamBuffSchemaTweakTable();
 	tableScope = null; // new CFBamBuffScopeTable();
 	tableSecClusGrp = null; // new CFSecBuffSecClusGrpTable();
@@ -2717,8 +2751,10 @@ public class CFBamBuffSchema
 	factoryPopTopDep = new CFBamBuffPopTopDepDefaultFactory();
 	factoryRelation = new CFBamBuffRelationDefaultFactory();
 	factoryRelationCol = new CFBamBuffRelationColDefaultFactory();
+	factoryRoleDef = new CFBamBuffRoleDefDefaultFactory();
 	factorySchemaDef = new CFBamBuffSchemaDefDefaultFactory();
 	factorySchemaRef = new CFBamBuffSchemaRefDefaultFactory();
+	factorySchemaRole = new CFBamBuffSchemaRoleDefaultFactory();
 	factorySchemaTweak = new CFBamBuffSchemaTweakDefaultFactory();
 	factoryScope = new CFBamBuffScopeDefaultFactory();
 	factorySecClusGrp = new CFSecBuffSecClusGrpDefaultFactory();
@@ -3132,6 +3168,17 @@ public class CFBamBuffSchema
 	 *	@throws CFLibNotSupportedException thrown by client-side implementations.
 	 */
 	public CFLibDbKeyHash256 nextValueIdGen() {
+		return( new CFLibDbKeyHash256(0) );
+	}
+
+	/**
+	 *	Get the next RoleIdGen identifier.
+	 *
+	 *	@return	The next RoleIdGen identifier.
+	 *
+	 *	@throws CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	public CFLibDbKeyHash256 nextRoleIdGen() {
 		return( new CFLibDbKeyHash256(0) );
 	}
 
@@ -4687,6 +4734,22 @@ public class CFBamBuffSchema
 		factoryRelationCol = value;
 	}
 
+	public ICFBamRoleDefTable getTableRoleDef() {
+		return( tableRoleDef );
+	}
+
+	public void setTableRoleDef( ICFBamRoleDefTable value ) {
+		tableRoleDef = value;
+	}
+
+	public ICFBamRoleDefFactory getFactoryRoleDef() {
+		return( factoryRoleDef );
+	}
+
+	public void setFactoryRoleDef( ICFBamRoleDefFactory value ) {
+		factoryRoleDef = value;
+	}
+
 	public ICFBamSchemaDefTable getTableSchemaDef() {
 		return( tableSchemaDef );
 	}
@@ -4717,6 +4780,22 @@ public class CFBamBuffSchema
 
 	public void setFactorySchemaRef( ICFBamSchemaRefFactory value ) {
 		factorySchemaRef = value;
+	}
+
+	public ICFBamSchemaRoleTable getTableSchemaRole() {
+		return( tableSchemaRole );
+	}
+
+	public void setTableSchemaRole( ICFBamSchemaRoleTable value ) {
+		tableSchemaRole = value;
+	}
+
+	public ICFBamSchemaRoleFactory getFactorySchemaRole() {
+		return( factorySchemaRole );
+	}
+
+	public void setFactorySchemaRole( ICFBamSchemaRoleFactory value ) {
+		factorySchemaRole = value;
 	}
 
 	public ICFBamSchemaTweakTable getTableSchemaTweak() {
