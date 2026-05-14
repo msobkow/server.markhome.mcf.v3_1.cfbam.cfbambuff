@@ -93,7 +93,7 @@ public class CFBamBuffPopSubDep1
 		if (targetTable == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerContPopTopDep", 0, "ICFBamSchema.getBackingCFBam().getTablePopTopDep()");
 		}
-		ICFBamPopTopDep targetRec = targetTable.readDerived(null, getRequiredPopTopDepId());
+		ICFBamPopTopDep targetRec = targetTable.readDerived(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), getRequiredPopTopDepId());
 		return(targetRec);
 	}
 	@Override

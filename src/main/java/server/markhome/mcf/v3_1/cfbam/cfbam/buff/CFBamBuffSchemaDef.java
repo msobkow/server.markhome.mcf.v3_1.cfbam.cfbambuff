@@ -115,7 +115,7 @@ public class CFBamBuffSchemaDef
 		if (targetTable == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredContainerMinorVersion", 0, "ICFIntSchema.getBackingCFInt().getTableMinorVersion()");
 		}
-		ICFIntMinorVersion targetRec = targetTable.readDerived(null, getRequiredMinorVersionId());
+		ICFIntMinorVersion targetRec = targetTable.readDerived(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), getRequiredMinorVersionId());
 		return(targetRec);
 	}
 	@Override
@@ -143,7 +143,7 @@ public class CFBamBuffSchemaDef
 		if (targetTable == null) {
 			throw new CFLibNullArgumentException(getClass(), "setRequiredOwnerCTenant", 0, "ICFSecSchema.getBackingCFSec().getTableTenant()");
 		}
-		ICFSecTenant targetRec = targetTable.readDerived(null, getRequiredCTenantId());
+		ICFSecTenant targetRec = targetTable.readDerived(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), getRequiredCTenantId());
 		return(targetRec);
 	}
 	@Override
