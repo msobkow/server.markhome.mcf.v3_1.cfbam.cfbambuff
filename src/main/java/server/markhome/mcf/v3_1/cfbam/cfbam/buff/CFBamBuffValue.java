@@ -116,6 +116,52 @@ public class CFBamBuffValue
 	}
 
 	@Override
+	public List<ICFBamTableCol> getOptionalChildrenRefTableCol() {
+		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
+		if (targetBackingSchema == null) {
+			throw new CFLibNullArgumentException(getClass(), "setOptionalChildrenRefTableCol", 0, "ICFBamSchema.getBackingCFBam()");
+		}
+		ICFBamTableColTable targetTable = targetBackingSchema.getTableTableCol();
+		if (targetTable == null) {
+			throw new CFLibNullArgumentException(getClass(), "setOptionalChildrenRefTableCol", 0, "ICFBamSchema.getBackingCFBam().getTableTableCol()");
+		}
+		ICFBamTableCol[] targetArr = targetTable.readDerivedByDataIdx(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), getRequiredId());
+		if( targetArr != null ) {
+			List<ICFBamTableCol> results = new ArrayList<>(targetArr.length);
+			for (int idx = 0; idx < targetArr.length; idx++) {
+				results.add(targetArr[idx]);
+			}
+			return( results );
+		}
+		else {
+			List<ICFBamTableCol> results = new ArrayList<>();
+			return( results );
+		}
+	}
+	@Override
+	public List<ICFBamIndexCol> getOptionalChildrenRefIndexCol() {
+		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
+		if (targetBackingSchema == null) {
+			throw new CFLibNullArgumentException(getClass(), "setOptionalChildrenRefIndexCol", 0, "ICFBamSchema.getBackingCFBam()");
+		}
+		ICFBamIndexColTable targetTable = targetBackingSchema.getTableIndexCol();
+		if (targetTable == null) {
+			throw new CFLibNullArgumentException(getClass(), "setOptionalChildrenRefIndexCol", 0, "ICFBamSchema.getBackingCFBam().getTableIndexCol()");
+		}
+		ICFBamIndexCol[] targetArr = targetTable.readDerivedByColIdx(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), getRequiredId());
+		if( targetArr != null ) {
+			List<ICFBamIndexCol> results = new ArrayList<>(targetArr.length);
+			for (int idx = 0; idx < targetArr.length; idx++) {
+				results.add(targetArr[idx]);
+			}
+			return( results );
+		}
+		else {
+			List<ICFBamIndexCol> results = new ArrayList<>();
+			return( results );
+		}
+	}
+	@Override
 	public CFLibDbKeyHash256 getRequiredId() {
 		return( requiredId );
 	}
@@ -185,52 +231,6 @@ public class CFBamBuffValue
 		return( ICFBamValue.CLASS_CODE );
 	}
 
-	@Override
-	public List<ICFBamTableCol> getOptionalChildrenRefTableCol() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalChildrenRefTableCol", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamTableColTable targetTable = targetBackingSchema.getTableTableCol();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalChildrenRefTableCol", 0, "ICFBamSchema.getBackingCFBam().getTableTableCol()");
-		}
-		ICFBamTableCol[] targetArr = targetTable.readDerivedByDataIdx(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamTableCol> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamTableCol> results = new ArrayList<>();
-			return( results );
-		}
-	}
-	@Override
-	public List<ICFBamIndexCol> getOptionalChildrenRefIndexCol() {
-		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
-		if (targetBackingSchema == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalChildrenRefIndexCol", 0, "ICFBamSchema.getBackingCFBam()");
-		}
-		ICFBamIndexColTable targetTable = targetBackingSchema.getTableIndexCol();
-		if (targetTable == null) {
-			throw new CFLibNullArgumentException(getClass(), "setOptionalChildrenRefIndexCol", 0, "ICFBamSchema.getBackingCFBam().getTableIndexCol()");
-		}
-		ICFBamIndexCol[] targetArr = targetTable.readDerivedByColIdx(ICFSecSchema.getAuthorizationCallback().getEffectiveAuthorization(), getRequiredId());
-		if( targetArr != null ) {
-			List<ICFBamIndexCol> results = new ArrayList<>(targetArr.length);
-			for (int idx = 0; idx < targetArr.length; idx++) {
-				results.add(targetArr[idx]);
-			}
-			return( results );
-		}
-		else {
-			List<ICFBamIndexCol> results = new ArrayList<>();
-			return( results );
-		}
-	}
 	@Override
 	public ICFBamScope getRequiredContainerScope() {
 		ICFBamSchema targetBackingSchema = ICFBamSchema.getBackingCFBam();
