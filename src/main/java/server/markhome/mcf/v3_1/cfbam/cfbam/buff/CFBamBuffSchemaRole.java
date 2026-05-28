@@ -70,10 +70,12 @@ public class CFBamBuffSchemaRole
 	implements ICFBamSchemaRole
 {
 	protected CFLibDbKeyHash256 requiredSchemaDefId;
+	protected ICFBamSchema.RoleScopeEnum requiredRoleScope;
 
 	public CFBamBuffSchemaRole() {
 		super();
 		requiredSchemaDefId = CFLibDbKeyHash256.fromHex( ICFBamSchemaRole.SCHEMADEFID_INIT_VALUE.toString() );
+		requiredRoleScope = ICFBamSchemaRole.ROLESCOPE_INIT_VALUE;
 	}
 
 	@Override
@@ -115,6 +117,22 @@ public class CFBamBuffSchemaRole
 	}
 
 	@Override
+	public ICFBamSchema.RoleScopeEnum getRequiredRoleScope() {
+		return( requiredRoleScope );
+	}
+
+	@Override
+	public void setRequiredRoleScope( ICFBamSchema.RoleScopeEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredRoleScope",
+				1,
+				"value" );
+		}
+		requiredRoleScope = value;
+	}
+
+	@Override
 	public boolean equals( Object obj ) {
 		if( obj == null ) {
 			return( false );
@@ -151,6 +169,21 @@ public class CFBamBuffSchemaRole
 					return( false );
 				}
 			}
+			if( getRequiredRoleScope() != null ) {
+				if( rhs.getRequiredRoleScope() != null ) {
+					if( ! getRequiredRoleScope().equals( rhs.getRequiredRoleScope() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRoleScope() != null ) {
+					return( false );
+				}
+			}
 			return( true );
 		}
 		else if( obj instanceof ICFBamSchemaRoleH ) {
@@ -182,6 +215,21 @@ public class CFBamBuffSchemaRole
 			}
 			else {
 				if( rhs.getRequiredSchemaDefId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredRoleScope() != null ) {
+				if( rhs.getRequiredRoleScope() != null ) {
+					if( ! getRequiredRoleScope().equals( rhs.getRequiredRoleScope() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRoleScope() != null ) {
 					return( false );
 				}
 			}
@@ -225,6 +273,59 @@ public class CFBamBuffSchemaRole
 			}
 			return( true );
 		}
+		else if( obj instanceof ICFBamSchemaRoleByRoleScopeIdxKey ) {
+			ICFBamSchemaRoleByRoleScopeIdxKey rhs = (ICFBamSchemaRoleByRoleScopeIdxKey)obj;
+			if( getRequiredRoleScope() != null ) {
+				if( rhs.getRequiredRoleScope() != null ) {
+					if( ! getRequiredRoleScope().equals( rhs.getRequiredRoleScope() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRoleScope() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if( obj instanceof ICFBamSchemaRoleBySchRoleScpIdxKey ) {
+			ICFBamSchemaRoleBySchRoleScpIdxKey rhs = (ICFBamSchemaRoleBySchRoleScpIdxKey)obj;
+			if( getRequiredSchemaDefId() != null ) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
+					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredSchemaDefId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredRoleScope() != null ) {
+				if( rhs.getRequiredRoleScope() != null ) {
+					if( ! getRequiredRoleScope().equals( rhs.getRequiredRoleScope() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredRoleScope() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
 		else {
 			boolean retval = super.equals( obj );
 			return( retval );
@@ -235,6 +336,7 @@ public class CFBamBuffSchemaRole
 	public int hashCode() {
 		int hashCode = super.hashCode();
 		hashCode = hashCode + getRequiredSchemaDefId().hashCode();
+		hashCode = ( hashCode * 0x10000 ) + getRequiredRoleScope().ordinal();
 		return( hashCode & 0x7fffffff );
 	}
 
@@ -262,6 +364,20 @@ public class CFBamBuffSchemaRole
 				}
 			}
 			else if (rhs.getRequiredSchemaDefId() != null) {
+				return( -1 );
+			}
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
 				return( -1 );
 			}
 			return( 0 );
@@ -310,6 +426,20 @@ public class CFBamBuffSchemaRole
 			else if (rhs.getRequiredSchemaDefId() != null) {
 				return( -1 );
 			}
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
+				return( -1 );
+			}
 			return( 0 );
 		}
 		else if( obj instanceof ICFBamSchemaRoleBySchemaIdxKey ) {
@@ -327,6 +457,56 @@ public class CFBamBuffSchemaRole
 				}
 			}
 			else if (rhs.getRequiredSchemaDefId() != null) {
+				return( -1 );
+			}			return( 0 );
+		}
+		else if( obj instanceof ICFBamSchemaRoleByRoleScopeIdxKey ) {
+			ICFBamSchemaRoleByRoleScopeIdxKey rhs = (ICFBamSchemaRoleByRoleScopeIdxKey)obj;
+
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
+				return( -1 );
+			}			return( 0 );
+		}
+		else if( obj instanceof ICFBamSchemaRoleBySchRoleScpIdxKey ) {
+			ICFBamSchemaRoleBySchRoleScpIdxKey rhs = (ICFBamSchemaRoleBySchRoleScpIdxKey)obj;
+
+			if (getRequiredSchemaDefId() != null) {
+				if (rhs.getRequiredSchemaDefId() != null) {
+					cmp = getRequiredSchemaDefId().compareTo( rhs.getRequiredSchemaDefId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredSchemaDefId() != null) {
+				return( -1 );
+			}
+			if (getRequiredRoleScope() != null) {
+				if (rhs.getRequiredRoleScope() != null) {
+					cmp = getRequiredRoleScope().compareTo( rhs.getRequiredRoleScope() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredRoleScope() != null) {
 				return( -1 );
 			}			return( 0 );
 		}
@@ -354,6 +534,7 @@ public class CFBamBuffSchemaRole
 	public void setSchemaRole( ICFBamSchemaRole src ) {
 		super.setRoleDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredContainerSchemaDef());
+		setRequiredRoleScope(src.getRequiredRoleScope());
 	}
 
 	@Override
@@ -374,13 +555,15 @@ public class CFBamBuffSchemaRole
 	public void setSchemaRole( ICFBamSchemaRoleH src ) {
 		super.setRoleDef( src );
 		setRequiredContainerSchemaDef(src.getRequiredSchemaDefId());
+		setRequiredRoleScope(src.getRequiredRoleScope());
 	}
 
 	@Override
 	public String getXmlAttrFragment() {
 		String ret = super.getXmlAttrFragment() 
 			+ " RequiredId=" + "\"" + getRequiredId().toString() + "\""
-			+ " RequiredSchemaDefId=" + "\"" + getRequiredSchemaDefId().toString() + "\"";
+			+ " RequiredSchemaDefId=" + "\"" + getRequiredSchemaDefId().toString() + "\""
+			+ " RequiredRoleScope=" + "\"" + getRequiredRoleScope().toString() + "\"";
 		return( ret );
 	}
 

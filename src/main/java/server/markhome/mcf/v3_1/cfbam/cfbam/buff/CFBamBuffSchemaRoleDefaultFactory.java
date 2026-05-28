@@ -95,6 +95,49 @@ public class CFBamBuffSchemaRoleDefaultFactory
 	}
 
 	@Override
+	public ICFBamSchemaRoleByRoleScopeIdxKey newByRoleScopeIdxKey() {
+		ICFBamSchemaRoleByRoleScopeIdxKey key =
+			new CFBamBuffSchemaRoleByRoleScopeIdxKey();
+		return( key );
+	}
+
+	public CFBamBuffSchemaRoleByRoleScopeIdxKey ensureByRoleScopeIdxKey(ICFBamSchemaRoleByRoleScopeIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffSchemaRoleByRoleScopeIdxKey) {
+			return( (CFBamBuffSchemaRoleByRoleScopeIdxKey)key );
+		}
+		else {
+			CFBamBuffSchemaRoleByRoleScopeIdxKey mapped = new CFBamBuffSchemaRoleByRoleScopeIdxKey();
+			mapped.setRequiredRoleScope( key.getRequiredRoleScope() );
+			return( mapped );
+		}
+	}
+
+	@Override
+	public ICFBamSchemaRoleBySchRoleScpIdxKey newBySchRoleScpIdxKey() {
+		ICFBamSchemaRoleBySchRoleScpIdxKey key =
+			new CFBamBuffSchemaRoleBySchRoleScpIdxKey();
+		return( key );
+	}
+
+	public CFBamBuffSchemaRoleBySchRoleScpIdxKey ensureBySchRoleScpIdxKey(ICFBamSchemaRoleBySchRoleScpIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffSchemaRoleBySchRoleScpIdxKey) {
+			return( (CFBamBuffSchemaRoleBySchRoleScpIdxKey)key );
+		}
+		else {
+			CFBamBuffSchemaRoleBySchRoleScpIdxKey mapped = new CFBamBuffSchemaRoleBySchRoleScpIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			mapped.setRequiredRoleScope( key.getRequiredRoleScope() );
+			return( mapped );
+		}
+	}
+
+	@Override
 	public ICFBamSchemaRole newRec() {
 		ICFBamSchemaRole rec =
 			new CFBamBuffSchemaRole();
