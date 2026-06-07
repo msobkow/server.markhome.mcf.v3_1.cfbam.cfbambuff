@@ -79,6 +79,7 @@ public class CFBamBuffServerMethod
 	protected String optionalSuffix;
 	protected boolean requiredIsInstanceMethod;
 	protected boolean requiredIsServerOnly;
+	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
 	protected String requiredJMethodBody;
 	protected String requiredCppMethodBody;
 	protected String requiredCsMethodBody;
@@ -95,6 +96,7 @@ public class CFBamBuffServerMethod
 		optionalSuffix = null;
 		requiredIsInstanceMethod = ICFBamServerMethod.ISINSTANCEMETHOD_INIT_VALUE;
 		requiredIsServerOnly = ICFBamServerMethod.ISSERVERONLY_INIT_VALUE;
+		requiredCodeVis = ICFBamServerMethod.CODEVIS_INIT_VALUE;
 		requiredJMethodBody = ICFBamServerMethod.JMETHODBODY_INIT_VALUE;
 		requiredCppMethodBody = ICFBamServerMethod.CPPMETHODBODY_INIT_VALUE;
 		requiredCsMethodBody = ICFBamServerMethod.CSMETHODBODY_INIT_VALUE;
@@ -303,6 +305,22 @@ public class CFBamBuffServerMethod
 	@Override
 	public void setRequiredIsServerOnly( boolean value ) {
 		requiredIsServerOnly = value;
+	}
+
+	@Override
+	public ICFBamSchema.CodeVisibilityEnum getRequiredCodeVis() {
+		return( requiredCodeVis );
+	}
+
+	@Override
+	public void setRequiredCodeVis( ICFBamSchema.CodeVisibilityEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCodeVis",
+				1,
+				"value" );
+		}
+		requiredCodeVis = value;
 	}
 
 	@Override
@@ -525,6 +543,21 @@ public class CFBamBuffServerMethod
 			if( getRequiredIsServerOnly() != rhs.getRequiredIsServerOnly() ) {
 				return( false );
 			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
 			if( getRequiredJMethodBody() != null ) {
 				if( rhs.getRequiredJMethodBody() != null ) {
 					if( ! getRequiredJMethodBody().equals( rhs.getRequiredJMethodBody() ) ) {
@@ -715,6 +748,21 @@ public class CFBamBuffServerMethod
 			if( getRequiredIsServerOnly() != rhs.getRequiredIsServerOnly() ) {
 				return( false );
 			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
 			if( getRequiredJMethodBody() != null ) {
 				if( rhs.getRequiredJMethodBody() != null ) {
 					if( ! getRequiredJMethodBody().equals( rhs.getRequiredJMethodBody() ) ) {
@@ -834,6 +882,59 @@ public class CFBamBuffServerMethod
 			}
 			return( true );
 		}
+		else if( obj instanceof ICFBamServerMethodByMethCodeVisIdxKey ) {
+			ICFBamServerMethodByMethCodeVisIdxKey rhs = (ICFBamServerMethodByMethCodeVisIdxKey)obj;
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
+		else if( obj instanceof ICFBamServerMethodByMethTableVisIdxKey ) {
+			ICFBamServerMethodByMethTableVisIdxKey rhs = (ICFBamServerMethodByMethTableVisIdxKey)obj;
+			if( getRequiredTableId() != null ) {
+				if( rhs.getRequiredTableId() != null ) {
+					if( ! getRequiredTableId().equals( rhs.getRequiredTableId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredTableId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
+			return( true );
+		}
 		else if( obj instanceof ICFBamServerMethodByDefSchemaIdxKey ) {
 			ICFBamServerMethodByDefSchemaIdxKey rhs = (ICFBamServerMethodByDefSchemaIdxKey)obj;
 			if( getOptionalDefSchemaId() != null ) {
@@ -896,6 +997,7 @@ public class CFBamBuffServerMethod
 		else {
 			hashCode = hashCode * 2;
 		}
+		hashCode = ( hashCode * 0x10000 ) + getRequiredCodeVis().ordinal();
 		if( getRequiredJMethodBody() != null ) {
 			hashCode = hashCode + getRequiredJMethodBody().hashCode();
 		}
@@ -1063,6 +1165,20 @@ public class CFBamBuffServerMethod
 				if( rhs.getRequiredIsServerOnly() ) {
 					return( -1 );
 				}
+			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
 			}
 			if (getRequiredJMethodBody() != null) {
 				if (rhs.getRequiredJMethodBody() != null) {
@@ -1282,6 +1398,20 @@ public class CFBamBuffServerMethod
 					return( -1 );
 				}
 			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
 			if (getRequiredJMethodBody() != null) {
 				if (rhs.getRequiredJMethodBody() != null) {
 					cmp = getRequiredJMethodBody().compareTo( rhs.getRequiredJMethodBody() );
@@ -1376,6 +1506,56 @@ public class CFBamBuffServerMethod
 				return( -1 );
 			}			return( 0 );
 		}
+		else if( obj instanceof ICFBamServerMethodByMethCodeVisIdxKey ) {
+			ICFBamServerMethodByMethCodeVisIdxKey rhs = (ICFBamServerMethodByMethCodeVisIdxKey)obj;
+
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}			return( 0 );
+		}
+		else if( obj instanceof ICFBamServerMethodByMethTableVisIdxKey ) {
+			ICFBamServerMethodByMethTableVisIdxKey rhs = (ICFBamServerMethodByMethTableVisIdxKey)obj;
+
+			if (getRequiredTableId() != null) {
+				if (rhs.getRequiredTableId() != null) {
+					cmp = getRequiredTableId().compareTo( rhs.getRequiredTableId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredTableId() != null) {
+				return( -1 );
+			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}			return( 0 );
+		}
 		else if( obj instanceof ICFBamServerMethodByDefSchemaIdxKey ) {
 			ICFBamServerMethodByDefSchemaIdxKey rhs = (ICFBamServerMethodByDefSchemaIdxKey)obj;
 
@@ -1429,6 +1609,7 @@ public class CFBamBuffServerMethod
 		setOptionalSuffix(src.getOptionalSuffix());
 		setRequiredIsInstanceMethod(src.getRequiredIsInstanceMethod());
 		setRequiredIsServerOnly(src.getRequiredIsServerOnly());
+		setRequiredCodeVis(src.getRequiredCodeVis());
 		setRequiredJMethodBody(src.getRequiredJMethodBody());
 		setRequiredCppMethodBody(src.getRequiredCppMethodBody());
 		setRequiredCsMethodBody(src.getRequiredCsMethodBody());
@@ -1461,6 +1642,7 @@ public class CFBamBuffServerMethod
 		setOptionalSuffix(src.getOptionalSuffix());
 		setRequiredIsInstanceMethod(src.getRequiredIsInstanceMethod());
 		setRequiredIsServerOnly(src.getRequiredIsServerOnly());
+		setRequiredCodeVis(src.getRequiredCodeVis());
 		setRequiredJMethodBody(src.getRequiredJMethodBody());
 		setRequiredCppMethodBody(src.getRequiredCppMethodBody());
 		setRequiredCsMethodBody(src.getRequiredCsMethodBody());
@@ -1480,6 +1662,7 @@ public class CFBamBuffServerMethod
 			+ " OptionalSuffix=" + ( ( getOptionalSuffix() == null ) ? "null" : "\"" + StringEscapeUtils.escapeXml11( getOptionalSuffix() ) + "\"" )
 			+ " RequiredIsInstanceMethod=" + (( getRequiredIsInstanceMethod() ) ? "\"true\"" : "\"false\"" )
 			+ " RequiredIsServerOnly=" + (( getRequiredIsServerOnly() ) ? "\"true\"" : "\"false\"" )
+			+ " RequiredCodeVis=" + "\"" + getRequiredCodeVis().toString() + "\""
 			+ " RequiredJMethodBody=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredJMethodBody() ) + "\""
 			+ " RequiredCppMethodBody=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredCppMethodBody() ) + "\""
 			+ " RequiredCsMethodBody=" + "\"" + StringEscapeUtils.escapeXml11( getRequiredCsMethodBody() ) + "\"";

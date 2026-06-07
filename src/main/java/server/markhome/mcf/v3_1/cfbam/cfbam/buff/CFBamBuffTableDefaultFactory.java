@@ -95,6 +95,49 @@ public class CFBamBuffTableDefaultFactory
 	}
 
 	@Override
+	public ICFBamTableByCodeVisIdxKey newByCodeVisIdxKey() {
+		ICFBamTableByCodeVisIdxKey key =
+			new CFBamBuffTableByCodeVisIdxKey();
+		return( key );
+	}
+
+	public CFBamBuffTableByCodeVisIdxKey ensureByCodeVisIdxKey(ICFBamTableByCodeVisIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableByCodeVisIdxKey) {
+			return( (CFBamBuffTableByCodeVisIdxKey)key );
+		}
+		else {
+			CFBamBuffTableByCodeVisIdxKey mapped = new CFBamBuffTableByCodeVisIdxKey();
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+	@Override
+	public ICFBamTableBySchemaCodeVisIdxKey newBySchemaCodeVisIdxKey() {
+		ICFBamTableBySchemaCodeVisIdxKey key =
+			new CFBamBuffTableBySchemaCodeVisIdxKey();
+		return( key );
+	}
+
+	public CFBamBuffTableBySchemaCodeVisIdxKey ensureBySchemaCodeVisIdxKey(ICFBamTableBySchemaCodeVisIdxKey key) {
+		if (key == null) {
+			return( null );
+		}
+		else if (key instanceof CFBamBuffTableBySchemaCodeVisIdxKey) {
+			return( (CFBamBuffTableBySchemaCodeVisIdxKey)key );
+		}
+		else {
+			CFBamBuffTableBySchemaCodeVisIdxKey mapped = new CFBamBuffTableBySchemaCodeVisIdxKey();
+			mapped.setRequiredSchemaDefId( key.getRequiredSchemaDefId() );
+			mapped.setRequiredCodeVis( key.getRequiredCodeVis() );
+			return( mapped );
+		}
+	}
+
+	@Override
 	public ICFBamTableByDefSchemaIdxKey newByDefSchemaIdxKey() {
 		ICFBamTableByDefSchemaIdxKey key =
 			new CFBamBuffTableByDefSchemaIdxKey();

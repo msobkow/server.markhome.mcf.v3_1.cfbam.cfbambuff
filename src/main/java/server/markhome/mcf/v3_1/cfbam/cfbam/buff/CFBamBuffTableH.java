@@ -89,6 +89,7 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 	protected boolean requiredIsServerOnly;
 	protected ICFBamSchema.LoaderBehaviourEnum requiredLoaderBehaviour;
 	protected ICFBamSchema.SecScopeEnum requiredSecScope;
+	protected ICFBamSchema.CodeVisibilityEnum requiredCodeVis;
 
     public CFBamBuffTableH() {
             super();
@@ -113,6 +114,7 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 		requiredIsServerOnly = ICFBamTable.ISSERVERONLY_INIT_VALUE;
 		requiredLoaderBehaviour = ICFBamTable.LOADERBEHAVIOUR_INIT_VALUE;
 		requiredSecScope = ICFBamTable.SECSCOPE_INIT_VALUE;
+		requiredCodeVis = ICFBamTable.CODEVIS_INIT_VALUE;
     }
 
     @Override
@@ -416,6 +418,22 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 		requiredSecScope = value;
 	}
 
+	@Override
+	public ICFBamSchema.CodeVisibilityEnum getRequiredCodeVis() {
+		return( requiredCodeVis );
+	}
+
+	@Override
+	public void setRequiredCodeVis( ICFBamSchema.CodeVisibilityEnum value ) {
+		if( value == null ) {
+			throw new CFLibNullArgumentException( getClass(),
+				"setRequiredCodeVis",
+				1,
+				"value" );
+		}
+		requiredCodeVis = value;
+	}
+
     @Override
     public boolean equals( Object obj ) {
         if (obj == null) {
@@ -666,6 +684,21 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 			}
 			else {
 				if( rhs.getRequiredSecScope() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
 					return( false );
 				}
 			}
@@ -922,6 +955,21 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 					return( false );
 				}
 			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
             return( true );
         }
         else if (obj instanceof ICFBamScopeHPKey) {
@@ -941,6 +989,59 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 			}
 			else {
 				if( rhs.getRequiredSchemaDefId() != null ) {
+					return( false );
+				}
+			}
+            return( true );
+        }
+        else if (obj instanceof ICFBamTableByCodeVisIdxKey) {
+            ICFBamTableByCodeVisIdxKey rhs = (ICFBamTableByCodeVisIdxKey)obj;
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
+					return( false );
+				}
+			}
+            return( true );
+        }
+        else if (obj instanceof ICFBamTableBySchemaCodeVisIdxKey) {
+            ICFBamTableBySchemaCodeVisIdxKey rhs = (ICFBamTableBySchemaCodeVisIdxKey)obj;
+			if( getRequiredSchemaDefId() != null ) {
+				if( rhs.getRequiredSchemaDefId() != null ) {
+					if( ! getRequiredSchemaDefId().equals( rhs.getRequiredSchemaDefId() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredSchemaDefId() != null ) {
+					return( false );
+				}
+			}
+			if( getRequiredCodeVis() != null ) {
+				if( rhs.getRequiredCodeVis() != null ) {
+					if( ! getRequiredCodeVis().equals( rhs.getRequiredCodeVis() ) ) {
+						return( false );
+					}
+				}
+				else {
+					return( false );
+				}
+			}
+			else {
+				if( rhs.getRequiredCodeVis() != null ) {
 					return( false );
 				}
 			}
@@ -1192,6 +1293,7 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 		}
 		hashCode = ( hashCode * 0x10000 ) + getRequiredLoaderBehaviour().ordinal();
 		hashCode = ( hashCode * 0x10000 ) + getRequiredSecScope().ordinal();
+		hashCode = ( hashCode * 0x10000 ) + getRequiredCodeVis().ordinal();
         return( hashCode & 0x7fffffff );
     }
 
@@ -1497,6 +1599,20 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 			else if (rhs.getRequiredSecScope() != null) {
 				return( -1 );
 			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
             return( 0 );
         }
         else if (obj instanceof ICFBamScopeHPKey) {
@@ -1798,6 +1914,20 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 			else if (rhs.getRequiredSecScope() != null) {
 				return( -1 );
 			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
             return( 0 );
         }
         else if (obj instanceof ICFBamTableBySchemaDefIdxKey ) {
@@ -1814,6 +1944,56 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 				}
 			}
 			else if (rhs.getRequiredSchemaDefId() != null) {
+				return( -1 );
+			}
+            return( 0 );
+        }
+        else if (obj instanceof ICFBamTableByCodeVisIdxKey ) {
+            ICFBamTableByCodeVisIdxKey rhs = (ICFBamTableByCodeVisIdxKey)obj;
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
+				return( -1 );
+			}
+            return( 0 );
+        }
+        else if (obj instanceof ICFBamTableBySchemaCodeVisIdxKey ) {
+            ICFBamTableBySchemaCodeVisIdxKey rhs = (ICFBamTableBySchemaCodeVisIdxKey)obj;
+			if (getRequiredSchemaDefId() != null) {
+				if (rhs.getRequiredSchemaDefId() != null) {
+					cmp = getRequiredSchemaDefId().compareTo( rhs.getRequiredSchemaDefId() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredSchemaDefId() != null) {
+				return( -1 );
+			}
+			if (getRequiredCodeVis() != null) {
+				if (rhs.getRequiredCodeVis() != null) {
+					cmp = getRequiredCodeVis().compareTo( rhs.getRequiredCodeVis() );
+					if( cmp != 0 ) {
+						return( cmp );
+					}
+				}
+				else {
+					return( 1 );
+				}
+			}
+			else if (rhs.getRequiredCodeVis() != null) {
 				return( -1 );
 			}
             return( 0 );
@@ -2024,6 +2204,7 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 		setRequiredIsServerOnly( src.getRequiredIsServerOnly() );
 		setRequiredLoaderBehaviour( src.getRequiredLoaderBehaviour() );
 		setRequiredSecScope( src.getRequiredSecScope() );
+		setRequiredCodeVis( src.getRequiredCodeVis() );
     }
 
 	@Override
@@ -2064,6 +2245,7 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 		setRequiredIsServerOnly( src.getRequiredIsServerOnly() );
 		setRequiredLoaderBehaviour( src.getRequiredLoaderBehaviour() );
 		setRequiredSecScope( src.getRequiredSecScope() );
+		setRequiredCodeVis( src.getRequiredCodeVis() );
     }
 
     public String getXmlAttrFragment() {
@@ -2088,7 +2270,8 @@ public class CFBamBuffTableH extends CFBamBuffScopeH
 			+ " RequiredIsMutable=" + (( getRequiredIsMutable() ) ? "\"true\"" : "\"false\"" )
 			+ " RequiredIsServerOnly=" + (( getRequiredIsServerOnly() ) ? "\"true\"" : "\"false\"" )
 			+ " RequiredLoaderBehaviour=" + "\"" + getRequiredLoaderBehaviour().toString() + "\""
-			+ " RequiredSecScope=" + "\"" + getRequiredSecScope().toString() + "\"";
+			+ " RequiredSecScope=" + "\"" + getRequiredSecScope().toString() + "\""
+			+ " RequiredCodeVis=" + "\"" + getRequiredCodeVis().toString() + "\"";
         return( ret );
     }
 
