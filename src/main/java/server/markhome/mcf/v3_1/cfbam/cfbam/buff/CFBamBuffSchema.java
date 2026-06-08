@@ -210,6 +210,7 @@ public class CFBamBuffSchema
 	protected ICFBamTZTimestampTypeTable tableTZTimestampType;
 	protected ICFBamTableTable tableTable;
 	protected ICFBamTableColTable tableTableCol;
+	protected ICFSecTableInfoTable tableTableInfo;
 	protected ICFBamTableTweakTable tableTableTweak;
 	protected ICFSecTenantTable tableTenant;
 	protected ICFBamTextColTable tableTextCol;
@@ -391,6 +392,7 @@ public class CFBamBuffSchema
 	protected ICFBamTZTimestampTypeFactory factoryTZTimestampType;
 	protected ICFBamTableFactory factoryTable;
 	protected ICFBamTableColFactory factoryTableCol;
+	protected ICFSecTableInfoFactory factoryTableInfo;
 	protected ICFBamTableTweakFactory factoryTableTweak;
 	protected ICFSecTenantFactory factoryTenant;
 	protected ICFBamTextColFactory factoryTextCol;
@@ -2610,6 +2612,7 @@ public class CFBamBuffSchema
 	tableTZTimestampType = null; // new CFBamBuffTZTimestampTypeTable();
 	tableTable = null; // new CFBamBuffTableTable();
 	tableTableCol = null; // new CFBamBuffTableColTable();
+	tableTableInfo = null; // new CFSecBuffTableInfoTable();
 	tableTableTweak = null; // new CFBamBuffTableTweakTable();
 	tableTenant = null; // new CFSecBuffTenantTable();
 	tableTextCol = null; // new CFBamBuffTextColTable();
@@ -2791,6 +2794,7 @@ public class CFBamBuffSchema
 	factoryTZTimestampType = new CFBamBuffTZTimestampTypeDefaultFactory();
 	factoryTable = new CFBamBuffTableDefaultFactory();
 	factoryTableCol = new CFBamBuffTableColDefaultFactory();
+	factoryTableInfo = new CFSecBuffTableInfoDefaultFactory();
 	factoryTableTweak = new CFBamBuffTableTweakDefaultFactory();
 	factoryTenant = new CFSecBuffTenantDefaultFactory();
 	factoryTextCol = new CFBamBuffTextColDefaultFactory();
@@ -2875,6 +2879,17 @@ public class CFBamBuffSchema
 	 */
 	public short nextISOTZoneIdGen() {
 		throw new CFLibMustOverrideException(getClass(), "nextISOTZoneIdGen");
+	}
+
+	/**
+	 *	Get the next TableInfoIdGen identifier.
+	 *
+	 *	@return	The next TableInfoIdGen identifier.
+	 *
+	 *	@throws CFLibNotSupportedException thrown by client-side implementations.
+	 */
+	public int nextTableInfoIdGen() {
+		throw new CFLibMustOverrideException(getClass(), "nextTableInfoIdGen");
 	}
 
 	/**
@@ -5460,6 +5475,22 @@ public class CFBamBuffSchema
 
 	public void setFactoryTableCol( ICFBamTableColFactory value ) {
 		factoryTableCol = value;
+	}
+
+	public ICFSecTableInfoTable getTableTableInfo() {
+		return( tableTableInfo );
+	}
+
+	public void setTableTableInfo( ICFSecTableInfoTable value ) {
+		tableTableInfo = value;
+	}
+
+	public ICFSecTableInfoFactory getFactoryTableInfo() {
+		return( factoryTableInfo );
+	}
+
+	public void setFactoryTableInfo( ICFSecTableInfoFactory value ) {
+		factoryTableInfo = value;
 	}
 
 	public ICFBamTableTweakTable getTableTableTweak() {
